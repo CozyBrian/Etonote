@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { taskItem } from "../@types";
+import { nanoid } from "nanoid";
 
 interface todosList {
   value: taskItem[];
@@ -8,21 +9,25 @@ interface todosList {
 const initialState: todosList = {
   value: [
     {
+      id: "Zc8CvQsq-X",
       title: "Play Full-Metal Alchemist",
       icon: "🎮",
       isDone: false,
     },
     {
+      id: "eLPgPZZj-H",
       title: "Make a todo list app",
       icon: "👨🏾‍💻",
       isDone: false,
     },
     {
+      id: "XKcRT9C3Eo",
       title: "Study Numerical Algerbra",
       icon: "📚",
       isDone: true,
     },
     {
+      id: "rnx0ul9z-e",
       title: "Buy Playstation 4 and get some games",
       icon: "🎮",
       isDone: false,
@@ -35,7 +40,8 @@ const todos = createSlice({
   initialState,
   reducers: {
     addTodo(state, action: PayloadAction<taskItem>) {
-      state.value = [action.payload, ...state.value];
+      const newItem = { ...action.payload, id: nanoid(10) };
+      state.value = [newItem, ...state.value];
     },
     toggleDone(state, action: PayloadAction<number>) {
       state.value[action.payload].isDone = !state.value[action.payload].isDone;

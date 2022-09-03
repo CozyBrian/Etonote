@@ -7,6 +7,7 @@ const SideBarItem = ({
   title = "Home",
   icon = "🏠",
   number = 1,
+  id = "",
 }: SidebarItem) => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
@@ -15,11 +16,11 @@ const SideBarItem = ({
     return dispatch(action.app.setSelectedTab(tabName));
   };
 
-  const isSelected = appState.selectedTab === title;
+  const isSelected = appState.selectedTab === id;
 
   return (
     <div
-      onClick={() => setTab(title)}
+      onClick={() => setTab(id)}
       className={`w-full flex flex-row ${
         isSelected
           ? "bg-slate-200 [&>div:nth-child(2)]:bg-slate-300 hover:bg-slate-200 "
