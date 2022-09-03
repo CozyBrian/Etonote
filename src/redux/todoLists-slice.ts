@@ -8,6 +8,11 @@ interface todoList {
 const initialState: todoList = {
   value: [
     {
+      title: "Home",
+      icon: "🏠",
+      number: 23,
+    },
+    {
       title: "Gaming",
       icon: "🎮",
       number: 4,
