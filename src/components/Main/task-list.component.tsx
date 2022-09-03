@@ -16,7 +16,7 @@ const TaskList = () => {
       <div className="h-full pb-32 overflow-scroll">
         {todos.map((item, i) => (
           <TaskItem
-            key={i}
+            key={`${item.title}`}
             title={item.title}
             icon={item.icon}
             isDone={item.isDone}

@@ -34,6 +34,9 @@ const todos = createSlice({
   name: "todos",
   initialState,
   reducers: {
+    addTodo(state, action: PayloadAction<taskItem>) {
+      state.value = [action.payload, ...state.value];
+    },
     toggleDone(state, action: PayloadAction<number>) {
       state.value[action.payload].isDone = !state.value[action.payload].isDone;
     },

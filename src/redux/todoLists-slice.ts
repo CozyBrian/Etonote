@@ -37,6 +37,9 @@ const todoLists = createSlice({
     addNumber(state, action: PayloadAction<number>) {
       state.value[action.payload].number += 1;
     },
+    addList(state, action: PayloadAction<SidebarItem>) {
+      state.value = [...state.value, action.payload];
+    },
   },
 });
 

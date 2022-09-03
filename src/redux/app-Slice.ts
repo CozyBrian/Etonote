@@ -5,7 +5,7 @@ interface app_state {
 }
 
 const initialState: app_state = {
-  selectedTab: "home",
+  selectedTab: "Home",
 };
 
 const appState = createSlice({
