@@ -11,7 +11,7 @@ const Header = () => {
           <div className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"></div>
         </div>
       </div>
-      <h1 className="text-gray-600 text-xl font-medium">It's {todayDate}</h1>
+      <h1 className="text-gray-500 text-xl font-medium">It's {todayDate}</h1>
     </div>
   );
 };

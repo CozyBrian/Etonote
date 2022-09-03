@@ -2,18 +2,29 @@ import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
 
 const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
+  const variants = {
+    done: {
+      height: 20,
+      width: 20,
+      borderRadius: "0.375rem",
+    },
+    notDone: { height: 0, width: 0, borderRadius: "1rem" },
+  };
+
   return (
     <motion.div layout>
-      <div
-        onClick={() => onClick()}
-        className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 shadow shadow-slate-300 items-center justify-between my-2 select-none"
-      >
+      <div className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none">
         <div className="flex flex-row items-center">
           <div
-            className={`h-5 w-5 ${
-              isDone ? "bg-slate-600" : "bg-zinc-200"
-            } rounded-md mx-2`}
-          ></div>
+            onClick={() => onClick()}
+            className="h-5 w-5 flex justify-center items-center bg-zinc-200 rounded-md mx-2"
+          >
+            <motion.div
+              className="bg-slate-600"
+              animate={isDone ? "done" : "notDone"}
+              variants={variants}
+            ></motion.div>
+          </div>
           {title}
         </div>
         <div className="text-lg rounded-md mx-2">{icon}</div>
