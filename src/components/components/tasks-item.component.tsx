@@ -1,9 +1,12 @@
 import React from "react";
 import { taskItem } from "../../@types";
 
-const TaskItem = ({ title, isDone, icon }: taskItem) => {
+const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
   return (
-    <div className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 shadow shadow-slate-300 items-center justify-between my-2 select-none">
+    <div
+      onClick={() => onClick()}
+      className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 shadow shadow-slate-300 items-center justify-between my-2 select-none"
+    >
       <div className="flex flex-row items-center">
         <div
           className={`h-5 w-5 ${

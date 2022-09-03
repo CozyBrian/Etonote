@@ -1,34 +1,26 @@
 import React from "react";
 import SideBarItem from "../components/sidebar-item.component";
+import { action } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 const SideBar = () => {
-  const lists = [
-    {
-      title: "Gaming",
-      icon: "🎮",
-      number: 4,
-    },
-    {
-      title: "School",
-      icon: "📚",
-      number: 13,
-    },
-    {
-      title: "React Todo",
-      icon: "👨🏾‍💻",
-      number: 6,
-    },
-  ];
+  const rList = useAppSelector((state) => state.lists.value);
+  const dispatch = useAppDispatch();
+
+  const something = (num: number) => {
+    return dispatch(action.lists.addNumber(num));
+  };
 
   return (
     <div className="bg-white max-w-1/5 min-w-[350px] flex rounded-2xl m-2 flex-col p-8 pt-12">
-      {lists.map((item, i) => (
-        <SideBarItem
-          key={i}
-          title={item.title}
-          icon={item.icon}
-          number={item.number}
-        />
+      {rList.map((item, i) => (
+        <div key={i} onClick={() => something(i)}>
+          <SideBarItem
+            title={item.title}
+            icon={item.icon}
+            number={item.number}
+          />
+        </div>
       ))}
     </div>
   );

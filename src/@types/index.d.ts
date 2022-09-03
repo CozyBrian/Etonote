@@ -8,4 +8,5 @@ export declare type taskItem = {
   title: string;
   isDone: boolean;
   icon: string;
+  onClick?: any;
 };
