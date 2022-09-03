@@ -8,6 +8,7 @@ const SideBarItem = ({
   icon = "🏠",
   number = 1,
   id = "",
+  index = 1,
 }: SidebarItem) => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
@@ -21,9 +22,9 @@ const SideBarItem = ({
   return (
     <div
       onClick={() => setTab(id)}
-      className={`w-full flex flex-row ${
+      className={`w-full z-20 flex flex-row ${
         isSelected
-          ? "bg-slate-200 [&>div:nth-child(2)]:bg-slate-300 hover:bg-slate-200 "
+          ? "bg-slate-400/30 [&>div:nth-child(2)]:bg-slate-300 backdrop-blur-xl hover:bg-slate-200 "
           : "hover:bg-zinc-100 "
       } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:active:bg-slate-300 active:bg-slate-200 cartnumber h-12 rounded-xl p-2 my-1 items-center duration-100 select-none justify-between`}
     >

@@ -3,6 +3,7 @@ export declare type SidebarItem = {
   title: string;
   icon: string;
   number: number;
+  index?: number;
 };
 
 export declare type taskItem = {

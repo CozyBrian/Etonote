@@ -7,9 +7,10 @@ const SideBar = () => {
 
   return (
     <div className="bg-white max-w-1/5 min-w-[350px] flex rounded-2xl m-2 flex-col p-8 pt-12">
-      {todoLists.map((item) => (
+      {todoLists.map((item, i) => (
         <SideBarItem
           key={item.id}
+          index={i}
           id={item.id}
           title={item.title}
           icon={item.icon}
