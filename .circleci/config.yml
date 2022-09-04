@@ -14,18 +14,12 @@ jobs:
       - run:
           name: Update NPM
           command: "sudo npm install -g npm"
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install Dependencies
           command: npm install --force
       - run:
           name: Install dpkg and fakeroot
           command: brew install dpkg fakeroot
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
       - run:
           name: Install rpm
           command: brew install rpm
