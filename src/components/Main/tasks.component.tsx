@@ -12,7 +12,9 @@ const TasksView = () => {
           <motion.div layout>
             <AddTodoInput />
           </motion.div>
-          <TaskList />
+          <motion.div layout>
+            <TaskList />
+          </motion.div>
         </LayoutGroup>
       </div>
     </div>
