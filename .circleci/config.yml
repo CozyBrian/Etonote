@@ -28,6 +28,9 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Install rpm
+          command: sudo apt install rpm
+      - run:
           name: Generate Builds
           command: npm run make
 
