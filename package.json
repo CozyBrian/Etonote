@@ -1,7 +1,7 @@
 {
   "name": "eton",
   "version": "0.1.0",
-  "description": "Simple note taking app, with UX as the center.",
+  "description": "simple note taking app, with UX as the center.",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -88,12 +88,6 @@
           }
         },
         {
-          "name": "@electron-forge/maker-deb",
-          "config": {
-            "name": "eton"
-          }
-        },
-        {
           "name": "@electron-forge/maker-rpm",
           "config": {
             "name": "eton"
@@ -110,7 +104,6 @@
           "name": "@electron-forge/maker-zip",
           "platforms": [
             "darwin",
-            "linux",
             "win32"
           ]
         }
