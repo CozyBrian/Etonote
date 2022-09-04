@@ -1,7 +1,7 @@
 import React from "react";
 import { today } from "../../utils/date";
 import { useAppSelector } from "../../hooks";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import TextTransition, { presets } from "react-text-transition";
 
 const Header = () => {
