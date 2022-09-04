@@ -47,8 +47,14 @@ const todos = createSlice({
       const newItem = { ...action.payload, id: nanoid(10) };
       state.value = [newItem, ...state.value];
     },
-    toggleDone(state, action: PayloadAction<number>) {
-      state.value[action.payload].isDone = !state.value[action.payload].isDone;
+    toggleDone(state, action: PayloadAction<string | undefined>) {
+      state.value = state.value.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, isDone: !item.isDone };
+        }
+
+        return item;
+      });
     },
   },
 });

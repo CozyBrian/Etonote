@@ -12,7 +12,7 @@ const TasksView = () => {
           <motion.div layout>
             <AddTodoInput />
           </motion.div>
-          <motion.div layout>
+          <motion.div layout className="h-full">
             <TaskList />
           </motion.div>
         </LayoutGroup>

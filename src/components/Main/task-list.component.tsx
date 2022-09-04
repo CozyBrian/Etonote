@@ -3,7 +3,7 @@ import { action } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import TaskItem from "../components/tasks-item.component";
 import { taskItem } from "../../@types";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const TaskList = () => {
   const app = useAppSelector((state) => state.app);
@@ -12,8 +12,8 @@ const TaskList = () => {
 
   const [todos, setTodos] = useState<taskItem[]>([]);
 
-  const something = (num: number) => {
-    return dispatch(action.todos.toggleDone(num));
+  const something = (id: string | undefined) => {
+    return dispatch(action.todos.toggleDone(id));
   };
 
   useEffect(() => {
@@ -28,24 +28,26 @@ const TaskList = () => {
   }, [app.selectedTab, list]);
 
   return (
-    <div className="h-full mt-4 pb-32 duration-100">
+    <div className="h-full mt-4 pb-32">
       <div className="h-full pb-32 overflow-scroll">
-        {todos.length > 0 ? (
-          todos.map((item, i) => (
-            <TaskItem
-              key={`${item.id}`}
-              item={item}
-              onClick={() => something(i)}
-            />
-          ))
-        ) : (
-          <motion.div
-            layout
-            className="flex h-32 justify-center items-center text-gray-500 text-xl font-medium"
-          >
-            It's a little empty here🥴
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {todos.length > 0 ? (
+            todos.map((item) => (
+              <TaskItem
+                key={`${item.id}`}
+                item={item}
+                onClick={() => something(item.id)}
+              />
+            ))
+          ) : (
+            <motion.div
+              layout
+              className="flex h-32 justify-center items-center text-gray-500 text-xl font-medium"
+            >
+              It's a little empty here🥴
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

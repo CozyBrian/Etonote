@@ -16,7 +16,13 @@ const TaskItem = ({ item, onClick }: Props) => {
   };
 
   return (
-    <motion.div layout>
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none">
         <div className="flex flex-row items-center">
           <div
