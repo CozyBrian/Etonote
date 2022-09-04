@@ -32,7 +32,7 @@ jobs:
           command: sudo apt install rpm -y
       - run:
           name: Generate Builds
-          command: npm run make
+          command: npm run make-mac
 
       - store_artifacts:
           path: ~/repo/out/make
