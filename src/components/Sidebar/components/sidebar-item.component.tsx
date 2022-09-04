@@ -1,7 +1,8 @@
 import React from "react";
-import { action } from "../../redux";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { SidebarItem } from "../../@types";
+import { action } from "../../../redux";
+import { motion } from "framer-motion";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { SidebarItem } from "../../../@types";
 
 interface Props {
   item: SidebarItem;
@@ -19,7 +20,7 @@ const SideBarItem = ({ item, number }: Props) => {
   const isSelected = appState.selectedTab === item.id;
 
   return (
-    <div className="relative">
+    <motion.div layout className="relative">
       {isSelected && <div className="absolute top-3 text-2xl">{item.icon}</div>}
       <div
         onClick={() => setTab(item.id)}
@@ -39,7 +40,7 @@ const SideBarItem = ({ item, number }: Props) => {
           {number}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
