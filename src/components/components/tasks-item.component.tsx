@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
 
-const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
+interface Props {
+  item: taskItem;
+  onClick: any;
+}
+const TaskItem = ({ item, onClick }: Props) => {
   const variants = {
     done: {
       height: 20,
@@ -21,13 +25,13 @@ const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
           >
             <motion.div
               className="bg-slate-600"
-              animate={isDone ? "done" : "notDone"}
+              animate={item.isDone ? "done" : "notDone"}
               variants={variants}
             ></motion.div>
           </div>
-          {title}
+          {item.title}
         </div>
-        <div className="text-lg rounded-md mx-2">{icon}</div>
+        <div className="text-lg rounded-md mx-2">{item.icon}</div>
       </div>
     </motion.div>
   );

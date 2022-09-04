@@ -8,7 +8,6 @@ const SideBarItem = ({
   icon = "🏠",
   number = 1,
   id = "",
-  index = 1,
 }: SidebarItem) => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();

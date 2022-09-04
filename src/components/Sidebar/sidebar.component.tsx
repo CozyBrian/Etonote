@@ -10,7 +10,6 @@ const SideBar = () => {
       {todoLists.map((item, i) => (
         <SideBarItem
           key={item.id}
-          index={i}
           id={item.id}
           title={item.title}
           icon={item.icon}

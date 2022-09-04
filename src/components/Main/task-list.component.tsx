@@ -17,10 +17,7 @@ const TaskList = () => {
         {todos.map((item, i) => (
           <TaskItem
             key={`${item.id}`}
-            id={item.id}
-            title={item.title}
-            icon={item.icon}
-            isDone={item.isDone}
+            item={item}
             onClick={() => something(i)}
           />
         ))}
