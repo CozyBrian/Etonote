@@ -40,6 +40,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="text-gray-500 text-xl font-medium"
           >
             It's {todayDate}
