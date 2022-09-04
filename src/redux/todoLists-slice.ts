@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { store } from ".";
 
 import { SidebarItem } from "../@types";
 

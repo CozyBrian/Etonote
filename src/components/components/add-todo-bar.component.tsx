@@ -47,7 +47,7 @@ const AddTodoInput = () => {
   }, [todoTitle]);
 
   return (
-    <form className="relative" onSubmit={addTodoItem}>
+    <form className="relative duration-100" onSubmit={addTodoItem}>
       <AnimatePresence>
         {showIconFlag && (
           <div ref={iconBox}>
@@ -78,6 +78,7 @@ const AddTodoInput = () => {
                 onClick={() => {
                   setTodoIcon(item.icon);
                   setTodoListId(item.id);
+                  setShowIconMenu(false);
                 }}
                 className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 hover:bg-slate-100 active:bg-slate-50 rounded-lg items-center"
               >

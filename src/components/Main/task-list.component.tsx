@@ -12,7 +12,7 @@ const TaskList = () => {
   };
 
   return (
-    <div className="h-full mt-4 pb-32">
+    <div className="h-full mt-4 pb-32 duration-100">
       <div className="h-full pb-32 overflow-scroll">
         {todos.map((item, i) => (
           <TaskItem
