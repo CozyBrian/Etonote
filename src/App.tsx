@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      {app.selectedTab === "IzeReY" ? (
+      {app.selectedTab === app.homeId ? (
         <div className="h-32 w-3/5 border-[3.5rem] border-sky-500 rounded-full mx-2 fixed left-0 -top-16 -z-10"></div>
       ) : (
         <div className="h-32 w-3/5 flex items-center justify-center text-[40vw] fixed left-0 -top-16 -z-10">

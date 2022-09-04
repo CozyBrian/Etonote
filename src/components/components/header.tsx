@@ -16,7 +16,7 @@ const Header = () => {
       <div className="flex flex-row">
         <div className="text-xl font-medium">
           <TextTransition springConfig={presets.stiff}>
-            {app.selectedTab === "IzeReY"
+            {app.selectedTab === app.homeId
               ? "Good Morning, Brian"
               : selectedList?.title}
           </TextTransition>
@@ -24,7 +24,7 @@ const Header = () => {
 
         <div className="fixed">
           <TextTransition springConfig={presets.stiff}>
-            {app.selectedTab === "IzeReY" ? (
+            {app.selectedTab === app.homeId ? (
               <div className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"></div>
             ) : (
               <div className="h-6 w-6 flex items-center justify-center text-3xl mx-2 relative right-16 top-0">
@@ -35,7 +35,7 @@ const Header = () => {
         </div>
       </div>
       <AnimatePresence>
-        {app.selectedTab === "IzeReY" && (
+        {app.selectedTab === app.homeId && (
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

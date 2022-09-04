@@ -17,7 +17,7 @@ const TaskList = () => {
   };
 
   useEffect(() => {
-    if (app.selectedTab !== "IzeReY") {
+    if (app.selectedTab !== app.homeId) {
       const filteredTodo = list.filter(
         (item) => item.listID === app.selectedTab
       );

@@ -7,11 +7,12 @@ import AddListModal from "../components/add-list-modal.component";
 
 const SideBar = () => {
   const [showModal, setShowModal] = useState(false);
+  const app = useAppSelector((state) => state.app);
   const todoLists = useAppSelector((state) => state.lists.value);
   const list = useAppSelector((state) => state.todos.value);
 
   const filteredTodo = (id: string) => {
-    if (id === "IzeReY") {
+    if (id === app.homeId) {
       return list.length;
     } else {
       return list.filter((item) => item.listID === id).length;
