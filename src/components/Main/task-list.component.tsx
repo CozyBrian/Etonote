@@ -3,6 +3,7 @@ import { action } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import TaskItem from "../components/tasks-item.component";
 import { taskItem } from "../../@types";
+import { motion } from "framer-motion";
 
 const TaskList = () => {
   const app = useAppSelector((state) => state.app);
@@ -29,13 +30,22 @@ const TaskList = () => {
   return (
     <div className="h-full mt-4 pb-32 duration-100">
       <div className="h-full pb-32 overflow-scroll">
-        {todos.map((item, i) => (
-          <TaskItem
-            key={`${item.id}`}
-            item={item}
-            onClick={() => something(i)}
-          />
-        ))}
+        {todos.length > 0 ? (
+          todos.map((item, i) => (
+            <TaskItem
+              key={`${item.id}`}
+              item={item}
+              onClick={() => something(i)}
+            />
+          ))
+        ) : (
+          <motion.div
+            layout
+            className="flex h-32 justify-center items-center text-gray-500 text-xl font-medium"
+          >
+            It's a little empty here🥴
+          </motion.div>
+        )}
       </div>
     </div>
   );
