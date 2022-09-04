@@ -29,7 +29,7 @@ jobs:
             - ./node_modules
       - run:
           name: Install rpm
-          command: sudo apt install rpm
+          command: sudo apt install rpm -y
       - run:
           name: Generate Builds
           command: npm run make
