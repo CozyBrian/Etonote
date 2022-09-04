@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface app_state {
   selectedTab: string;
+  homeId: string;
 }
 
 const initialState: app_state = {
   selectedTab: "IzeReY",
+  homeId: "IzeReY",
 };
 
 const appState = createSlice({

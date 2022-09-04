@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
 
-const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
+interface Props {
+  item: taskItem;
+  onClick: any;
+}
+const TaskItem = ({ item, onClick }: Props) => {
   const variants = {
     done: {
       height: 20,
@@ -12,7 +16,13 @@ const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
   };
 
   return (
-    <motion.div layout>
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none">
         <div className="flex flex-row items-center">
           <div
@@ -21,13 +31,13 @@ const TaskItem = ({ title, isDone, icon, onClick }: taskItem) => {
           >
             <motion.div
               className="bg-slate-600"
-              animate={isDone ? "done" : "notDone"}
+              animate={item.isDone ? "done" : "notDone"}
               variants={variants}
             ></motion.div>
           </div>
-          {title}
+          {item.title}
         </div>
-        <div className="text-lg rounded-md mx-2">{icon}</div>
+        <div className="text-lg rounded-md mx-2">{item.icon}</div>
       </div>
     </motion.div>
   );

@@ -13,25 +13,21 @@ const initialState: todoList = {
       id: "IzeReY",
       title: "Home",
       icon: "🏠",
-      number: 23,
     },
     {
       id: "rFZbxg",
       title: "Gaming",
       icon: "🎮",
-      number: 4,
     },
     {
       id: "ZslvWl",
       title: "School",
       icon: "📚",
-      number: 13,
     },
     {
       id: "2qSZYP",
       title: "React Todo",
       icon: "👨🏾‍💻",
-      number: 6,
     },
   ],
 };
@@ -40,10 +36,7 @@ const todoLists = createSlice({
   name: "todoLists",
   initialState,
   reducers: {
-    addNumber(state, action: PayloadAction<number>) {
-      state.value[action.payload].number += 1;
-    },
-    addList(state, action: PayloadAction<SidebarItem>) {
+    addList(state, action: PayloadAction<{ title: string; icon: string }>) {
       const newList = { ...action.payload, id: nanoid(6) };
       state.value = [...state.value, newList];
     },
