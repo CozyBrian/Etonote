@@ -1,9 +1,11 @@
 version: 2.1
+orbs:
+  node: circleci/node@5.0.2
 jobs:
   build:
     working_directory: ~/repo
-    docker:
-      - image: circleci/node:11
+    macos:
+      xcode: 14.0.0
     steps:
       - checkout
       - run:
@@ -19,17 +21,14 @@ jobs:
           command: npm install --force
       - run:
           name: Install dpkg and fakeroot
-          command: |
-            sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot
-
+          command: brew install dpkg fakeroot
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
           name: Install rpm
-          command: sudo apt install rpm -y
+          command: brew install rpm
       - run:
           name: Generate Builds
           command: npm run make-mac
