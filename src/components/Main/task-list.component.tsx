@@ -17,7 +17,7 @@ const TaskList = () => {
   };
 
   useEffect(() => {
-    if (app.selectedTab !== app.homeId) {
+    if (app.selectedTab !== "IzeReY") {
       const filteredTodo = list.filter(
         (item) => item.listID === app.selectedTab
       );
@@ -29,7 +29,7 @@ const TaskList = () => {
 
   return (
     <div className="h-full mt-4 pb-32">
-      <div className="h-full pb-32 overflow-scroll">
+      <div className="h-full pb-32 scrollbar-hide overflow-scroll">
         <AnimatePresence>
           {todos.length > 0 ? (
             todos.map((item) => (
