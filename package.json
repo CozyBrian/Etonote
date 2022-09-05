@@ -1,6 +1,7 @@
 {
   "name": "eton",
   "version": "0.1.0",
+  "author": "CozyBrian",
   "description": "simple note taking app, with UX as the center.",
   "private": true,
   "dependencies": {
@@ -16,6 +17,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "electron-is-dev": "^2.0.0",
     "framer-motion": "^7.2.1",
     "nanoid": "^4.0.0",
     "react": "^18.2.0",
@@ -68,7 +70,6 @@
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.3.0",
     "electron": "^20.0.0",
-    "electron-is-dev": "^2.0.0",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
