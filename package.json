@@ -1,7 +1,7 @@
 {
   "name": "etonote",
   "author": "CozyBrian",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Simple notes and todo app focused on user experiences.",
   "main": ".webpack/main",
   "scripts": {
@@ -97,7 +97,8 @@
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "win32"
+            "win32",
+            "darwin"
           ]
         },
         {
