@@ -25,7 +25,7 @@ jobs:
           command: brew install rpm
       - run:
           name: Generate Builds
-          command: npm run make-mac
+          command: npm run make
 
       - store_artifacts:
           path: ~/repo/out/make
