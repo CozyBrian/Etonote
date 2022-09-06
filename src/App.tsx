@@ -3,6 +3,7 @@ import TasksView from "./components/Main/tasks.component";
 import SideBar from "./components/Sidebar/sidebar.component";
 import TextTransition, { presets } from "react-text-transition";
 import { useAppSelector } from "./hooks";
+import TitleBar from "./components/components/title-bar";
 
 function App() {
   const app = useAppSelector((state) => state.app);
@@ -21,9 +22,12 @@ function App() {
           </TextTransition>
         </div>
       )}
-      <div className="h-screen w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
-        <SideBar />
-        <TasksView />
+      <div className="flex flex-col h-screen w-full">
+        <TitleBar />
+        <div className="h-full w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
+          <SideBar />
+          <TasksView />
+        </div>
       </div>
     </>
   );
