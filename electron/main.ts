@@ -7,13 +7,13 @@ declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 const assetsPath =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === "production"
     ? process.resourcesPath
-    : app.getAppPath()
+    : app.getAppPath();
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    icon: path.join(assetsPath, 'assets', 'icon.png'),
+    icon: path.join(assetsPath, "assets", "icon.png"),
     minWidth: 1300,
     minHeight: 737,
     frame: false,
