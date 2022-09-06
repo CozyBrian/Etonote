@@ -4,6 +4,7 @@ import SideBar from "./components/Sidebar/sidebar.component";
 import TextTransition, { presets } from "react-text-transition";
 import { useAppSelector } from "./hooks";
 import TitleBar from "./components/components/title-bar";
+import "./App.css";
 
 function App() {
   const app = useAppSelector((state) => state.app);
