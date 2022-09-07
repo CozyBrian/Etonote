@@ -3,6 +3,8 @@ import TasksView from "./components/Main/tasks.component";
 import SideBar from "./components/Sidebar/sidebar.component";
 import TextTransition, { presets } from "react-text-transition";
 import { useAppSelector } from "./hooks";
+import useRightClickMenu from "./hooks/useRightClickMenu";
+import ContextMenu from "./components/components/contextMenu";
 import TitleBar from "./components/components/title-bar";
 import "./App.css";
 
@@ -11,6 +13,8 @@ function App() {
   const todoLists = useAppSelector((state) => state.lists.value);
 
   const selectedList = todoLists.find((item) => item.id === app.selectedTab);
+
+  const { x, y, showMenu } = useRightClickMenu();
 
   return (
     <>
@@ -23,6 +27,7 @@ function App() {
           </TextTransition>
         </div>
       )}
+      {showMenu && <ContextMenu x={x} y={y} />}
       <div className="flex flex-col h-screen w-full">
         <TitleBar />
         <div className="h-full w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">

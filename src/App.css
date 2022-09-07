@@ -815,6 +815,10 @@ video {
   width: 0.875rem
 }
 
+.w-32 {
+  width: 8rem
+}
+
 .min-w-\[48rem\] {
   min-width: 48rem
 }
@@ -864,6 +868,10 @@ video {
 
 .justify-between {
   justify-content: space-between
+}
+
+.gap-1 {
+  gap: 0.25rem
 }
 
 .overflow-hidden {
@@ -965,6 +973,15 @@ video {
 .bg-zinc-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(244 244 245 / var(--tw-bg-opacity))
+}
+
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity))
+}
+
+.bg-slate-200\/80 {
+  background-color: rgb(226 232 240 / 0.8)
 }
 
 .p-12 {
@@ -1108,6 +1125,11 @@ video {
   color: rgb(75 85 99 / var(--tw-text-opacity))
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px
@@ -1204,6 +1226,10 @@ video {
   background-color: rgb(226 232 240 / var(--tw-bg-opacity))
 }
 
+.hover\:bg-slate-300\/80:hover {
+  background-color: rgb(203 213 225 / 0.8)
+}
+
 .focus\:bg-gray-400:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity))
@@ -1241,6 +1267,11 @@ video {
 .active\:bg-slate-50:active {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity))
+}
+
+.active\:bg-slate-300:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
 }
 
 .\[\&\>div\:nth-child\(2\)\]\:bg-slate-300>div:nth-child(2) {
