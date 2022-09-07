@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+// import image from "../../assets/images/splash.png";
 
 const LoadingScreen = () => {
   return (
@@ -9,7 +10,13 @@ const LoadingScreen = () => {
       exit={{ opacity: 0 }}
       className="absolute top-0 left-0 w-screen h-screen bg-slate-300 opacity-0 z-50 flex justify-center items-center"
     >
-      <div></div>
+      <div className="flex justify-center flex-col">
+        <img
+          className="h-64"
+          src={require("../../assets/images/splash.png")}
+          alt="logo"
+        />
+      </div>
     </motion.div>
   );
 };
