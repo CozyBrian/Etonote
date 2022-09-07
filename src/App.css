@@ -663,12 +663,12 @@ video {
   z-index: 10
 }
 
-.m-1 {
-  margin: 0.25rem
-}
-
 .m-2 {
   margin: 0.5rem
+}
+
+.m-1 {
+  margin: 0.25rem
 }
 
 .mx-2 {
@@ -691,16 +691,32 @@ video {
   margin-right: 0.75rem
 }
 
-.mr-4 {
-  margin-right: 1rem
-}
-
 .mt-4 {
   margin-top: 1rem
 }
 
+.mr-4 {
+  margin-right: 1rem
+}
+
+.ml-1 {
+  margin-left: 0.25rem
+}
+
 .mr-3 {
   margin-right: 0.75rem
+}
+
+.ml-0\.5 {
+  margin-left: 0.125rem
+}
+
+.ml-0 {
+  margin-left: 0px
+}
+
+.inline-block {
+  display: inline-block
 }
 
 .flex {
@@ -743,16 +759,16 @@ video {
   height: 1.25rem
 }
 
-.h-4 {
-  height: 1rem
-}
-
 .h-3 {
   height: 0.75rem
 }
 
 .h-12 {
   height: 3rem
+}
+
+.h-3\.5 {
+  height: 0.875rem
 }
 
 .w-3\/5 {
@@ -791,12 +807,12 @@ video {
   width: 1.25rem
 }
 
-.w-4 {
-  width: 1rem
-}
-
 .w-3 {
   width: 0.75rem
+}
+
+.w-3\.5 {
+  width: 0.875rem
 }
 
 .min-w-\[48rem\] {
@@ -809,11 +825,6 @@ video {
 
 .-translate-y-1\/2 {
   --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
-}
-
-.rotate-180 {
-  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -913,6 +924,11 @@ video {
   background-color: rgb(226 232 240 / 0.9)
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
 .bg-black\/50 {
   background-color: rgb(0 0 0 / 0.5)
 }
@@ -925,11 +941,6 @@ video {
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity))
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
 .bg-zinc-200 {
@@ -956,6 +967,10 @@ video {
   background-color: rgb(244 244 245 / var(--tw-bg-opacity))
 }
 
+.p-12 {
+  padding: 3rem
+}
+
 .p-8 {
   padding: 2rem
 }
@@ -976,10 +991,6 @@ video {
   padding: 0.5rem
 }
 
-.p-12 {
-  padding: 3rem
-}
-
 .p-0\.5 {
   padding: 0.125rem
 }
@@ -998,6 +1009,18 @@ video {
   padding-right: 0.5rem
 }
 
+.pb-32 {
+  padding-bottom: 8rem
+}
+
+.pb-0 {
+  padding-bottom: 0px
+}
+
+.pt-12 {
+  padding-top: 3rem
+}
+
 .pb-8 {
   padding-bottom: 2rem
 }
@@ -1014,24 +1037,17 @@ video {
   padding-right: 0.25rem
 }
 
-.pb-32 {
-  padding-bottom: 8rem
-}
-
-.pb-0 {
-  padding-bottom: 0px
-}
-
-.pt-12 {
-  padding-top: 3rem
-}
-
 .text-center {
   text-align: center
 }
 
 .text-\[40vw\] {
   font-size: 40vw
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem
 }
 
 .text-4xl {
@@ -1049,11 +1065,6 @@ video {
   line-height: 1.25rem
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem
@@ -1069,22 +1080,22 @@ video {
   line-height: 2rem
 }
 
-.font-semibold {
-  font-weight: 600
-}
-
 .font-medium {
   font-weight: 500
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
+.font-semibold {
+  font-weight: 600
 }
 
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity))
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
 .text-slate-300 {
@@ -1183,11 +1194,6 @@ video {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity))
 }
 
-.hover\:bg-slate-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity))
-}
-
 .hover\:bg-zinc-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(244 244 245 / var(--tw-bg-opacity))
@@ -1235,16 +1241,6 @@ video {
 .active\:bg-slate-50:active {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity))
-}
-
-.active\:bg-slate-500:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity))
-}
-
-.active\:bg-red-600:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity))
 }
 
 .\[\&\>div\:nth-child\(2\)\]\:bg-slate-300>div:nth-child(2) {

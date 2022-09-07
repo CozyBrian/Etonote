@@ -14,6 +14,8 @@ const assetsPath =
 function createWindow() {
   mainWindow = new BrowserWindow({
     icon: path.join(assetsPath, "assets", "icon.png"),
+    width: 1300,
+    height: 737,
     minWidth: 1300,
     minHeight: 737,
     frame: false,
