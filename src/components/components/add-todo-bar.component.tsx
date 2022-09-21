@@ -7,6 +7,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const AddTodoInput = () => {
   const todoLists = useAppSelector((state) => state.lists.value);
+  const selectedList = useAppSelector((state) => state.app.selectedTab);
   const textBox = useRef<HTMLInputElement>(document.createElement("input"));
   const iconBox = useRef(null);
   const [todoTitle, setTodoTitle] = useState("");
@@ -36,6 +37,11 @@ const AddTodoInput = () => {
       document.activeElement.blur();
     }
   };
+
+  useEffect(() => {
+    setTodoIcon(todoLists.filter((todo) => todo.id === selectedList)[0].icon);
+    setTodoListId(todoLists.filter((todo) => todo.id === selectedList)[0].id);
+  }, [selectedList]);
 
   useEffect(() => {
     if (todoTitle.length > 0) {
