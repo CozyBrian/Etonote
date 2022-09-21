@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { action } from "../../redux";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 interface Props {
   onClick?: () => void;
@@ -13,14 +13,21 @@ interface Props {
 const AddListModal = ({ onClick }: Props) => {
   const [icon, setIcon] = useState("");
   const [title, setTitle] = useState("");
-
+  const lists = useAppSelector((state) => state.lists).value;
   const dispatch = useAppDispatch();
 
   const createList = () => {
     if (icon === "" || title === "") return;
     onClick!();
-    return dispatch(action.lists.addList({ icon: icon, title: title }));
+    dispatch(action.lists.addList({ icon: icon, title: title }));
   };
+
+  useEffect(() => {
+    if (title !== "") {
+      dispatch(action.app.setSelectedTab(lists[lists.length - 1].id));
+    }
+  }, [lists]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
