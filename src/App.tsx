@@ -34,7 +34,6 @@ function App() {
           </TextTransition>
         </div>
       )}
-      {showMenu && <ContextMenu x={x} y={y} />}
       <div className="flex flex-col h-screen w-full">
         <TitleBar />
         <div className="h-full w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
