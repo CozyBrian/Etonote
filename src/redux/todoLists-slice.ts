@@ -46,6 +46,9 @@ const todoLists = createSlice({
       const newList = { ...action.payload, id: nanoid(6) };
       state.value = [...state.value, newList];
     },
+    deleteList(state, action: PayloadAction<string | undefined>) {
+      state.value = state.value.filter((item) => item.id !== action.payload);
+    },
   },
 });
 

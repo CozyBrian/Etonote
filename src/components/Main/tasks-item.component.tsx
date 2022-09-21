@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
 import useRightClickMenu from "../../hooks/useRightClickMenu";
-import ContextMenu from "./contextMenu";
+import { TodoContextMenu } from "../components/contextMenu";
 
 interface Props {
   item: taskItem;
@@ -29,7 +29,7 @@ const TaskItem = ({ item, onClick }: Props) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      {showMenu && <ContextMenu id={item.id} x={x} y={y} />}
+      {showMenu && <TodoContextMenu id={item.id} x={x} y={y} />}
       <div
         ref={itemRef}
         className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none"

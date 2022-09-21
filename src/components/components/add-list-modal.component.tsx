@@ -26,6 +26,7 @@ const AddListModal = ({ onClick }: Props) => {
     if (title !== "") {
       dispatch(action.app.setSelectedTab(lists[lists.length - 1].id));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lists]);
 
   return (
