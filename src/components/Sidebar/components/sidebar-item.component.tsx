@@ -47,7 +47,7 @@ const SideBarItem = ({ item, number }: Props) => {
       </AnimatePresence>
       <motion.div layout className="relative">
         {isSelected && (
-          <div className="absolute top-3 text-2xl">{item.icon}</div>
+          <div className="absolute top-2 text-2xl">{item.icon}</div>
         )}
         <div
           ref={itemRef}
@@ -56,7 +56,7 @@ const SideBarItem = ({ item, number }: Props) => {
             isSelected
               ? "bg-slate-400/20 [&>div:nth-child(2)]:bg-slate-300 backdrop-blur-md hover:bg-slate-200 "
               : "hover:bg-zinc-100 "
-          } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:active:bg-slate-300 active:bg-slate-200 cartnumber h-12 rounded-xl p-2 my-1 items-center duration-100 select-none justify-between`}
+          } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:active:bg-slate-300 active:bg-slate-200 cartnumber h-10 rounded-md p-2 my-1 items-center duration-100 select-none justify-between`}
         >
           <div className="flex flex-row">
             <div className="h-6 w-6 bg-slate-60 rounded-md mr-3 mx-2 items-center text-md justify-center">

@@ -643,6 +643,10 @@ video {
   top: 1rem
 }
 
+.top-2 {
+  top: 0.5rem
+}
+
 .z-20 {
   z-index: 20
 }
@@ -759,6 +763,14 @@ video {
   height: 0.75rem
 }
 
+.h-9 {
+  height: 2.25rem
+}
+
+.h-10 {
+  height: 2.5rem
+}
+
 .w-full {
   width: 100%
 }
@@ -811,12 +823,20 @@ video {
   width: 0.75rem
 }
 
+.w-4\/5 {
+  width: 80%
+}
+
 .min-w-\[350px\] {
   min-width: 350px
 }
 
 .min-w-\[48rem\] {
   min-width: 48rem
+}
+
+.min-w-\[300px\] {
+  min-width: 300px
 }
 
 .-translate-y-1\/2 {
