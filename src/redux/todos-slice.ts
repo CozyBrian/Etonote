@@ -56,6 +56,9 @@ const todos = createSlice({
         return item;
       });
     },
+    deleteTodo(state, action: PayloadAction<string | undefined>) {
+      state.value = state.value.filter((item) => item.id !== action.payload);
+    },
   },
 });
 
