@@ -1,11 +1,17 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
+import useRightClickMenu from "../../hooks/useRightClickMenu";
+import ContextMenu from "./contextMenu";
 
 interface Props {
   item: taskItem;
   onClick: any;
 }
 const TaskItem = ({ item, onClick }: Props) => {
+  const itemRef = useRef(null);
+  const { x, y, showMenu } = useRightClickMenu(itemRef);
+
   const variants = {
     done: {
       height: 20,
@@ -23,7 +29,11 @@ const TaskItem = ({ item, onClick }: Props) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none">
+      {showMenu && <ContextMenu id={item.id} x={x} y={y} />}
+      <div
+        ref={itemRef}
+        className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none"
+      >
         <div className="flex flex-row items-center">
           <div
             onClick={() => onClick()}

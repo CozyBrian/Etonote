@@ -3,8 +3,6 @@ import TasksView from "./components/Main/tasks.component";
 import SideBar from "./components/Sidebar/sidebar.component";
 import TextTransition, { presets } from "react-text-transition";
 import { useAppSelector, useAppDispatch } from "./hooks";
-import useRightClickMenu from "./hooks/useRightClickMenu";
-import ContextMenu from "./components/components/contextMenu";
 import LoadingScreen from "./components/components/loadingScreen";
 import { action } from "./redux";
 import { AnimatePresence } from "framer-motion";
@@ -15,8 +13,6 @@ function App() {
   const dispatch = useAppDispatch();
 
   const selectedList = todoLists.find((item) => item.id === app.selectedTab);
-
-  const { x, y, showMenu } = useRightClickMenu();
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,7 +32,6 @@ function App() {
           </TextTransition>
         </div>
       )}
-      {showMenu && <ContextMenu x={x} y={y} />}
       <div className="h-screen w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
         <AnimatePresence>{app.isSplash && <LoadingScreen />}</AnimatePresence>
         <SideBar />
