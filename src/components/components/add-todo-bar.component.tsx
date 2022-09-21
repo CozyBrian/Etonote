@@ -41,6 +41,7 @@ const AddTodoInput = () => {
   useEffect(() => {
     setTodoIcon(todoLists.filter((todo) => todo.id === selectedList)[0].icon);
     setTodoListId(todoLists.filter((todo) => todo.id === selectedList)[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedList]);
 
   useEffect(() => {

@@ -23,11 +23,11 @@ export default function useRightClickMenu(
   const handleContextMenu = (event: MouseEvent) => {
     event.preventDefault();
     if (isOver) {
-      event.pageX + 128 > window.innerWidth
-        ? setX(window.innerWidth - 130)
+      event.pageX + 192 > window.innerWidth
+        ? setX(window.innerWidth - 198)
         : setX(event.pageX);
-      event.pageY + 200 > window.innerHeight
-        ? setY(window.innerHeight - 200)
+      event.pageY + 108 > window.innerHeight
+        ? setY(window.innerHeight - 110)
         : setY(event.pageY);
       setShowMenu(true);
     } else {
