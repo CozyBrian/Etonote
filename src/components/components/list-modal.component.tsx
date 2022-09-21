@@ -53,20 +53,22 @@ export const AddListModal = ({ onClick }: PropsA) => {
           </div>
         </div>
         <div className="flex flex-row h-14">
-          <input
-            className="w-16 border-none outline-none mr-4 text-white bg-slate-300 focus:bg-gray-400 text-center focus:placeholder:text-gray-300 focus:text-2xl p-3 rounded-2xl duration-150"
-            placeholder="icon"
-            accept="text"
-            value={icon}
-            onChange={(value) => setIcon(value.target.value)}
-          ></input>
-          <input
-            className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
-            placeholder="Name"
-            accept="text"
-            value={title}
-            onChange={(value) => setTitle(value.target.value)}
-          ></input>
+          <form onSubmit={createList}>
+            <input
+              className="w-16 border-none outline-none mr-4 text-white bg-slate-300 focus:bg-gray-400 text-center focus:placeholder:text-gray-300 focus:text-2xl p-3 rounded-2xl duration-150"
+              placeholder="icon"
+              accept="text"
+              value={icon}
+              onChange={(value) => setIcon(value.target.value)}
+            ></input>
+            <input
+              className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
+              placeholder="Name"
+              accept="text"
+              value={title}
+              onChange={(value) => setTitle(value.target.value)}
+            ></input>
+          </form>
         </div>
         <div className="flex flex-row justify-end pt-4">
           <div
@@ -83,7 +85,6 @@ export const AddListModal = ({ onClick }: PropsA) => {
 
 export const DelListModal = ({ onClick, ItemId }: PropsB) => {
   const todos = useAppSelector((state) => state.todos.value);
-  const Lists = useAppSelector((state) => state.lists.value);
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
