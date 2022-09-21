@@ -16,10 +16,37 @@ export const action = {
   todos: todos.actions,
 };
 
-export const store = configureStore({
+function saveToLocalStorage(state: RootState) {
+  try {
+    const serialisedState = JSON.stringify(state);
+    localStorage.setItem("persistantState", serialisedState);
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
+// load string from localStarage and convert into an Object
+// invalid output must be undefined
+export const loadFromLocalStorage = (): RootState | undefined => {
+  try {
+    const serialisedState = localStorage.getItem("persistantState");
+    if (serialisedState === null) return undefined;
+    const state: RootState = JSON.parse(serialisedState);
+    return state;
+  } catch (e) {
+    console.warn(e);
+    return undefined;
+  }
+};
+
+const store = configureStore({
   reducer: {
     app: appState.reducer,
     lists: todoLists.reducer,
     todos: todos.reducer,
   },
 });
+
+store.subscribe(() => saveToLocalStorage(store.getState()));
+
+export default store;

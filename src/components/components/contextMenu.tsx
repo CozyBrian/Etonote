@@ -1,30 +1,81 @@
 import React from "react";
+import { action } from "../../redux";
+import { useAppDispatch } from "../../hooks";
 
-type Props = {
+type PropsA = {
+  id?: string;
+  x: number;
+  y: number;
+  handleDelete: (arg0: boolean) => void;
+};
+
+type PropsB = {
+  id?: string;
   x: number;
   y: number;
 };
 
-const ContextMenu = ({ x, y }: Props) => {
+export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
   const style = () => {
     return { top: y, left: x };
   };
   return (
     <div
       style={style()}
-      className={`absolute flex flex-col w-32 p-1 bg-slate-100 z-50 rounded-xl gap-1`}
+      className={`absolute flex flex-col w-48 p-0.5 bg-slate-100 z-50 rounded gap-1 shadow-md`}
     >
-      <div className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-2 p-2 items-center rounded-lg">
-        edit
+      <div
+        onClick={() => console.log(id)}
+        className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-sm"
+      >
+        Edit
       </div>
-      <div className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-2 p-2 items-center rounded-lg">
-        copy
-      </div>
-      <div className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-2 p-2 items-center rounded-lg">
-        paste
+      <div
+        onClick={() => handleDelete(true)}
+        className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-sm"
+      >
+        Delete
       </div>
     </div>
   );
 };
 
-export default ContextMenu;
+export const TodoContextMenu = ({ id, x, y }: PropsB) => {
+  const dispatch = useAppDispatch();
+
+  const toggleDone = (id: string | undefined) => {
+    return dispatch(action.todos.toggleDone(id));
+  };
+  const deleteTodo = (id: string | undefined) => {
+    return dispatch(action.todos.deleteTodo(id));
+  };
+
+  const style = () => {
+    return { top: y, left: x };
+  };
+  return (
+    <div
+      style={style()}
+      className={`absolute flex flex-col w-48 p-0.5 bg-slate-100 z-50 rounded gap-1 shadow-md`}
+    >
+      <div
+        onClick={() => console.log(id)}
+        className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-sm"
+      >
+        Edit
+      </div>
+      <div
+        onClick={() => toggleDone(id)}
+        className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-sm"
+      >
+        Check
+      </div>
+      <div
+        onClick={() => deleteTodo(id)}
+        className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-sm"
+      >
+        Delete
+      </div>
+    </div>
+  );
+};
