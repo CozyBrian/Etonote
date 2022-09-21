@@ -739,6 +739,10 @@ video {
   height: 1.5rem
 }
 
+.h-64 {
+  height: 16rem
+}
+
 .h-5 {
   height: 1.25rem
 }
@@ -781,6 +785,10 @@ video {
 
 .w-11 {
   width: 2.75rem
+}
+
+.w-32 {
+  width: 8rem
 }
 
 .w-6 {
@@ -855,6 +863,10 @@ video {
   justify-content: space-between
 }
 
+.gap-1 {
+  gap: 0.25rem
+}
+
 .overflow-hidden {
   overflow: hidden
 }
@@ -925,6 +937,15 @@ video {
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity))
+}
+
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity))
+}
+
+.bg-slate-200\/80 {
+  background-color: rgb(226 232 240 / 0.8)
 }
 
 .bg-white {
@@ -1082,6 +1103,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity))
+}
+
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity))
@@ -1095,6 +1121,10 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity))
+}
+
+.opacity-0 {
+  opacity: 0
 }
 
 .outline-none {
@@ -1183,6 +1213,10 @@ video {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity))
 }
 
+.hover\:bg-slate-300\/80:hover {
+  background-color: rgb(203 213 225 / 0.8)
+}
+
 .hover\:bg-slate-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity))
@@ -1235,6 +1269,11 @@ video {
 .active\:bg-slate-50:active {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity))
+}
+
+.active\:bg-slate-300:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity))
 }
 
 .active\:bg-slate-500:active {
