@@ -83,6 +83,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
 
 export const DelListModal = ({ onClick, ItemId }: PropsB) => {
   const todos = useAppSelector((state) => state.todos.value);
+  const Lists = useAppSelector((state) => state.lists.value);
+  const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
   const deleteList = (id: string | undefined) => {
@@ -93,6 +95,9 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
         dispatch(action.todos.deleteTodo(todo.id));
       }
     });
+    if (appState.selectedTab === id) {
+      dispatch(action.app.setSelectedTab(appState.homeId));
+    }
   };
 
   return (
