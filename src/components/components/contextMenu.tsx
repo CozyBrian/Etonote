@@ -1,27 +1,21 @@
 import React from "react";
 import { action } from "../../redux";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
 
-type Props = {
+type PropsA = {
+  id?: string;
+  x: number;
+  y: number;
+  handleDelete: (arg0: boolean) => void;
+};
+
+type PropsB = {
   id?: string;
   x: number;
   y: number;
 };
 
-export const ListContextMenu = ({ id, x, y }: Props) => {
-  const todos = useAppSelector((state) => state.todos.value);
-  const dispatch = useAppDispatch();
-
-  const deleteTodo = (id: string | undefined) => {
-    dispatch(action.lists.deleteList(id));
-
-    todos.forEach((todo) => {
-      if (todo.listID === id) {
-        dispatch(action.todos.deleteTodo(todo.id));
-      }
-    });
-  };
-
+export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
   const style = () => {
     return { top: y, left: x };
   };
@@ -37,7 +31,7 @@ export const ListContextMenu = ({ id, x, y }: Props) => {
         Edit
       </div>
       <div
-        onClick={() => deleteTodo(id)}
+        onClick={() => handleDelete(true)}
         className="flex flex-row h-8 w-full bg-slate-200/80 hover:bg-slate-300/80 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-sm"
       >
         Delete
@@ -46,7 +40,7 @@ export const ListContextMenu = ({ id, x, y }: Props) => {
   );
 };
 
-export const TodoContextMenu = ({ id, x, y }: Props) => {
+export const TodoContextMenu = ({ id, x, y }: PropsB) => {
   const dispatch = useAppDispatch();
 
   const toggleDone = (id: string | undefined) => {

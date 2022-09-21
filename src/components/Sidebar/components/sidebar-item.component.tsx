@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { action } from "../../../redux";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { SidebarItem } from "../../../@types";
 import useRightClickMenu from "../../../hooks/useRightClickMenu";
 import { ListContextMenu } from "../../components/contextMenu";
+import { DelListModal } from "../../components/list-modal.component";
 
 interface Props {
   item: SidebarItem;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const SideBarItem = ({ item, number }: Props) => {
+  const [showDelModal, setDelAddModal] = useState(false);
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
@@ -27,7 +29,22 @@ const SideBarItem = ({ item, number }: Props) => {
 
   return (
     <>
-      {showMenu && <ListContextMenu id={item.id} x={x} y={y} />}
+      {showMenu && (
+        <ListContextMenu
+          handleDelete={(bool) => setDelAddModal(bool)}
+          id={item.id}
+          x={x}
+          y={y}
+        />
+      )}
+      <AnimatePresence>
+        {showDelModal && (
+          <DelListModal
+            ItemId={item.id}
+            onClick={() => setDelAddModal(false)}
+          />
+        )}
+      </AnimatePresence>
       <motion.div layout className="relative">
         {isSelected && (
           <div className="absolute top-3 text-2xl">{item.icon}</div>
