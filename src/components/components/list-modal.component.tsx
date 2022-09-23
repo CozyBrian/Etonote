@@ -21,7 +21,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
   const lists = useAppSelector((state) => state.lists).value;
   const dispatch = useAppDispatch();
 
-  const createList = () => {
+  const createList = (e?: React.ChangeEvent<any>) => {
+    e?.preventDefault();
     if (icon === "" || title === "") return;
     onClick!();
     dispatch(action.lists.addList({ icon: icon, title: title }));
@@ -52,24 +53,23 @@ export const AddListModal = ({ onClick }: PropsA) => {
             <FontAwesomeIcon icon={faTimes} size="sm" />
           </div>
         </div>
-        <div className="flex flex-row h-14">
-          <form onSubmit={createList}>
-            <input
-              className="w-16 border-none outline-none mr-4 text-white bg-slate-300 focus:bg-gray-400 text-center focus:placeholder:text-gray-300 focus:text-2xl p-3 rounded-2xl duration-150"
-              placeholder="icon"
-              accept="text"
-              value={icon}
-              onChange={(value) => setIcon(value.target.value)}
-            ></input>
-            <input
-              className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
-              placeholder="Name"
-              accept="text"
-              value={title}
-              onChange={(value) => setTitle(value.target.value)}
-            ></input>
-          </form>
-        </div>
+        <form className="flex flex-row h-14" onSubmit={createList}>
+          <input
+            className="w-16 border-none outline-none mr-4 text-white bg-slate-300 focus:bg-gray-400 text-center focus:placeholder:text-gray-300 focus:text-2xl p-3 rounded-2xl duration-150"
+            placeholder="icon"
+            accept="text"
+            value={icon}
+            onChange={(value) => setIcon(value.target.value)}
+          ></input>
+          <input
+            className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
+            placeholder="Name"
+            accept="text"
+            value={title}
+            onChange={(value) => setTitle(value.target.value)}
+          ></input>
+          <input type="submit" hidden />
+        </form>
         <div className="flex flex-row justify-end pt-4">
           <div
             onClick={() => createList()}
