@@ -1,8 +1,7 @@
 import React from "react";
 import { today } from "../../utils/date";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { AnimatePresence, motion } from "framer-motion";
-import TextTransition, { presets } from "react-text-transition";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { action } from "../../redux";
@@ -31,23 +30,41 @@ const Header = () => {
       </div>
       <div className="flex flex-row">
         <div className="text-xl font-medium">
-          <TextTransition springConfig={presets.stiff}>
-            {app.selectedTab === app.homeId
-              ? "Good Morning, Brian"
-              : selectedList?.title}
-          </TextTransition>
+          {app.selectedTab === app.homeId
+            ? "Good Morning, Brian"
+            : selectedList?.title}
         </div>
 
         <div className="fixed">
-          <TextTransition springConfig={presets.stiff}>
-            {app.selectedTab === app.homeId ? (
-              <div className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"></div>
-            ) : (
-              <div className="h-6 w-6 flex items-center justify-center text-3xl mx-2 relative right-16 top-0">
-                {selectedList?.icon}
-              </div>
-            )}
-          </TextTransition>
+          <LayoutGroup>
+            <AnimatePresence>
+              {app.selectedTab === app.homeId && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"
+                ></motion.div>
+              )}
+            </AnimatePresence>
+            <AnimatePresence>
+              {app.selectedTab !== app.homeId &&
+                todoLists.map(
+                  (item) =>
+                    item.id === selectedList?.id && (
+                      <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
+                      >
+                        {item?.icon}
+                      </motion.div>
+                    )
+                )}
+            </AnimatePresence>
+          </LayoutGroup>
         </div>
       </div>
       <AnimatePresence>
