@@ -4,7 +4,7 @@ import { useAppSelector } from "../../hooks";
 import { AnimatePresence, motion } from "framer-motion";
 import TextTransition, { presets } from "react-text-transition";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV, faGear } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const app = useAppSelector((state) => state.app);
