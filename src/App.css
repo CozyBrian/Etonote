@@ -630,14 +630,6 @@ video {
   position: relative
 }
 
-.left-0 {
-  left: 0px
-}
-
-.-top-16 {
-  top: -4rem
-}
-
 .right-3 {
   right: 0.75rem
 }
@@ -652,6 +644,14 @@ video {
 
 .top-16 {
   top: 4rem
+}
+
+.left-0 {
+  left: 0px
+}
+
+.-top-16 {
+  top: -4rem
 }
 
 .right-6 {
@@ -694,10 +694,6 @@ video {
   top: 0.5rem
 }
 
-.-z-10 {
-  z-index: -10
-}
-
 .z-30 {
   z-index: 30
 }
@@ -708,6 +704,10 @@ video {
 
 .z-10 {
   z-index: 10
+}
+
+.-z-10 {
+  z-index: -10
 }
 
 .z-50 {
@@ -770,10 +770,6 @@ video {
   display: none
 }
 
-.h-32 {
-  height: 8rem
-}
-
 .h-screen {
   height: 100vh
 }
@@ -788,6 +784,10 @@ video {
 
 .h-11 {
   height: 2.75rem
+}
+
+.h-32 {
+  height: 8rem
 }
 
 .h-5 {
@@ -826,20 +826,20 @@ video {
   height: 2.5rem
 }
 
-.w-3\/5 {
-  width: 60%
-}
-
 .w-screen {
   width: 100vw
+}
+
+.w-11 {
+  width: 2.75rem
 }
 
 .w-full {
   width: 100%
 }
 
-.w-11 {
-  width: 2.75rem
+.w-3\/5 {
+  width: 60%
 }
 
 .w-52 {
@@ -958,16 +958,16 @@ video {
   overflow: scroll
 }
 
-.rounded-full {
-  border-radius: 9999px
-}
-
 .rounded-lg {
   border-radius: 0.5rem
 }
 
 .rounded-2xl {
   border-radius: 1rem
+}
+
+.rounded-full {
+  border-radius: 9999px
 }
 
 .rounded-xl {
@@ -1025,9 +1025,18 @@ video {
   background-color: rgb(0 0 0 / 0.5)
 }
 
+.bg-white\/90 {
+  background-color: rgb(255 255 255 / 0.9)
+}
+
 .bg-slate-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity))
+}
+
+.bg-sky-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity))
 }
 
 .bg-red-500 {
@@ -1146,8 +1155,8 @@ video {
   padding-top: 0.75rem
 }
 
-.pl-\[366px\] {
-  padding-left: 366px
+.pl-\[315px\] {
+  padding-left: 315px
 }
 
 .pb-32 {
@@ -1162,20 +1171,8 @@ video {
   padding-top: 3rem
 }
 
-.pl-\[316px\] {
-  padding-left: 316px
-}
-
-.pl-\[315px\] {
-  padding-left: 315px
-}
-
 .text-center {
   text-align: center
-}
-
-.text-\[40vw\] {
-  font-size: 40vw
 }
 
 .text-xs {
@@ -1188,6 +1185,10 @@ video {
   line-height: 1.25rem
 }
 
+.text-\[40vw\] {
+  font-size: 40vw
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem
@@ -1196,11 +1197,6 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem
 }
 
 .text-2xl {

@@ -1509,92 +1509,6 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@react-spring/animated@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/animated/-/animated-9.5.2.tgz"
-  integrity sha512-oRlX+MmYLbK8IuUZR7SQUnRjXxJ4PMIZeBkBd1SUWVgVJAHMTfJzPltzm+I6p59qX+qLlklYHfnWaonQKDqLuQ==
-  dependencies:
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/core@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/core/-/core-9.5.2.tgz"
-  integrity sha512-UMRtFH6EfebMp/NMDGCUY5+hZFXsg9iT9hzt/iPzJSz2WMXKBjLoFZHJXcmiVOrIhzHmg1O0pFECn1Wp6pZ5Gw==
-  dependencies:
-    "@react-spring/animated" "~9.5.2"
-    "@react-spring/rafz" "~9.5.2"
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/konva@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/konva/-/konva-9.5.2.tgz"
-  integrity sha512-FN8LpbGQtm2pllU9mOyYjYwvLtA9EiIPWk2NVuhhX+5lJZrdCWuEY7EyFpK8PtgZXBdVj8bj7eIu1LlTnARW/A==
-  dependencies:
-    "@react-spring/animated" "~9.5.2"
-    "@react-spring/core" "~9.5.2"
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/native@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/native/-/native-9.5.2.tgz"
-  integrity sha512-G9BCAKVADLweLR43uyMnTrOnYDb4BboYvqKY+0X1fLs45PNrfbBXnSLot4g+5x3HjblypJgNq7CjHlqZKI980g==
-  dependencies:
-    "@react-spring/animated" "~9.5.2"
-    "@react-spring/core" "~9.5.2"
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/rafz@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/rafz/-/rafz-9.5.2.tgz"
-  integrity sha512-xHSRXKKBI/wDUkZGrspkOm4VlgN6lZi8Tw9Jzibp9QKf3neoof+U2mDNgklvnLaasymtUwAq9o4ZfFvQIVNgPQ==
-
-"@react-spring/shared@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/shared/-/shared-9.5.2.tgz"
-  integrity sha512-/OSf2sjwY4BUnjZL6xMC+H3WxOOhMUCk+yZwgdj40XuyUpk6E6tYyiPeD9Yq5GLsZHodkvE1syVMRVReL4ndAg==
-  dependencies:
-    "@react-spring/rafz" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/three@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/three/-/three-9.5.2.tgz"
-  integrity sha512-3H7Lv8BJZ3dajh0yJA3m9rEbqz5ZNrTCAkhVOeLqgvBlcWU5qVs4luYA1Z7H4vZnLqVtzv+kHAyg3XIpuTOXhQ==
-  dependencies:
-    "@react-spring/animated" "~9.5.2"
-    "@react-spring/core" "~9.5.2"
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/types@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/types/-/types-9.5.2.tgz"
-  integrity sha512-n/wBRSHPqTmEd4BFWY6TeR1o/UY+3ujoqMxLjqy90CcY/ozJzDRuREL3c+pxMeTF2+B7dX33dTPCtFMX51nbxg==
-
-"@react-spring/web@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/web/-/web-9.5.2.tgz"
-  integrity sha512-cusTjbOGTgtbsnpBDjb6Ia+B0lQLE0Fk5rGDog6Sww7hWnLIQ521PMiOBnAWtkntB9eXDUfj7L91nwJviEC0lw==
-  dependencies:
-    "@react-spring/animated" "~9.5.2"
-    "@react-spring/core" "~9.5.2"
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
-"@react-spring/zdog@~9.5.2":
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/@react-spring/zdog/-/zdog-9.5.2.tgz"
-  integrity sha512-zUX8RzX8gM51g8NJ5Qaf15KNKQgN3qN/8m5FvqmiqZ5ZGqjoHkbCoMD3o2MICTUN1l+d4eUu9TYrmiO2bgJo/g==
-  dependencies:
-    "@react-spring/animated" "~9.5.2"
-    "@react-spring/core" "~9.5.2"
-    "@react-spring/shared" "~9.5.2"
-    "@react-spring/types" "~9.5.2"
-
 "@reduxjs/toolkit@^1.8.5":
   version "1.8.5"
   resolved "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-1.8.5.tgz"
@@ -3407,11 +3321,6 @@ electron@^17.2.0:
     "@electron/get" "^1.13.0"
     "@types/node" "^14.6.2"
     extract-zip "^1.0.3"
-
-emoji-picker-react@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/emoji-picker-react/-/emoji-picker-react-3.6.2.tgz#e414971bf9421b0825484f3b82623fef995c3c4b"
-  integrity sha512-PK3dfljGxeyN8fDz2FAsDYKPYGgo6/tkRyzJjLVaw0fksJg7jA3OJPIlHq2IIzTmlC/NKhcI/oaf0uEo5azYGA==
 
 emoji-picker-react@^3.6.2:
   version "3.6.2"
@@ -6446,25 +6355,6 @@ react-redux@^8.0.2:
     hoist-non-react-statics "^3.3.2"
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
-
-react-spring@^9.4.5:
-  version "9.5.2"
-  resolved "https://registry.npmjs.org/react-spring/-/react-spring-9.5.2.tgz"
-  integrity sha512-OGWNgKi2TSjpqsK67NCUspaCgEvWcG7HcpO9KAaDLFzFGNxWdGdN3YTXhhWUqCsLAx9I6LxPzmRuUPsMNqTgrw==
-  dependencies:
-    "@react-spring/core" "~9.5.2"
-    "@react-spring/konva" "~9.5.2"
-    "@react-spring/native" "~9.5.2"
-    "@react-spring/three" "~9.5.2"
-    "@react-spring/web" "~9.5.2"
-    "@react-spring/zdog" "~9.5.2"
-
-react-text-transition@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/react-text-transition/-/react-text-transition-3.0.2.tgz"
-  integrity sha512-FH7mgn/iMbN/ZyTuw/tA4h2XFPVZ2m+4t86C8tEeK/rEpUBjWw1MmdY+WPvofLiA4ZwPRBFLNsv6Q5K127Xb7w==
-  dependencies:
-    react-spring "^9.4.5"
 
 react@^18.2.0:
   version "18.2.0"
