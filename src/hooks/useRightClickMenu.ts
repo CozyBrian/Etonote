@@ -24,10 +24,10 @@ export default function useRightClickMenu(
     event.preventDefault();
     if (isOver) {
       event.pageX + 192 > window.innerWidth
-        ? setX(window.innerWidth - 198)
+        ? setX(event.pageX - 208)
         : setX(event.pageX);
       event.pageY + 108 > window.innerHeight
-        ? setY(window.innerHeight - 110)
+        ? setY(event.pageY - 112)
         : setY(event.pageY);
       setShowMenu(true);
     } else {
