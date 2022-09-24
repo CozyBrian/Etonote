@@ -1,6 +1,6 @@
 import React from "react";
 import { action } from "../../redux";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 type PropsA = {
   id?: string;
@@ -16,6 +16,7 @@ type PropsB = {
 };
 
 export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
+  const homeId = useAppSelector((state) => state.app.homeId);
   const style = () => {
     return { top: y, left: x };
   };
@@ -37,23 +38,25 @@ export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
         </div>
         Edit
       </div>
-      <div
-        onClick={() => handleDelete(true)}
-        className="flex flex-row h-8 w-full hover:bg-slate-200/70 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-lg"
-      >
-        <div className="w-8">
-          <div className="w-[1.2rem] h-[1.2rem] mr-2">
-            <svg
-              id="Icons"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M22,4H16V3a3,3,0,0,0-3-3H11A3,3,0,0,0,8,3V4H2A1,1,0,0,0,2,6H4V20a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V6h2a1,1,0,0,0,0-2ZM10,3a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V4H10ZM9,18a1,1,0,0,1-2,0V10a1,1,0,0,1,2,0Zm4,0a1,1,0,0,1-2,0V10a1,1,0,0,1,2,0Zm4,0a1,1,0,0,1-2,0V10a1,1,0,0,1,2,0Z" />
-            </svg>
+      {id !== homeId && (
+        <div
+          onClick={() => handleDelete(true)}
+          className="flex flex-row h-8 w-full hover:bg-slate-200/70 active:bg-slate-300 text-black pl-3 p-2 items-center rounded-lg"
+        >
+          <div className="w-8">
+            <div className="w-[1.2rem] h-[1.2rem] mr-2">
+              <svg
+                id="Icons"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M22,4H16V3a3,3,0,0,0-3-3H11A3,3,0,0,0,8,3V4H2A1,1,0,0,0,2,6H4V20a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V6h2a1,1,0,0,0,0-2ZM10,3a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V4H10ZM9,18a1,1,0,0,1-2,0V10a1,1,0,0,1,2,0Zm4,0a1,1,0,0,1-2,0V10a1,1,0,0,1,2,0Zm4,0a1,1,0,0,1-2,0V10a1,1,0,0,1,2,0Z" />
+              </svg>
+            </div>
           </div>
+          Delete
         </div>
-        Delete
-      </div>
+      )}
     </div>
   );
 };
