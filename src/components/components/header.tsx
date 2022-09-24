@@ -1,14 +1,20 @@
 import React from "react";
 import { today } from "../../utils/date";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { AnimatePresence, motion } from "framer-motion";
 import TextTransition, { presets } from "react-text-transition";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { action } from "../../redux";
 
 const Header = () => {
   const app = useAppSelector((state) => state.app);
   const todoLists = useAppSelector((state) => state.lists.value);
+  const dispatch = useAppDispatch();
+
+  const openSettings = () => {
+    dispatch(action.app.setShowSettingsPanel());
+  };
 
   const selectedList = todoLists.find((item) => item.id === app.selectedTab);
 
@@ -16,7 +22,10 @@ const Header = () => {
   return (
     <div className="pb-8 select-none">
       <div className="fixed right-6 top-6">
-        <button className="p-1 hover:bg-slate-300 active:bg-slate-400 flex items-center justify-center duration-100 rounded-md">
+        <button
+          onClick={openSettings}
+          className="p-1 hover:bg-slate-300 active:bg-slate-400 flex items-center justify-center duration-100 rounded-md"
+        >
           <FontAwesomeIcon icon={faGear} size="xl" color="black" />
         </button>
       </div>

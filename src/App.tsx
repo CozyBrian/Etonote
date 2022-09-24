@@ -32,7 +32,7 @@ function App() {
           </TextTransition>
         </div>
       )}
-      <div className="h-screen w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
+      <div className="relative h-screen w-screen flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
         <AnimatePresence>{app.isSplash && <LoadingScreen />}</AnimatePresence>
         <SideBar />
         <TasksView />

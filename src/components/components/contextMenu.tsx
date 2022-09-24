@@ -23,7 +23,7 @@ export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
   return (
     <div
       style={style()}
-      className={`absolute flex flex-col w-48 p-1 bg-slate-100/80 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
+      className={`absolute flex flex-col w-52 p-1 bg-white/80 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
     >
       <div
         onClick={() => console.log(id)}
@@ -77,7 +77,7 @@ export const TodoContextMenu = ({ id, x, y }: PropsB) => {
   return (
     <div
       style={style()}
-      className={`absolute flex flex-col w-48 p-1 bg-slate-100/80 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
+      className={`absolute flex flex-col w-52 p-1 bg-white/70 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
     >
       <div
         onClick={() => console.log(id)}
