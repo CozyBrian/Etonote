@@ -23,6 +23,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
   const lists = useAppSelector((state) => state.lists).value;
   const dispatch = useAppDispatch();
 
+  const addListBox = document.getElementById("addListBox");
+
   const createList = (e?: React.ChangeEvent<any>) => {
     e?.preventDefault();
     if (icon === "" || title === "") return;
@@ -36,6 +38,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
   ) => {
     setIcon(emojiData.emoji);
     setShowEmojiPicker(false);
+    addListBox?.focus();
   };
 
   useEffect(() => {
@@ -91,6 +94,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
           <input
             className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
             placeholder="Name"
+            id="addListBox"
             accept="text"
             value={title}
             onChange={(value) => setTitle(value.target.value)}
