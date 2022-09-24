@@ -34,7 +34,7 @@ const SideBarItem = ({ item, number }: Props) => {
           handleDelete={(bool) => setDelAddModal(bool)}
           id={item.id}
           x={x}
-          y={y}
+          y={y - 32}
         />
       )}
       <AnimatePresence>
