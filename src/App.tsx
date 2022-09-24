@@ -34,7 +34,7 @@ function App() {
           </TextTransition>
         </div>
       )}
-      <div className="flex flex-col h-screen w-full">
+      <div className="relative flex flex-col h-screen w-screen">
         <TitleBar />
         <div className="h-full w-full flex flex-row bg-slate-200/90 overflow-hidden backdrop-blur-2xl z-30">
           <AnimatePresence>{app.isSplash && <LoadingScreen />}</AnimatePresence>

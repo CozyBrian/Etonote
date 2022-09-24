@@ -1,14 +1,19 @@
 import React from "react";
 import { today } from "../../utils/date";
-import { useAppSelector } from "../../hooks";
-import { AnimatePresence, motion } from "framer-motion";
-import TextTransition, { presets } from "react-text-transition";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { action } from "../../redux";
 
 const Header = () => {
   const app = useAppSelector((state) => state.app);
   const todoLists = useAppSelector((state) => state.lists.value);
+  const dispatch = useAppDispatch();
+
+  const openSettings = () => {
+    dispatch(action.app.setShowSettingsPanel());
+  };
 
   const selectedList = todoLists.find((item) => item.id === app.selectedTab);
 
@@ -16,29 +21,50 @@ const Header = () => {
   return (
     <div className="pb-8 select-none">
       <div className="fixed right-6 top-6">
-        <button className="p-1 hover:bg-slate-300 active:bg-slate-400 flex items-center justify-center duration-100 rounded-md">
+        <button
+          onClick={openSettings}
+          className="p-1 hover:bg-slate-300 active:bg-slate-400 flex items-center justify-center duration-100 rounded-md"
+        >
           <FontAwesomeIcon icon={faGear} size="xl" color="black" />
         </button>
       </div>
       <div className="flex flex-row">
         <div className="text-xl font-medium">
-          <TextTransition springConfig={presets.stiff}>
-            {app.selectedTab === app.homeId
-              ? "Good Morning, Brian"
-              : selectedList?.title}
-          </TextTransition>
+          {app.selectedTab === app.homeId
+            ? "Good Morning, Brian"
+            : selectedList?.title}
         </div>
 
         <div className="fixed">
-          <TextTransition springConfig={presets.stiff}>
-            {app.selectedTab === app.homeId ? (
-              <div className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"></div>
-            ) : (
-              <div className="h-6 w-6 flex items-center justify-center text-3xl mx-2 relative right-16 top-0">
-                {selectedList?.icon}
-              </div>
-            )}
-          </TextTransition>
+          <LayoutGroup>
+            <AnimatePresence>
+              {app.selectedTab === app.homeId && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"
+                ></motion.div>
+              )}
+            </AnimatePresence>
+            <AnimatePresence>
+              {app.selectedTab !== app.homeId &&
+                todoLists.map(
+                  (item) =>
+                    item.id === selectedList?.id && (
+                      <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
+                      >
+                        {item?.icon}
+                      </motion.div>
+                    )
+                )}
+            </AnimatePresence>
+          </LayoutGroup>
         </div>
       </div>
       <AnimatePresence>
