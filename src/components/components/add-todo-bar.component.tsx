@@ -7,6 +7,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const AddTodoInput = () => {
   const todoLists = useAppSelector((state) => state.lists.value);
+  const selectedList = useAppSelector((state) => state.app.selectedTab);
   const textBox = useRef<HTMLInputElement>(document.createElement("input"));
   const iconBox = useRef(null);
   const [todoTitle, setTodoTitle] = useState("");
@@ -32,10 +33,50 @@ const AddTodoInput = () => {
       );
     }
     setTodoTitle("");
-    if (document.activeElement instanceof HTMLElement) {
-      document.activeElement.blur();
+
+    setTimeout(() => {
+      domTextBox?.blur();
+    }, 0.1);
+  };
+
+  const onTextBoxFocus = () => {
+    if (todoTitle.length > 0) {
+      setShowIconFlag(true);
     }
   };
+  const onTextBoxBlur = () => {
+    if (showIconMenu === false) {
+      setShowIconFlag(false);
+    }
+
+    if (todoTitle.length > 0) {
+      setShowIconFlag(true);
+      domTextBox?.focus();
+    }
+
+    if (todoTitle === "") {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    setTodoIcon(todoLists.filter((todo) => todo.id === selectedList)[0].icon);
+    setTodoListId(todoLists.filter((todo) => todo.id === selectedList)[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedList]);
+
+  const domTextBox = document.getElementById("addTodoInput");
+
+  useEffect(() => {
+    domTextBox?.addEventListener("blur", onTextBoxBlur);
+    domTextBox?.addEventListener("focus", onTextBoxFocus);
+
+    return () => {
+      domTextBox?.removeEventListener("blur", onTextBoxBlur);
+      domTextBox?.removeEventListener("focus", onTextBoxFocus);
+    };
+    // eslint-disable-next-line
+  }, [todoTitle, showIconMenu]);
 
   useEffect(() => {
     if (todoTitle.length > 0) {
@@ -56,9 +97,14 @@ const AddTodoInput = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 5, opacity: 0 }}
               onClick={() => setShowIconMenu(!showIconMenu)}
-              className="w-18 h-8 flex flex-row justify-between duration-75 items-center pl-2 px-2 bg-slate-300 active:bg-slate-200 hover:bg-slate-300/50 border border-slate-500 rounded-lg absolute right-2 top-3 z-20"
+              className="w-18 h-8 flex flex-row justify-between duration-75 items-center pl-2 px-2 bg-gray-300/50 active:bg-slate-200 hover:bg-slate-300 rounded-lg absolute right-3 top-3 z-20"
             >
-              <div className="text-xs pr-1">{todoIcon}</div>
+              <div className="flex justify-center items-center text-xs pr-1">
+                {todoIcon}
+              </div>
+              <div className="text-sm pr-2">
+                {todoLists.find((item) => item.id === todoListId)?.title}
+              </div>
               <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
             </motion.div>
           </div>
@@ -89,10 +135,12 @@ const AddTodoInput = () => {
         )}
       </AnimatePresence>
       <input
-        className="relative z-10 border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 p-4 rounded-2xl duration-150"
+        className="relative z-10 border-none w-full outline-none text-gray-600 focus:shadow-2xl bg-slate-300 focus:bg-white focus:placeholder:text-gray-300 p-4 rounded-2xl duration-300"
         placeholder="Write a new task"
         ref={textBox}
+        id="addTodoInput"
         accept="text"
+        autoComplete="off"
         value={todoTitle}
         onChange={(value) => setTodoTitle(value.target.value)}
       ></input>

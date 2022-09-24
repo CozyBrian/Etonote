@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { action } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import TaskItem from "../components/tasks-item.component";
+import TaskItem from "./tasks-item.component";
 import { taskItem } from "../../@types";
 import { AnimatePresence, motion } from "framer-motion";
 
