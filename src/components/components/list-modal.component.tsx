@@ -72,7 +72,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
           </div>
           <div className="absolute top-16 left-0">
             {showEmojiPicker && (
-              <div className="h-24 w-18 bg-slate-100 rounded-2xl">
+              <div className="w-18 bg-slate-100 rounded-2xl">
                 <EmojiPicker
                   onEmojiClick={setEmoji}
                   disableSkinTonePicker={true}
@@ -82,6 +82,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
                     borderRadius: "1rem",
                     paddingTop: "1rem",
                     width: "18rem",
+                    height: "15rem",
                   }}
                 />
               </div>
