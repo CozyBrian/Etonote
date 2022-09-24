@@ -56,8 +56,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
       transition={{ duration: 0.1 }}
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
-      <div className="w-[32rem]  flex flex-col bg-slate-200/90 rounded-2xl backdrop-blur-sm p-8">
-        <div className="flex flex-row text-4xl justify-between items-center text-white pb-8">
+      <div className="w-[32rem]  flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-8">
+        <div className="flex flex-row text-3xl justify-between items-center pb-8">
           Create a list
           <div
             onClick={onClick}
@@ -104,7 +104,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
         <div className="flex flex-row justify-end pt-4">
           <div
             onClick={() => createList()}
-            className="cursor-pointer px-4 bg-slate-300 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 active:bg-slate-400 font-semibold"
+            className="cursor-pointer px-4 bg-sky-500 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 active:bg-slate-400 font-semibold"
           >
             Create
           </div>
@@ -140,8 +140,8 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
       transition={{ duration: 0.1 }}
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
-      <div className="w-[20rem] flex flex-col bg-slate-200/90 rounded-2xl backdrop-blur-sm p-5">
-        <div className="flex flex-row text-2xl justify-between items-center text-white pb-4">
+      <div className="w-[20rem] flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-5">
+        <div className="flex flex-row text-2xl justify-between items-center pb-4">
           Are you Sure?
         </div>
         <div>This will delete the List and all items contained in it.</div>
