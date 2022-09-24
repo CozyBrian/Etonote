@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import icon from "../../assets/icon.png";
+
 import subtract from "../../assets/images/subtract.png";
 import maximize from "../../assets/images/square.png";
 import unmaximize from "../../assets/images/unmaximize.png";
@@ -11,8 +13,10 @@ const TitleBar = () => {
   return (
     <div className="h-8 w-full bg-slate-800">
       <div className="h-full flex flex-row justify-between items-center select-none draggable relative">
-        <div></div>
-        <div className="absolute left-1/2 -translate-y-1/2 top-4 text-slate-300">
+        <div className="p-1 pl-2">
+          <img src={icon} alt="icon" className="h-4 w-4" />
+        </div>
+        <div className="absolute left-1/2 -translate-y-1/2 top-4 text-sm font-extralight text-slate-300">
           {document.title}
         </div>
         <div className="controls h-full flex flex-row select-none">
