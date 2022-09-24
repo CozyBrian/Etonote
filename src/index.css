@@ -4,6 +4,30 @@ body {
   background-color: aliceblue
 }
 
+.emoji-categories {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+}
+
+.emoji-scroll-wrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.emoji-picker-react input.emoji-search {
+  border: 0px solid rgb(226 232 240 ) !important;
+  border-radius: 0.5rem !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  background-color: rgb(226 232 240);
+}
+.emoji-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.emoji-picker-react .emoji-group:before {
+  background: rgb(241 245 249) !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

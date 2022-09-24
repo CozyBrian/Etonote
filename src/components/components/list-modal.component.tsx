@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import EmojiPicker, { IEmojiData } from "emoji-picker-react";
 
 import { action } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -17,14 +18,24 @@ interface PropsB {
 
 export const AddListModal = ({ onClick }: PropsA) => {
   const [icon, setIcon] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [title, setTitle] = useState("");
   const lists = useAppSelector((state) => state.lists).value;
   const dispatch = useAppDispatch();
 
-  const createList = () => {
+  const createList = (e?: React.ChangeEvent<any>) => {
+    e?.preventDefault();
     if (icon === "" || title === "") return;
     onClick!();
     dispatch(action.lists.addList({ icon: icon, title: title }));
+  };
+
+  const setEmoji = (
+    event: React.MouseEvent<Element, MouseEvent>,
+    emojiData: IEmojiData
+  ) => {
+    setIcon(emojiData.emoji);
+    setShowEmojiPicker(false);
   };
 
   useEffect(() => {
@@ -52,14 +63,30 @@ export const AddListModal = ({ onClick }: PropsA) => {
             <FontAwesomeIcon icon={faTimes} size="sm" />
           </div>
         </div>
-        <div className="flex flex-row h-14">
-          <input
-            className="w-16 border-none outline-none mr-4 text-white bg-slate-300 focus:bg-gray-400 text-center focus:placeholder:text-gray-300 focus:text-2xl p-3 rounded-2xl duration-150"
-            placeholder="icon"
-            accept="text"
-            value={icon}
-            onChange={(value) => setIcon(value.target.value)}
-          ></input>
+        <form className="relative flex flex-row h-14" onSubmit={createList}>
+          <div
+            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            className="flex items-center text-2xl justify-center w-16 mr-4 bg-slate-300 hover:bg-slate-400 active:bg-slate-500 active:scale-105 text-center p-3 rounded-2xl duration-150"
+          >
+            {icon}
+          </div>
+          <div className="absolute top-16 left-0">
+            {showEmojiPicker && (
+              <div className="h-24 w-18 bg-slate-100 rounded-2xl">
+                <EmojiPicker
+                  onEmojiClick={setEmoji}
+                  disableSkinTonePicker={true}
+                  pickerStyle={{
+                    backgroundColor: "rgb(241, 245, 249)",
+                    boxShadow: "none",
+                    borderRadius: "1rem",
+                    paddingTop: "1rem",
+                    width: "18rem",
+                  }}
+                />
+              </div>
+            )}
+          </div>
           <input
             className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
             placeholder="Name"
@@ -67,7 +94,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
             value={title}
             onChange={(value) => setTitle(value.target.value)}
           ></input>
-        </div>
+          <input type="submit" hidden />
+        </form>
         <div className="flex flex-row justify-end pt-4">
           <div
             onClick={() => createList()}
