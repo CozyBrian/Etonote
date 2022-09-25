@@ -18,7 +18,7 @@ const Settings = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ ease: "easeInOut" }}
-      className="flex items-center justify-center p-2 pl-[366px] bg-slate-300/90 fixed top-0 left-0 w-screen h-screen z-40"
+      className="flex items-center justify-center p-2 pl-[315px] bg-slate-300/90 fixed top-0 left-0 w-screen h-full z-40"
     >
       <motion.div
         initial={{ x: 2000 }}
