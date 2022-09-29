@@ -65,7 +65,9 @@ const SideBarItem = ({ item, number }: Props) => {
             <div className="h-7 w-7 bg-slate-60 rounded-md mr-3 mx-2 items-center text-lg justify-center">
               <ListIcon iconData={item.icon} variant="outline-thick" />
             </div>
-            <div className="flex items-center font-['SFPro']">{item.title}</div>
+            <div className="flex items-center w-[180px] truncate font-['SFPro']">
+              {item.title}
+            </div>
           </div>
           <div className="text-sm flex w-4 h-4 justify-center items-center text-gray-600 rounded-md bg-zinc-100 p-0.5 mx-2 duration-150">
             {number}
