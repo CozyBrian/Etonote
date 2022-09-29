@@ -31,9 +31,16 @@ const Header = () => {
       </div>
       <div className="flex flex-row">
         <div className="text-xl font-medium">
-          {app.selectedTab === app.homeId
-            ? "Good Morning, Brian"
-            : selectedList?.title}
+          {app.selectedTab === app.homeId ? (
+            <div>
+              Good Morning,{" "}
+              <span className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-sky-400 hover:to-blue-600 duration-300">
+                Brian
+              </span>
+            </div>
+          ) : (
+            selectedList?.title
+          )}
         </div>
 
         <div className="fixed">
