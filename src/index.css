@@ -63,7 +63,7 @@ body {
   display: none;
 }
 .emoji-picker-react .emoji-group:before {
-  background: rgb(241 245 249) !important;
+  background: rgb(255, 255, 255, 0.6) !important;
 }
 
 @tailwind base;

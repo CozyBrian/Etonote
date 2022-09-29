@@ -31,7 +31,7 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
     "#CFDEE7",
   ];
   return (
-    <motion.div className="border bg-white shadow-sm rounded-2xl duration-200">
+    <motion.div className="border bg-white/90 shadow-sm backdrop-blur-md rounded-2xl duration-200">
       <div className="flex flex-row w-full p-2 gap-1">
         <div
           onClick={() => setSelectedTab("COLOR")}
@@ -61,7 +61,7 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
               onEmojiClick={onEmojiClick}
               disableSkinTonePicker={true}
               pickerStyle={{
-                backgroundColor: "rgb(241, 245, 249)",
+                backgroundColor: "rgba(255, 255, 255, 0.6)",
                 boxShadow: "none",
                 borderRadius: "1rem",
                 paddingTop: "1rem",
@@ -75,7 +75,7 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className=" justify-center p-2"
+            className=" justify-center p-2 w-[286px]"
           >
             <div className="grid grid-cols-7">
               {colors.map((item) => (
@@ -95,7 +95,7 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
             </div>
             <div className="mt-8 p-2 text-sm flex flex-row justify-between items-center">
               <div>Custom color:</div>
-              <div className="w-[70px] h-7 px-1 py-0.5 rounded-md bg-gray-200">
+              <div className="w-[70px] h-7 px-1 py-0.5 rounded-md bg-gray-300">
                 {selectedColor}
               </div>
             </div>
