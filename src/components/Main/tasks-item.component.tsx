@@ -46,7 +46,7 @@ const TaskItem = ({ item, onClick }: Props) => {
               variants={variants}
             ></motion.div>
           </div>
-          {item.title}
+          <div className="font-['Montserrat']">{item.title}</div>
         </div>
         <div className="text-lg rounded-md mx-2">
           <ListIcon iconData={item.icon} variant="outline-thick" />

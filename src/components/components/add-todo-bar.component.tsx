@@ -103,7 +103,7 @@ const AddTodoInput = () => {
               <div className="flex justify-center items-center text-xs pr-1">
                 <ListIcon iconData={todoIcon} variant="outline-thick" />
               </div>
-              <div className="text-sm pr-2">
+              <div className="text-sm pr-2 font-['Montserrat']">
                 {todoLists.find((item) => item.id === todoListId)?.title}
               </div>
               <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
@@ -136,7 +136,7 @@ const AddTodoInput = () => {
         )}
       </AnimatePresence>
       <input
-        className="relative z-10 border-none w-full outline-none text-gray-600 focus:shadow-2xl bg-slate-300 focus:bg-white focus:placeholder:text-gray-300 p-4 rounded-2xl duration-300"
+        className="relative z-10 border-none w-full outline-none text-gray-600 focus:shadow-2xl bg-slate-300 focus:bg-white focus:placeholder:text-gray-300 p-4 rounded-2xl font-['Montserrat'] duration-300"
         placeholder="Write a new task"
         ref={textBox}
         id="addTodoInput"

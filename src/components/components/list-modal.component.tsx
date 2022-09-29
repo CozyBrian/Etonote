@@ -69,7 +69,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
       <div className="w-[32rem]  flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-8">
-        <div className="flex flex-row text-3xl justify-between items-center pb-8">
+        <div className="flex flex-row font-['SFPro'] text-3xl justify-between items-center pb-8">
           Create a list
           <div
             onClick={onClick}
@@ -78,7 +78,10 @@ export const AddListModal = ({ onClick }: PropsA) => {
             <FontAwesomeIcon icon={faTimes} size="sm" />
           </div>
         </div>
-        <form className="relative flex flex-row h-14" onSubmit={createList}>
+        <form
+          className="relative flex flex-row h-14 font-['Montserrat']"
+          onSubmit={createList}
+        >
           <div
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             className="flex items-center text-2xl justify-center w-16 mr-4 bg-slate-300 hover:bg-slate-400 active:bg-slate-500 active:scale-105 text-center p-3 rounded-2xl duration-150"
@@ -143,10 +146,12 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
       <div className="w-[20rem] flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-5">
-        <div className="flex flex-row text-2xl justify-between items-center pb-4">
+        <div className="flex font-['SFPro'] flex-row text-2xl justify-between items-center pb-2">
           Are you Sure?
         </div>
-        <div>This will delete the List and all items contained in it.</div>
+        <div className="font-['Montserrat']">
+          This will delete the List and all items contained in it.
+        </div>
 
         <div className="flex flex-row justify-end pt-3 gap-3">
           <div

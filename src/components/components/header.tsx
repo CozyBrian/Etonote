@@ -20,7 +20,7 @@ const Header = () => {
 
   const todayDate = today;
   return (
-    <div className="pb-8 select-none">
+    <div className="pb-8 select-none font-['SFPro']">
       <div className="fixed right-6 top-6">
         <button
           onClick={openSettings}
