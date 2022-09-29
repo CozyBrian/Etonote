@@ -1,7 +1,7 @@
 export declare type SidebarItem = {
   id: string;
   title: string;
-  icon: string;
+  icon: ListIconData;
 };
 
 export declare type taskItem = {
@@ -9,5 +9,10 @@ export declare type taskItem = {
   listID: string;
   title: string;
   isDone: boolean;
-  icon: string;
+  icon: ListIconData;
+};
+
+export declare type ListIconData = {
+  type: "EMOJI" | "COLOR";
+  data: string;
 };

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
 import useRightClickMenu from "../../hooks/useRightClickMenu";
 import { TodoContextMenu } from "../components/contextMenu";
+import ListIcon from "../components/listIcon";
 
 interface Props {
   item: taskItem;
@@ -34,7 +35,7 @@ const TaskItem = ({ item, onClick }: Props) => {
         ref={itemRef}
         className="w-full flex flex-row bg-white h-14 rounded-2xl p-2 items-center justify-between my-2 select-none"
       >
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center w-full">
           <div
             onClick={() => onClick()}
             className="h-5 w-5 flex justify-center items-center bg-zinc-200 rounded-md mx-2"
@@ -45,9 +46,15 @@ const TaskItem = ({ item, onClick }: Props) => {
               variants={variants}
             ></motion.div>
           </div>
-          {item.title}
+          <div className="w-[42rem]">
+            <div className="font-['Montserrat'] w-[42rem] truncate">
+              {item.title}
+            </div>
+          </div>
         </div>
-        <div className="text-lg rounded-md mx-2">{item.icon}</div>
+        <div className="text-lg rounded-md mx-2">
+          <ListIcon iconData={item.icon} variant="outline-thick" />
+        </div>
       </div>
     </motion.div>
   );

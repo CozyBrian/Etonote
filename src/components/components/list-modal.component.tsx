@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import EmojiPicker, { IEmojiData } from "emoji-picker-react";
 
 import { action } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import EmojiSetPicker from "./emoji-picker";
+import { IEmojiData } from "emoji-picker-react";
+import { ListIconData } from "../../@types";
+import ListIcon from "./listIcon";
 
 interface PropsA {
   onClick?: () => void;
@@ -17,7 +20,10 @@ interface PropsB {
 }
 
 export const AddListModal = ({ onClick }: PropsA) => {
-  const [icon, setIcon] = useState("");
+  const [iconData, setIconData] = useState<ListIconData>({
+    type: "EMOJI",
+    data: "",
+  });
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [title, setTitle] = useState("");
   const lists = useAppSelector((state) => state.lists).value;
@@ -27,16 +33,22 @@ export const AddListModal = ({ onClick }: PropsA) => {
 
   const createList = (e?: React.ChangeEvent<any>) => {
     e?.preventDefault();
-    if (icon === "" || title === "") return;
+    if (iconData.data === "" || title === "") return;
     onClick!();
-    dispatch(action.lists.addList({ icon: icon, title: title }));
+    dispatch(action.lists.addList({ icon: iconData, title: title }));
   };
 
   const setEmoji = (
     event: React.MouseEvent<Element, MouseEvent>,
     emojiData: IEmojiData
   ) => {
-    setIcon(emojiData.emoji);
+    setIconData({ type: "EMOJI", data: emojiData.emoji });
+    setShowEmojiPicker(false);
+    addListBox?.focus();
+  };
+
+  const setColorSet = (Icon: ListIconData) => {
+    setIconData({ type: "COLOR", data: Icon.data });
     setShowEmojiPicker(false);
     addListBox?.focus();
   };
@@ -57,7 +69,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
       <div className="w-[32rem]  flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-8">
-        <div className="flex flex-row text-3xl justify-between items-center pb-8">
+        <div className="flex flex-row font-['SFPro'] text-3xl justify-between items-center pb-8">
           Create a list
           <div
             onClick={onClick}
@@ -66,29 +78,22 @@ export const AddListModal = ({ onClick }: PropsA) => {
             <FontAwesomeIcon icon={faTimes} size="sm" />
           </div>
         </div>
-        <form className="relative flex flex-row h-14" onSubmit={createList}>
+        <form
+          className="relative flex flex-row h-14 font-['Montserrat']"
+          onSubmit={createList}
+        >
           <div
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             className="flex items-center text-2xl justify-center w-16 mr-4 bg-slate-300 hover:bg-slate-400 active:bg-slate-500 active:scale-105 text-center p-3 rounded-2xl duration-150"
           >
-            {icon}
+            <ListIcon iconData={iconData} variant="fill" />
           </div>
           <div className="absolute top-16 left-0">
             {showEmojiPicker && (
-              <div className="w-18 bg-slate-100 rounded-2xl">
-                <EmojiPicker
-                  onEmojiClick={setEmoji}
-                  disableSkinTonePicker={true}
-                  pickerStyle={{
-                    backgroundColor: "rgb(241, 245, 249)",
-                    boxShadow: "none",
-                    borderRadius: "1rem",
-                    paddingTop: "1rem",
-                    width: "18rem",
-                    height: "15rem",
-                  }}
-                />
-              </div>
+              <EmojiSetPicker
+                onEmojiClick={setEmoji}
+                onColorSetClick={setColorSet}
+              />
             )}
           </div>
           <input
@@ -141,10 +146,12 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
       <div className="w-[20rem] flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-5">
-        <div className="flex flex-row text-2xl justify-between items-center pb-4">
+        <div className="flex font-['SFPro'] flex-row text-2xl justify-between items-center pb-2">
           Are you Sure?
         </div>
-        <div>This will delete the List and all items contained in it.</div>
+        <div className="font-['Montserrat']">
+          This will delete the List and all items contained in it.
+        </div>
 
         <div className="flex flex-row justify-end pt-3 gap-3">
           <div

@@ -5,6 +5,7 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { action } from "../../redux";
+import ListIcon from "./listIcon";
 
 const Header = () => {
   const app = useAppSelector((state) => state.app);
@@ -19,7 +20,7 @@ const Header = () => {
 
   const todayDate = today;
   return (
-    <div className="pb-8 select-none">
+    <div className="pb-8 select-none font-['SFPro']">
       <div className="fixed right-6 top-6">
         <button
           onClick={openSettings}
@@ -30,39 +31,35 @@ const Header = () => {
       </div>
       <div className="flex flex-row">
         <div className="text-xl font-medium">
-          {app.selectedTab === app.homeId
-            ? "Good Morning, Brian"
-            : selectedList?.title}
+          {app.selectedTab === app.homeId ? (
+            <div>
+              Good Morning,{" "}
+              <span className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-sky-400 hover:to-blue-600 duration-300">
+                Brian
+              </span>
+            </div>
+          ) : (
+            selectedList?.title
+          )}
         </div>
 
         <div className="fixed">
           <LayoutGroup>
             <AnimatePresence>
-              {app.selectedTab === app.homeId && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"
-                ></motion.div>
+              {todoLists.map(
+                (item) =>
+                  item.id === selectedList?.id && (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
+                    >
+                      <ListIcon iconData={item.icon} variant="outline" />
+                    </motion.div>
+                  )
               )}
-            </AnimatePresence>
-            <AnimatePresence>
-              {app.selectedTab !== app.homeId &&
-                todoLists.map(
-                  (item) =>
-                    item.id === selectedList?.id && (
-                      <motion.div
-                        key={item.id}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
-                      >
-                        {item?.icon}
-                      </motion.div>
-                    )
-                )}
             </AnimatePresence>
           </LayoutGroup>
         </div>
