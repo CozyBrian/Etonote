@@ -9,11 +9,11 @@ const ListIcon = ({ iconData }: Props) => {
   return (
     <div>
       {iconData.type === "EMOJI" ? (
-        <div className="h-6 w-6 bg-slate-60 rounded-md mr-3 mx-2 items-center text-md justify-center">
-          {iconData.data}
-        </div>
-      ) : (
         <div>{iconData.data}</div>
+      ) : (
+        <div style={{ color: iconData.data }} className={`eton-icon`}>
+          
+        </div>
       )}
     </div>
   );
