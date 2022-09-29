@@ -5,6 +5,7 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { action } from "../../redux";
+import ListIcon from "./listIcon";
 
 const Header = () => {
   const app = useAppSelector((state) => state.app);
@@ -59,7 +60,7 @@ const Header = () => {
                         exit={{ opacity: 0 }}
                         className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
                       >
-                        {item?.icon}
+                        <ListIcon iconData={item.icon} />
                       </motion.div>
                     )
                 )}

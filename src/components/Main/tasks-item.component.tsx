@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { taskItem } from "../../@types";
 import useRightClickMenu from "../../hooks/useRightClickMenu";
 import { TodoContextMenu } from "../components/contextMenu";
+import ListIcon from "../components/listIcon";
 
 interface Props {
   item: taskItem;
@@ -47,7 +48,9 @@ const TaskItem = ({ item, onClick }: Props) => {
           </div>
           {item.title}
         </div>
-        <div className="text-lg rounded-md mx-2">{item.icon}</div>
+        <div className="text-lg rounded-md mx-2">
+          <ListIcon iconData={item.icon} />
+        </div>
       </div>
     </motion.div>
   );

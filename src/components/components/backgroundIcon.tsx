@@ -1,6 +1,7 @@
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import React from "react";
 import { useAppSelector } from "../../hooks";
+import ListIcon from "./listIcon";
 
 const BackIcon = () => {
   const app = useAppSelector((state) => state.app);
@@ -32,7 +33,7 @@ const BackIcon = () => {
                   exit={{ opacity: 0 }}
                   className="h-32 w-3/5 flex items-center justify-center text-[40vw] fixed left-0 -top-16 -z-10"
                 >
-                  {item?.icon}
+                  <ListIcon iconData={item.icon} />
                 </motion.div>
               )
           )}

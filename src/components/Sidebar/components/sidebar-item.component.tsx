@@ -7,6 +7,7 @@ import { SidebarItem } from "../../../@types";
 import useRightClickMenu from "../../../hooks/useRightClickMenu";
 import { ListContextMenu } from "../../components/contextMenu";
 import { DelListModal } from "../../components/list-modal.component";
+import ListIcon from "../../components/listIcon";
 
 interface Props {
   item: SidebarItem;
@@ -47,7 +48,9 @@ const SideBarItem = ({ item, number }: Props) => {
       </AnimatePresence>
       <motion.div layout className="relative">
         {isSelected && (
-          <div className="absolute top-3 text-2xl">{item.icon}</div>
+          <div className="absolute top-3 text-2xl">
+            <ListIcon iconData={item.icon} />
+          </div>
         )}
         <div
           ref={itemRef}
@@ -59,9 +62,7 @@ const SideBarItem = ({ item, number }: Props) => {
           } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:active:bg-slate-300 active:bg-slate-200 cartnumber h-12 rounded-xl p-2 my-1 items-center duration-100 select-none justify-between`}
         >
           <div className="flex flex-row">
-            <div className="h-6 w-6 bg-slate-60 rounded-md mr-3 mx-2 items-center text-md justify-center">
-              {item.icon}
-            </div>
+            <ListIcon iconData={item.icon} />
             {item.title}
           </div>
           <div className="text-sm text-gray-600 rounded-md bg-zinc-100 p-0.5 mx-2 duration-150">
