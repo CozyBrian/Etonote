@@ -47,11 +47,22 @@ const SideBarItem = ({ item, number }: Props) => {
         )}
       </AnimatePresence>
       <motion.div layout className="relative">
-        {isSelected && (
-          <div className="absolute top-3 text-3xl">
-            <ListIcon iconData={item.icon} variant="fill" />
-          </div>
-        )}
+        {isSelected &&
+          (item.icon.type !== "COLOR" ? (
+            <div className="absolute top-3 text-3xl">
+              <ListIcon iconData={item.icon} variant="fill" />
+            </div>
+          ) : (
+            <div
+              style={{
+                backgroundImage:
+                  item.icon.type === "COLOR"
+                    ? `linear-gradient(to right, ${item.icon.data},rgba(255,0,0,0))`
+                    : "",
+              }}
+              className="absolute top-1 left-0 h-12 w-12 opacity-40 rounded-xl"
+            ></div>
+          ))}
         <div
           ref={itemRef}
           onClick={() => setTab(item.id)}
