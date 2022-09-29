@@ -101,7 +101,7 @@ const AddTodoInput = () => {
               className="w-18 h-8 flex flex-row justify-between duration-75 items-center pl-2 px-2 bg-gray-300/50 active:bg-slate-200 hover:bg-slate-300 rounded-lg absolute right-3 top-3 z-20"
             >
               <div className="flex justify-center items-center text-xs pr-1">
-                <ListIcon iconData={todoIcon} />
+                <ListIcon iconData={todoIcon} variant="outline-thick" />
               </div>
               <div className="text-sm pr-2">
                 {todoLists.find((item) => item.id === todoListId)?.title}
@@ -129,7 +129,7 @@ const AddTodoInput = () => {
                 }}
                 className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 hover:bg-slate-100 active:bg-slate-50 rounded-lg items-center"
               >
-                <ListIcon iconData={item.icon} />
+                <ListIcon iconData={item.icon} variant="outline-thick" />
               </div>
             ))}
           </motion.div>

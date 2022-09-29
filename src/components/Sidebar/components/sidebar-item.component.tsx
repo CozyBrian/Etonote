@@ -48,8 +48,8 @@ const SideBarItem = ({ item, number }: Props) => {
       </AnimatePresence>
       <motion.div layout className="relative">
         {isSelected && (
-          <div className="absolute top-3 text-2xl">
-            <ListIcon iconData={item.icon} />
+          <div className="absolute top-3 text-3xl">
+            <ListIcon iconData={item.icon} variant="fill" />
           </div>
         )}
         <div
@@ -57,13 +57,13 @@ const SideBarItem = ({ item, number }: Props) => {
           onClick={() => setTab(item.id)}
           className={`w-full z-20 flex flex-row ${
             isSelected
-              ? "bg-slate-400/20 [&>div:nth-child(2)]:bg-slate-300 backdrop-blur-md hover:bg-slate-200 "
+              ? "bg-slate-400/20 [&>div:nth-child(2)]:bg-slate-300 backdrop-blur-lg hover:bg-slate-200 "
               : "hover:bg-zinc-100 "
           } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:active:bg-slate-300 active:bg-slate-200 cartnumber h-12 rounded-xl p-2 my-1 items-center duration-100 select-none justify-between`}
         >
           <div className="flex flex-row">
             <div className="h-7 w-7 bg-slate-60 rounded-md mr-3 mx-2 items-center text-lg justify-center">
-              <ListIcon iconData={item.icon} />
+              <ListIcon iconData={item.icon} variant="outline-thick" />
             </div>
             {item.title}
           </div>

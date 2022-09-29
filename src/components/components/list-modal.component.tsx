@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import EmojiSetPicker from "./emoji-picker";
 import { IEmojiData } from "emoji-picker-react";
 import { ListIconData } from "../../@types";
+import ListIcon from "./listIcon";
 
 interface PropsA {
   onClick?: () => void;
@@ -82,7 +83,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             className="flex items-center text-2xl justify-center w-16 mr-4 bg-slate-300 hover:bg-slate-400 active:bg-slate-500 active:scale-105 text-center p-3 rounded-2xl duration-150"
           >
-            {iconData.data}
+            <ListIcon iconData={iconData} variant="fill" />
           </div>
           <div className="absolute top-16 left-0">
             {showEmojiPicker && (

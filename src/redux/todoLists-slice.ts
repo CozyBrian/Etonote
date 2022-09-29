@@ -16,7 +16,7 @@ const initialState = (): todoList => {
         {
           id: "IzeReY",
           title: "Home",
-          icon: { type: "EMOJI", data: "🏠" },
+          icon: { type: "COLOR", data: "#0ea5e9" },
         },
         {
           id: "rFZbxg",

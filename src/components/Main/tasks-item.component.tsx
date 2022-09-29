@@ -49,7 +49,7 @@ const TaskItem = ({ item, onClick }: Props) => {
           {item.title}
         </div>
         <div className="text-lg rounded-md mx-2">
-          <ListIcon iconData={item.icon} />
+          <ListIcon iconData={item.icon} variant="outline-thick" />
         </div>
       </div>
     </motion.div>

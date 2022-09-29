@@ -39,31 +39,20 @@ const Header = () => {
         <div className="fixed">
           <LayoutGroup>
             <AnimatePresence>
-              {app.selectedTab === app.homeId && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="h-6 w-6 border-2 border-sky-500 rounded-md mx-2 relative right-16 top-1"
-                ></motion.div>
+              {todoLists.map(
+                (item) =>
+                  item.id === selectedList?.id && (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
+                    >
+                      <ListIcon iconData={item.icon} variant="outline" />
+                    </motion.div>
+                  )
               )}
-            </AnimatePresence>
-            <AnimatePresence>
-              {app.selectedTab !== app.homeId &&
-                todoLists.map(
-                  (item) =>
-                    item.id === selectedList?.id && (
-                      <motion.div
-                        key={item.id}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="h-6 w-6 flex items-center justify-center text-3xl mx-2 absolute right-32 -left-16 top-0"
-                      >
-                        <ListIcon iconData={item.icon} />
-                      </motion.div>
-                    )
-                )}
             </AnimatePresence>
           </LayoutGroup>
         </div>
