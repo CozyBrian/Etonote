@@ -9,7 +9,7 @@ const TasksView = () => {
   const showSettings = useAppSelector((state) => state.app.showSettingsPanel);
   return (
     <div className="flex container justify-center p-12 pb-0 select-none">
-      <div className="min-w-[48rem]">
+      <div className="w-[48rem]">
         <LayoutGroup>
           <Header />
           <motion.div layout>

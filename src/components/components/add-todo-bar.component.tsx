@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { AnimatePresence, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import ListIcon from "./listIcon";
 
 const AddTodoInput = () => {
   const todoLists = useAppSelector((state) => state.lists.value);
@@ -100,9 +101,9 @@ const AddTodoInput = () => {
               className="w-18 h-8 flex flex-row justify-between duration-75 items-center pl-2 px-2 bg-gray-300/50 active:bg-slate-200 hover:bg-slate-300 rounded-lg absolute right-3 top-3 z-20"
             >
               <div className="flex justify-center items-center text-xs pr-1">
-                {todoIcon}
+                <ListIcon iconData={todoIcon} variant="outline-thick" />
               </div>
-              <div className="text-sm pr-2">
+              <div className="text-sm max-w-[6rem] truncate pr-2 font-['Montserrat']">
                 {todoLists.find((item) => item.id === todoListId)?.title}
               </div>
               <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
@@ -128,14 +129,15 @@ const AddTodoInput = () => {
                 }}
                 className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 hover:bg-slate-100 active:bg-slate-50 rounded-lg items-center"
               >
-                {item.icon}
+                <ListIcon iconData={item.icon} variant="outline-thick" />
               </div>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
+
       <input
-        className="relative z-10 border-none w-full outline-none text-gray-600 focus:shadow-2xl bg-slate-300 focus:bg-white focus:placeholder:text-gray-300 p-4 rounded-2xl duration-300"
+        className="relative z-10 pr-32 border-none w-full outline-none text-gray-600 focus:shadow-2xl bg-slate-300 focus:bg-white focus:placeholder:text-gray-300 p-4 rounded-2xl font-['Montserrat'] duration-300"
         placeholder="Write a new task"
         ref={textBox}
         id="addTodoInput"

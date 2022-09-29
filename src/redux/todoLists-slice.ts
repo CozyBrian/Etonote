@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SidebarItem } from "../@types";
+import { ListIconData, SidebarItem } from "../@types";
 import { nanoid } from "nanoid";
 import { loadFromLocalStorage } from ".";
 
@@ -16,22 +16,22 @@ const initialState = (): todoList => {
         {
           id: "IzeReY",
           title: "Home",
-          icon: "🏠",
+          icon: { type: "COLOR", data: "#0ea5e9" },
         },
         {
           id: "rFZbxg",
           title: "Gaming",
-          icon: "🎮",
+          icon: { type: "EMOJI", data: "🎮" },
         },
         {
           id: "ZslvWl",
           title: "School",
-          icon: "📚",
+          icon: { type: "EMOJI", data: "📚" },
         },
         {
           id: "2qSZYP",
           title: "React Todo",
-          icon: "👨🏾‍💻",
+          icon: { type: "EMOJI", data: "👨🏾‍💻" },
         },
       ],
     };
@@ -42,7 +42,10 @@ const todoLists = createSlice({
   name: "todoLists",
   initialState,
   reducers: {
-    addList(state, action: PayloadAction<{ title: string; icon: string }>) {
+    addList(
+      state,
+      action: PayloadAction<{ title: string; icon: ListIconData }>
+    ) {
       const newList = { ...action.payload, id: nanoid(6) };
       state.value = [...state.value, newList];
     },
