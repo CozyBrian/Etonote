@@ -14,7 +14,22 @@ const BackIcon = () => {
       <AnimatePresence>
         {todoLists.map(
           (item) =>
-            item.id === selectedList?.id && (
+            item.id === selectedList?.id &&
+            (item.icon.type === "COLOR" ? (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                style={{
+                  backgroundImage:
+                    item.icon.type === "COLOR"
+                      ? `linear-gradient(to bottom, ${item.icon.data},rgba(255,0,0,0))`
+                      : "",
+                }}
+                className="w-full fixed h-48 top-0 left-0"
+              ></motion.div>
+            ) : (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0 }}
@@ -24,7 +39,7 @@ const BackIcon = () => {
               >
                 <ListIcon iconData={item.icon} variant="fill" />
               </motion.div>
-            )
+            ))
         )}
       </AnimatePresence>
     </LayoutGroup>
