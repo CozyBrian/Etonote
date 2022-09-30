@@ -11,6 +11,7 @@ const BackIcon = () => {
 
   return (
     <LayoutGroup>
+      <div className="fixed top-0 left-0 w-screen h-screen dark:bg-zinc-900 -z-50"></div>
       <AnimatePresence>
         {todoLists.map(
           (item) =>

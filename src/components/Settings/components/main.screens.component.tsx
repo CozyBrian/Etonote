@@ -33,14 +33,16 @@ const Appearance = () => {
   const setTheme = (theme: string) => {
     console.log(theme);
 
-    return dispatch(action.app.setTheme(theme));
+    return dispatch(action.system.setTheme(theme));
   };
 
   const themes = [{ title: "Light" }, { title: "Dark" }, { title: "Auto" }];
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="text-xl font-normal text-gray-700 pb-1">Theme</div>
+      <div className="text-xl font-normal text-gray-700 dark:text-gray-300 pb-1">
+        Theme
+      </div>
       <div className="flex flex-row w-full gap-4">
         {themes.map((theme, i) => (
           <div
@@ -48,7 +50,7 @@ const Appearance = () => {
             onClick={() => setTheme(theme.title)}
             className="active:scale-95 duration-100"
           >
-            <div className="w-[200px] h-[150px] rounded-lg bg-slate-300"></div>
+            <div className="w-[200px] h-[150px] rounded-lg bg-slate-300 dark:bg-slate-700"></div>
             {theme.title}
           </div>
         ))}
