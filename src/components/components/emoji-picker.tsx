@@ -1,6 +1,7 @@
 import EmojiPicker, { IEmojiData } from "emoji-picker-react";
 import React, { useState } from "react";
 import { ListIconData } from "../../@types";
+import { useAppSelector } from "../../hooks";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 };
 
 const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
+  const global = useAppSelector((state) => state.system);
   const [selectedTab, setSelectedTab] = useState("COLOR");
   const [selectedColor, setSelectedColor] = useState("");
 
@@ -31,20 +33,20 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
     "#CFDEE7",
   ];
   return (
-    <motion.div className="border bg-white/90 shadow-sm backdrop-blur-md rounded-2xl duration-200">
+    <motion.div className="border dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 shadow-sm backdrop-blur-md rounded-2xl duration-200">
       <div className="flex flex-row w-full p-2 gap-1">
         <div
           onClick={() => setSelectedTab("COLOR")}
-          className={`px-2 py-1 text-sm rounded-md hover:bg-gray-200/70 active:bg-gray-300 ${
-            selectedTab === "COLOR" && "bg-gray-200"
+          className={`px-2 py-1 text-sm rounded-md hover:bg-gray-200/70 dark:hover:bg-zinc-800/90 active:bg-gray-300 dark:text-slate-50 ${
+            selectedTab === "COLOR" && "bg-gray-200 dark:bg-zinc-700/50"
           }`}
         >
           Colors
         </div>
         <div
           onClick={() => setSelectedTab("EMOJI")}
-          className={`px-2 py-1 text-sm rounded-md hover:bg-gray-200/70 active:bg-gray-300 ${
-            selectedTab === "EMOJI" && "bg-gray-200"
+          className={`px-2 py-1 text-sm rounded-md hover:bg-gray-200/70 dark:hover:bg-zinc-800/90 active:bg-gray-300 dark:text-slate-50 ${
+            selectedTab === "EMOJI" && "bg-gray-200 dark:bg-zinc-700/50"
           }`}
         >
           Emoji
@@ -61,7 +63,10 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
               onEmojiClick={onEmojiClick}
               disableSkinTonePicker={true}
               pickerStyle={{
-                backgroundColor: "rgba(255, 255, 255, 0.6)",
+                backgroundColor:
+                  global.THEME === "Dark"
+                    ? "rgb(24 24 27 / 0.9)"
+                    : "rgba(255, 255, 255, 0.6)",
                 boxShadow: "none",
                 borderRadius: "1rem",
                 paddingTop: "1rem",
@@ -85,7 +90,7 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
                     setSelectedColor(item);
                     onColorSetClick({ type: "COLOR", data: item });
                   }}
-                  className="flex items-center justify-center w-9 h-9 p-1 rounded-md hover:bg-slate-200 active:bg-slate-300"
+                  className="flex items-center justify-center w-9 h-9 p-1 rounded-md hover:bg-slate-200 dark:hover:bg-zinc-700 active:bg-slate-300"
                 >
                   <div style={{ color: item }} className={`eton-icon text-2xl`}>
                     
@@ -93,9 +98,9 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
                 </div>
               ))}
             </div>
-            <div className="mt-8 p-2 text-sm flex flex-row justify-between items-center">
+            <div className="mt-8 p-2 text-sm flex flex-row justify-between items-center dark:text-slate-50">
               <div>Custom color:</div>
-              <div className="w-[70px] h-7 px-1 py-0.5 rounded-md bg-gray-300">
+              <div className="w-[70px] h-7 px-1 py-0.5 rounded-md bg-gray-300 dark:bg-zinc-700">
                 {selectedColor}
               </div>
             </div>

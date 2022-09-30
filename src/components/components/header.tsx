@@ -24,13 +24,13 @@ const Header = () => {
       <div className="fixed right-6 top-6">
         <button
           onClick={openSettings}
-          className="p-1 hover:bg-slate-300 active:bg-slate-400 flex items-center justify-center duration-100 rounded-md"
+          className="p-1 hover:bg-slate-300 dark:hover:bg-slate-600 active:bg-slate-400 dark:active:bg-slate-700 dark:text-slate-100 flex items-center justify-center duration-100 rounded-md"
         >
-          <FontAwesomeIcon icon={faGear} size="xl" color="black" />
+          <FontAwesomeIcon icon={faGear} size="xl" />
         </button>
       </div>
       <div className="flex flex-row">
-        <div className="text-xl font-medium">
+        <div className="text-xl font-medium dark:text-slate-100">
           {app.selectedTab === app.homeId ? (
             <div>
               Good Morning,{" "}
@@ -71,7 +71,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-gray-500 text-xl font-medium"
+            className="text-gray-500 dark:text-gray-400 text-xl font-medium"
           >
             It's {todayDate}
           </motion.h1>

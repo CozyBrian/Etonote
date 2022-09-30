@@ -4,7 +4,7 @@ const TitleBar = () => {
   const [isMax, setIsMax] = useState(false);
 
   return (
-    <div className="h-8 w-full bg-slate-800">
+    <div className="h-8 w-full bg-slate-200 dark:bg-zinc-800 z-50">
       <div className="h-full flex flex-row justify-between items-center select-none draggable relative">
         <div className="controls h-full flex ml-0.5 flex-row items-center select-none">
           <div

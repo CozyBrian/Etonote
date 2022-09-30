@@ -49,7 +49,7 @@ const SideBarItem = ({ item, number }: Props) => {
       <motion.div layout className="relative">
         {isSelected &&
           (item.icon.type !== "COLOR" ? (
-            <div className="absolute top-3 text-3xl">
+            <div className="absolute top-2 text-3xl">
               <ListIcon iconData={item.icon} variant="fill" />
             </div>
           ) : (
@@ -60,7 +60,7 @@ const SideBarItem = ({ item, number }: Props) => {
                     ? `linear-gradient(to right, ${item.icon.data},rgba(255,0,0,0))`
                     : "",
               }}
-              className="absolute top-1 left-0 h-12 w-12 opacity-40 rounded-xl"
+              className="absolute top-1 left-0 h-10 w-12 opacity-40 rounded-md"
             ></div>
           ))}
         <div
@@ -68,19 +68,19 @@ const SideBarItem = ({ item, number }: Props) => {
           onClick={() => setTab(item.id)}
           className={`w-full z-20 flex flex-row ${
             isSelected
-              ? "bg-slate-400/20 [&>div:nth-child(2)]:bg-slate-300 backdrop-blur-lg hover:bg-slate-200 "
-              : "hover:bg-zinc-100 "
-          } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:active:bg-slate-300 active:bg-slate-200 cartnumber h-10 rounded-md p-2 my-1 items-center duration-100 select-none justify-between`}
+              ? "bg-slate-400/20 dark:bg-zinc-700/30 [&>div:nth-child(2)]:bg-slate-300 [&>div:nth-child(2)]:dark:bg-zinc-700 backdrop-blur-lg hover:bg-slate-200 dark:hover:bg-zinc-700"
+              : "hover:bg-zinc-100 dark:hover:bg-zinc-900"
+          } [&>div:nth-child(2)]:hover:text-gray-800 [&>div:nth-child(2)]:dark:hover:text-gray-400 [&>div:nth-child(2)]:active:bg-slate-300 [&>div:nth-child(2)]:dark:active:bg-slate-800 active:bg-slate-200 dark:active:bg-zinc-900 cartnumber h-10 rounded-md p-2 my-1 items-center duration-100 select-none justify-between`}
         >
           <div className="flex flex-row">
-            <div className="h-7 w-7 bg-slate-60 rounded-md mr-3 mx-2 items-center text-lg justify-center">
+            <div className="h-7 w-7 rounded-md mr-3 mx-2 items-center text-lg justify-center">
               <ListIcon iconData={item.icon} variant="outline-thick" />
             </div>
-            <div className="flex items-center w-[180px] truncate font-['SFPro']">
+            <div className="flex items-center w-[180px] dark:text-slate-200 truncate font-['SFPro']">
               {item.title}
             </div>
           </div>
-          <div className="text-sm flex w-4 h-4 justify-center items-center text-gray-600 rounded-md bg-zinc-100 p-0.5 mx-2 duration-150">
+          <div className="text-sm flex w-4 h-4 justify-center items-center text-gray-600 dark:text-gray-400 rounded-md bg-zinc-100 dark:bg-zinc-800 p-0.5 px-2 duration-150">
             {number}
           </div>
         </div>

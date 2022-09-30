@@ -66,10 +66,10 @@ export const AddListModal = ({ onClick }: PropsA) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.1 }}
-      className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
+      className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-white/50 dark:bg-black/50 z-50 select-none"
     >
-      <div className="w-[32rem]  flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-8">
-        <div className="flex flex-row font-['SFPro'] text-3xl justify-between items-center pb-8">
+      <div className="w-[32rem]  flex flex-col bg-white/90 dark:bg-zinc-700/80 rounded-2xl backdrop-blur-sm p-8">
+        <div className="flex flex-row font-['SFPro'] text-3xl dark:text-slate-50 justify-between items-center pb-8">
           Create a list
           <div
             onClick={onClick}
@@ -84,7 +84,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
         >
           <div
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-            className="flex items-center text-2xl justify-center w-16 mr-4 bg-slate-300 hover:bg-slate-400 active:bg-slate-500 active:scale-105 text-center p-3 rounded-2xl duration-150"
+            className="flex items-center text-2xl justify-center w-16 mr-4 bg-slate-300 hover:bg-slate-400 dark:bg-zinc-800 dark:hover:bg-zinc-700/70 dark:active:bg-zinc-800 active:bg-slate-500 active:scale-105 text-center p-3 rounded-2xl duration-150"
           >
             <ListIcon iconData={iconData} variant="fill" />
           </div>
@@ -97,10 +97,11 @@ export const AddListModal = ({ onClick }: PropsA) => {
             )}
           </div>
           <input
-            className="border-none w-full outline-none text-white bg-slate-300 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
+            className="border-none w-full outline-none text-white bg-slate-300 dark:text-gray-300 dark:bg-zinc-800 dark:focus:bg-zinc-600 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
             placeholder="Name"
             id="addListBox"
             accept="text"
+            autoComplete="off"
             value={title}
             onChange={(value) => setTitle(value.target.value)}
           ></input>
@@ -145,7 +146,7 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
       transition={{ duration: 0.1 }}
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
-      <div className="w-[20rem] flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-5">
+      <div className="w-[20rem] flex flex-col bg-white/90 dark:bg-zinc-700/80 dark:text-slate-50 rounded-2xl backdrop-blur-sm p-5">
         <div className="flex font-['SFPro'] flex-row text-2xl justify-between items-center pb-2">
           Are you Sure?
         </div>
@@ -156,13 +157,13 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
         <div className="flex flex-row justify-end pt-3 gap-3">
           <div
             onClick={onClick}
-            className="cursor-pointer px-4 bg-slate-300 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 active:bg-slate-400 font-semibold"
+            className="cursor-pointer px-4 bg-slate-300 dark:bg-zinc-700 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 dark:hover:bg-zinc-600 active:bg-slate-400 font-semibold"
           >
             Cancel
           </div>
           <div
             onClick={() => deleteList(ItemId)}
-            className="cursor-pointer px-4 bg-red-500 p-2 rounded-lg text-white duration-150 hover:bg-red-600 active:bg-red-700 font-semibold"
+            className="cursor-pointer px-4 bg-red-600 p-2 rounded-lg text-white duration-150 hover:bg-red-500 active:bg-red-700 font-semibold"
           >
             Delete
           </div>
