@@ -36,7 +36,7 @@ const Appearance = () => {
     return dispatch(action.system.setTheme(theme));
   };
 
-  const themes = [{ title: "Light" }, { title: "Dark" }, { title: "Auto" }];
+  const themes = [{ title: "Light" }, { title: "Dark" }];
 
   return (
     <div className="flex flex-col h-full w-full">
