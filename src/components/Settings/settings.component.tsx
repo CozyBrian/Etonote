@@ -17,8 +17,6 @@ const Settings = () => {
   const tabs = [
     { id: "AA", title: "Personal" },
     { id: "AB", title: "Appearance" },
-    { id: "AC", title: "Shortcuts" },
-    { id: "AD", title: "Misc" },
   ];
 
   return (

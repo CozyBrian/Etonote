@@ -18,14 +18,12 @@ const MainSettings = ({ tabs }: Props) => {
       <div className="text-2xl font-semibold pb-1">{selectedTab?.title}</div>
       {selectedTab?.id === tabs[0].id && <Personal />}
       {selectedTab?.id === tabs[1].id && <Appearance />}
-      {selectedTab?.id === tabs[2].id && <Shortcuts />}
-      {selectedTab?.id === tabs[3].id && <Misc />}
     </div>
   );
 };
 
 const Personal = () => {
-  return <div>a</div>;
+  return <div></div>;
 };
 
 const Appearance = () => {
@@ -57,13 +55,6 @@ const Appearance = () => {
       </div>
     </div>
   );
-};
-
-const Shortcuts = () => {
-  return <div>i</div>;
-};
-const Misc = () => {
-  return <div>o</div>;
 };
 
 export default MainSettings;
