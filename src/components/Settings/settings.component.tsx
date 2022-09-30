@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch } from "../../hooks";
 import { action } from "../../redux";
 import { motion } from "framer-motion";
+import SideTab from "./components/sidetab.component";
+import MainSettings from "./components/main.screens.component";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
@@ -11,6 +13,13 @@ const Settings = () => {
   const close = () => {
     dispatch(action.app.setShowSettingsPanel());
   };
+
+  const tabs = [
+    { id: "AA", title: "Personal" },
+    { id: "AB", title: "Appearance" },
+    { id: "AC", title: "Shortcuts" },
+    { id: "AD", title: "Misc" },
+  ];
 
   return (
     <motion.div
@@ -25,21 +34,24 @@ const Settings = () => {
         animate={{ x: 0 }}
         exit={{ x: 2000 }}
         transition={{ ease: "easeInOut" }}
-        className="relative flex flex-row w-full h-full bg-white rounded-2xl p-12"
+        className="relative flex flex-col w-full h-full bg-white rounded-2xl p-12"
       >
-        <div className="flex h-full w-64">
+        <div className="flex w-full flex-row mb-4 items-center justify-between">
           <div className="text-3xl font-semibold">Settings</div>
+          <button
+            onClick={close}
+            className="p-1 hover:bg-slate-300 active:bg-slate-400 w-4 h-4 flex items-center justify-center duration-100 rounded-md"
+          >
+            <FontAwesomeIcon icon={faClose} size="lg" color="black" />
+          </button>
         </div>
-        <div className="flex w-full justify-center items-center">
-          <div className="fixed right-6 top-6 text-lg">
-            <button
-              onClick={close}
-              className="p-1 hover:bg-slate-300 active:bg-slate-400 flex items-center justify-center duration-100 rounded-md"
-            >
-              <FontAwesomeIcon icon={faClose} size="xl" color="black" />
-            </button>
+        <div className="h-full w-full flex flex-row ">
+          <div className="min-w-[240px] mr-7">
+            {tabs.map((tab) => (
+              <SideTab key={tab.id} item={tab} />
+            ))}
           </div>
-          Work in Progress
+          <MainSettings tabs={tabs} />
         </div>
       </motion.div>
     </motion.div>

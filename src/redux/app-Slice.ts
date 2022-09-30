@@ -5,7 +5,8 @@ interface app_state {
   homeId: string;
   isSplash: boolean;
   showSettingsPanel: boolean;
-  appConfig: object;
+  selectedSettingsTab: string;
+  appConfig: { THEME: string };
 }
 
 const initialState: app_state = {
@@ -13,6 +14,7 @@ const initialState: app_state = {
   homeId: "IzeReY",
   isSplash: true,
   showSettingsPanel: false,
+  selectedSettingsTab: "AA",
   appConfig: {
     THEME: "Light",
   },
@@ -25,8 +27,14 @@ const appState = createSlice({
     setSelectedTab(state, action: PayloadAction<string>) {
       state.selectedTab = action.payload;
     },
+    setSelectedSettingsTab(state, action: PayloadAction<string>) {
+      state.selectedSettingsTab = action.payload;
+    },
     setSplashFalse(state) {
       state.isSplash = false;
+    },
+    setTheme(state, action: PayloadAction<string>) {
+      state.appConfig.THEME = action.payload;
     },
     setShowSettingsPanel(state) {
       state.showSettingsPanel = !state.showSettingsPanel;

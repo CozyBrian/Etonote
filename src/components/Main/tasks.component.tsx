@@ -2,7 +2,7 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useAppSelector } from "../../hooks";
 import AddTodoInput from "../components/add-todo-bar.component";
 import Header from "../components/header";
-import Settings from "./settings.component";
+import Settings from "../Settings/settings.component";
 import TaskList from "./task-list.component";
 
 const TasksView = () => {
