@@ -98,7 +98,7 @@ const AddTodoInput = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 5, opacity: 0 }}
               onClick={() => setShowIconMenu(!showIconMenu)}
-              className="w-18 h-8 flex flex-row justify-between duration-75 items-center pl-2 px-2 bg-gray-300/50 active:bg-slate-200 hover:bg-slate-300 rounded-lg absolute right-3 top-3 z-20"
+              className="w-18 h-8 flex flex-row justify-between duration-75 items-center pl-2 px-2 dark:text-white bg-gray-300/50 dark:bg-zinc-800/50 active:bg-slate-200 dark:active:bg-zinc-700 hover:bg-slate-300 dark:hover:bg-zinc-800 rounded-lg absolute right-3 top-3 z-20"
             >
               <div className="flex justify-center items-center text-xs pr-1">
                 <ListIcon iconData={todoIcon} variant="outline-thick" />
@@ -117,7 +117,7 @@ const AddTodoInput = () => {
             initial={{ y: 15, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 5, opacity: 0 }}
-            className="grid grid-cols-2 p-1 duration-75 select-none bg-slate-300 right-2 top-16 rounded-lg absolute z-20"
+            className="grid grid-cols-2 p-1 duration-75 select-none bg-slate-300 dark:bg-zinc-800 right-2 top-16 rounded-lg absolute z-20"
           >
             {todoLists.map((item) => (
               <div
@@ -127,7 +127,7 @@ const AddTodoInput = () => {
                   setTodoListId(item.id);
                   setShowIconMenu(false);
                 }}
-                className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 hover:bg-slate-100 active:bg-slate-50 rounded-lg items-center"
+                className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-600 active:bg-slate-50 dark:active:bg-zinc-700 rounded-lg items-center"
               >
                 <ListIcon iconData={item.icon} variant="outline-thick" />
               </div>
@@ -137,7 +137,7 @@ const AddTodoInput = () => {
       </AnimatePresence>
 
       <input
-        className="relative z-10 pr-32 border-none w-full outline-none text-gray-600 focus:shadow-2xl bg-slate-300 focus:bg-white focus:placeholder:text-gray-300 p-4 rounded-2xl font-['Montserrat'] duration-300"
+        className="relative z-10 pr-32 border-none w-full outline-none text-gray-600 dark:text-gray-300 focus:shadow-2xl bg-slate-300 dark:bg-zinc-800 dark:focus:bg-zinc-600 focus:bg-white dark:focus:placeholder:text-zinc-600 focus:placeholder:text-gray-300 p-4 rounded-2xl font-['Montserrat'] duration-300"
         placeholder="Write a new task"
         ref={textBox}
         id="addTodoInput"

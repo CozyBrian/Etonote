@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import todoLists from "./todoLists-slice";
 import todos from "./todos-slice";
 import appState from "./app-Slice";
+import systemState from "./system-slice";
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
@@ -14,6 +15,7 @@ export const action = {
   app: appState.actions,
   lists: todoLists.actions,
   todos: todos.actions,
+  system: systemState.actions,
 };
 
 function saveToLocalStorage(state: RootState) {
@@ -44,6 +46,7 @@ const store = configureStore({
     app: appState.reducer,
     lists: todoLists.reducer,
     todos: todos.reducer,
+    system: systemState.reducer,
   },
 });
 
