@@ -146,7 +146,7 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
       transition={{ duration: 0.1 }}
       className="h-screen w-screen flex justify-center items-center top-0 left-0 fixed bg-black/50 z-50 select-none"
     >
-      <div className="w-[20rem] flex flex-col bg-white/90 rounded-2xl backdrop-blur-sm p-5">
+      <div className="w-[20rem] flex flex-col bg-white/90 dark:bg-zinc-700/80 dark:text-slate-50 rounded-2xl backdrop-blur-sm p-5">
         <div className="flex font-['SFPro'] flex-row text-2xl justify-between items-center pb-2">
           Are you Sure?
         </div>
@@ -157,13 +157,13 @@ export const DelListModal = ({ onClick, ItemId }: PropsB) => {
         <div className="flex flex-row justify-end pt-3 gap-3">
           <div
             onClick={onClick}
-            className="cursor-pointer px-4 bg-slate-300 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 active:bg-slate-400 font-semibold"
+            className="cursor-pointer px-4 bg-slate-300 dark:bg-zinc-700 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 dark:hover:bg-zinc-600 active:bg-slate-400 font-semibold"
           >
             Cancel
           </div>
           <div
             onClick={() => deleteList(ItemId)}
-            className="cursor-pointer px-4 bg-red-500 p-2 rounded-lg text-white duration-150 hover:bg-red-600 active:bg-red-700 font-semibold"
+            className="cursor-pointer px-4 bg-red-600 p-2 rounded-lg text-white duration-150 hover:bg-red-500 active:bg-red-700 font-semibold"
           >
             Delete
           </div>
