@@ -28,8 +28,8 @@ const systemState = createSlice({
       if (state.userColors.length < 7) {
         state.userColors = [...state.userColors, action.payload];
       }
-      if (state.userColors.length == 7) {
-        const tempColors = state.userColors.filter((_, i) => i != 0);
+      if (state.userColors.length === 7) {
+        const tempColors = state.userColors.filter((_, i) => i !== 0);
 
         state.userColors = [...tempColors, action.payload];
       }
