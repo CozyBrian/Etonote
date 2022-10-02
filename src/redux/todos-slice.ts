@@ -16,16 +16,9 @@ const initialState = (): todosList => {
         {
           id: "Zc8CvQsq-X",
           listID: "rFZbxg",
-          title: "Play Full-Metal Alchemist",
+          title: "Buy a PS5",
           icon: { type: "EMOJI", data: "🎮" },
-          isDone: false,
-        },
-        {
-          id: "eLPgPZZj-H",
-          listID: "2qSZYP",
-          title: "Make a todo list app",
-          icon: { type: "EMOJI", data: "👨🏾‍💻" },
-          isDone: false,
+          isDone: true,
         },
         {
           id: "XKcRT9C3Eo",

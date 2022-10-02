@@ -28,11 +28,6 @@ const initialState = (): todoList => {
           title: "School",
           icon: { type: "EMOJI", data: "📚" },
         },
-        {
-          id: "2qSZYP",
-          title: "React Todo",
-          icon: { type: "EMOJI", data: "👨🏾‍💻" },
-        },
       ],
     };
   }
