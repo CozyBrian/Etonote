@@ -6,7 +6,6 @@ interface app_state {
   isSplash: boolean;
   showSettingsPanel: boolean;
   selectedSettingsTab: string;
-  appConfig: { THEME: string };
 }
 
 const initialState: app_state = {
@@ -15,9 +14,6 @@ const initialState: app_state = {
   isSplash: true,
   showSettingsPanel: false,
   selectedSettingsTab: "AA",
-  appConfig: {
-    THEME: "Light",
-  },
 };
 
 const appState = createSlice({
@@ -32,9 +28,6 @@ const appState = createSlice({
     },
     setSplashFalse(state) {
       state.isSplash = false;
-    },
-    setTheme(state, action: PayloadAction<string>) {
-      state.appConfig.THEME = action.payload;
     },
     setShowSettingsPanel(state) {
       state.showSettingsPanel = !state.showSettingsPanel;

@@ -84,6 +84,20 @@ body {
   background: rgb(24 24 27 / 0.9) !important;
 }
 
+.color-picker .react-colorful {
+  height: 100%;
+}
+
+.color-picker .react-colorful__saturation {
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.color-picker .react-colorful__hue {
+  height: 14px;
+  border-radius: 5px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
