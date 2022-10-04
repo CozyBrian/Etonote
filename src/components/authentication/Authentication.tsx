@@ -15,7 +15,6 @@ const Authentication = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -103,7 +102,9 @@ const Authentication = () => {
         </form>
         <div className="w-72 m-4">
           <button
-            onClick={() => navigate("/home")}
+            onClick={() => {
+              isRegister ? navigate("/newUser") : navigate("/home");
+            }}
             className="w-full border-2 border-black/30 active:border-black p-2 font-bold rounded-3xl duration-100"
           >
             {isRegister ? "Sign Up" : "Login"} with Google

@@ -1,39 +1,25 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
-};
+import { useNavigate } from "react-router-dom";
 
 const OnBoarding = () => {
-  const [[page, direction], setPage] = useState([0, 0]);
+  const [page, setPage] = useState(0);
 
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const items = [1, 2, 3, 4];
-  const imageIndex = page;
+  const items = [
+    "bg-sky-500",
+    "bg-slate-500",
+    "bg-purple-500",
+    "bg-orange-500",
+  ];
 
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
+  const navigate = useNavigate();
+
+  const nextButton = () => {
+    if (page < items.length - 1) {
+      setPage(page + 1);
+    } else {
+      navigate("/home");
+    }
   };
 
   return (
@@ -45,20 +31,19 @@ const OnBoarding = () => {
         exit={{ opacity: 0 }}
         className="flex flex-col w-[500px] h-[600px] items-center bg-white shadow-xl rounded-2xl  font-['VarelaRound'] duration-100"
       >
-        <div className="flex justify-center items-center h-full w-full bg-sky-300 rounded-t-2xl">
-          <AnimatePresence mode="wait" initial={false} custom={direction}>
+        <div className="flex justify-center overflow-x-scroll items-center h-full w-full bg-sky-300 rounded-t-2xl">
+          <AnimatePresence mode="wait">
             <motion.div
-              key={imageIndex}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                duration: 0.3,
-              }}
-              className="w-48 h-48 rounded-full bg-slate-500 shadow-xl"
-            ></motion.div>
+              key={page}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className=" flex items-center justify-center w-[450px]"
+            >
+              <div
+                className={`w-48 h-48 rounded-full ${items[page]} shadow-xl`}
+              ></div>
+            </motion.div>
           </AnimatePresence>
         </div>
         <div className="w-full h-[200px] p-4">
@@ -70,10 +55,10 @@ const OnBoarding = () => {
           </div>
           <div className="flex flex-row h-auto items-center mt-4 justify-end">
             <button
-              onClick={() => paginate(1)}
+              onClick={nextButton}
               className="bg-sky-500 active:bg-sky-600 text-white px-6 py-2 rounded-lg duration-100"
             >
-              Next
+              {page === items.length - 1 ? "Done" : "Next"}
             </button>
           </div>
         </div>
