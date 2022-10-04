@@ -43,7 +43,13 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
   };
 
   return (
-    <motion.div className="border dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 shadow-sm backdrop-blur-md rounded-2xl duration-200">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.1 }}
+      className="border dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 shadow-sm backdrop-blur-md rounded-2xl duration-200"
+    >
       <div className="flex flex-row w-full p-2 gap-1">
         <div
           onClick={() => setSelectedTab("COLOR")}

@@ -137,7 +137,7 @@ const AddTodoInput = () => {
       </AnimatePresence>
 
       <input
-        className="relative z-10 pr-32 border-none w-full outline-none text-gray-600 dark:text-gray-300 focus:shadow-2xl bg-slate-300 dark:bg-zinc-800 dark:focus:bg-zinc-600 focus:bg-white dark:focus:placeholder:text-zinc-600 focus:placeholder:text-gray-300 p-4 rounded-2xl font-['Montserrat'] duration-300"
+        className="relative z-10 pr-32 border-none w-full outline-none text-gray-600 dark:text-gray-300 focus:shadow-2xl bg-slate-300 dark:bg-zinc-800 dark:focus:bg-zinc-600 focus:bg-white dark:focus:placeholder:text-zinc-800 focus:placeholder:text-gray-300 p-4 rounded-2xl font-['Montserrat'] duration-300"
         placeholder="Write a new task"
         ref={textBox}
         id="addTodoInput"
