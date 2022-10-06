@@ -1,0 +1,35 @@
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signOut,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import firebaseConfig from "../firebase/firebase";
+
+import { initializeApp } from "@firebase/app";
+
+initializeApp(firebaseConfig);
+
+const provider = new GoogleAuthProvider();
+
+export const registerUser = (email: string, password: string) => {
+  const auth = getAuth();
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const loginUser = (email: string, password: string) => {
+  const auth = getAuth();
+  return signInWithEmailAndPassword(auth, email, password);
+};
+
+export const loginWithGoogle = () => {
+  const auth = getAuth();
+  return signInWithPopup(auth, provider);
+};
+
+export const logOutUser = () => {
+  const auth = getAuth();
+  return signOut(auth);
+};

@@ -3,6 +3,7 @@ import todoLists from "./todoLists-slice";
 import todos from "./todos-slice";
 import appState from "./app-Slice";
 import systemState from "./system-slice";
+import userState from "./user-slice";
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
@@ -16,6 +17,7 @@ export const action = {
   lists: todoLists.actions,
   todos: todos.actions,
   system: systemState.actions,
+  user: userState.actions,
 };
 
 function saveToLocalStorage(state: RootState) {
@@ -47,6 +49,7 @@ const store = configureStore({
     lists: todoLists.reducer,
     todos: todos.reducer,
     system: systemState.reducer,
+    user: userState.reducer,
   },
 });
 

@@ -2,6 +2,8 @@ import React from "react";
 import { action } from "../../../redux";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { AnimatePresence, motion } from "framer-motion";
+import { logOutUser } from "../../../services/authentication";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   tabs: { id: string; title: string }[];
@@ -26,6 +28,29 @@ const MainSettings = ({ tabs }: Props) => {
 };
 
 const Personal = () => {
+  const user = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  const handleSignOut = () => {
+    if (user.user_id) {
+      logOutUser()
+        .then(() => {
+          dispatch(action.user.setUserLogout());
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const ClearStorage = () => {
+    window.localStorage.clear();
+    console.log("Cleared");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -36,7 +61,7 @@ const Personal = () => {
     >
       <div>
         <button
-          // onClick={nextButton}
+          onClick={handleSignOut}
           className="bg-red-500 active:bg-red-600 text-white px-6 py-2 rounded-lg duration-200"
         >
           Logout
@@ -44,7 +69,7 @@ const Personal = () => {
       </div>
       <div>
         <button
-          // onClick={nextButton}
+          onClick={ClearStorage}
           className="border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-700 text-red-500 active:text-white px-6 py-2 rounded-lg duration-200"
         >
           Clear Storage
