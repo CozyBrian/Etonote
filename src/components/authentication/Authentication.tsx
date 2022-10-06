@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   loginUser,
   loginWithGoogle,
@@ -9,7 +9,6 @@ import {
 } from "../../services/authentication";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { action } from "../../redux";
-import LoadingScreen from "../components/loadingScreen";
 import { Oval } from "react-loader-spinner";
 
 type Inputs = {

@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { action } from "../../redux";
+import { useAppSelector } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 
 // import image from "../../assets/images/splash.png";
 
 const LoadingScreen = () => {
-  const app = useAppSelector((state) => state.app);
   const user = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {

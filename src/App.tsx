@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TasksView from "./components/Main/tasks.component";
 import SideBar from "./components/Sidebar/sidebar.component";
-import { useAppSelector, useAppDispatch } from "./hooks";
-import LoadingScreen from "./components/components/loadingScreen";
-import { action } from "./redux";
+import { useAppSelector } from "./hooks";
 import { motion } from "framer-motion";
 import BackIcon from "./components/components/backgroundIcon";
 
