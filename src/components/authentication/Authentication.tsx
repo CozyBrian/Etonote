@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
 import {
+  getError,
   loginUser,
   loginWithGoogle,
   registerUser,
@@ -10,6 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { action } from "../../redux";
 import { Oval } from "react-loader-spinner";
+import { getUsername, setUserData } from "../../services/database";
 
 type Inputs = {
   email: string;
@@ -20,6 +22,7 @@ type Inputs = {
 const Authentication = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [fireError, setFireError] = useState<null | string>();
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -53,6 +56,7 @@ const Authentication = () => {
               user_id: data.user.uid,
             })
           );
+          setUserData(data.user.uid, data.user.email, user.username);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -62,17 +66,20 @@ const Authentication = () => {
     } else {
       loginUser(user.email, user.password)
         .then((data) => {
-          dispatch(
-            action.user.setActiveUser({
-              userName: user.username,
-              userEmail: data.user.email,
-              user_id: data.user.uid,
-            })
-          );
+          getUsername(data.user.uid).then((name) => {
+            dispatch(
+              action.user.setActiveUser({
+                userName: name,
+                userEmail: data.user.email,
+                user_id: data.user.uid,
+              })
+            );
+          });
+
           setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error.message);
+          setFireError(getError(error.code));
           setIsLoading(false);
         });
     }
@@ -88,6 +95,10 @@ const Authentication = () => {
         })
       );
     });
+  };
+
+  const handleOnChange = () => {
+    setFireError("");
   };
 
   return (
@@ -108,6 +119,7 @@ const Authentication = () => {
           </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
+            onChange={handleOnChange}
             className="flex flex-col gap-4 my-8"
           >
             {isRegister && (
@@ -121,7 +133,7 @@ const Authentication = () => {
                   {...register("username", { required: true })}
                 />
                 {errors.username && (
-                  <span className="text-red-600">
+                  <span className="text-red-600 text-sm">
                     Username is required{errors.username.message}
                   </span>
                 )}
@@ -137,7 +149,7 @@ const Authentication = () => {
                 {...register("email", { required: true })}
               />
               {errors.email && (
-                <span className="text-red-600">
+                <span className="text-red-600 text-sm">
                   Email is required{errors.email.message}
                 </span>
               )}
@@ -149,21 +161,26 @@ const Authentication = () => {
                 placeholder="Password"
                 id="pass"
                 type="password"
-                {...register("password", { required: true })}
+                {...register("password", { required: true, minLength: 6 })}
               />
               {errors.password && (
-                <span className="text-red-600">Password is required</span>
+                <span className="text-red-600 text-sm">
+                  {errors.password?.message}
+                </span>
               )}
               {!isRegister && (
                 <div
                   onClick={() => {
                     isRegister ? navigate("/newUser") : navigate("/home");
                   }}
-                  className="flex flex-row justify-end"
+                  className="flex flex-row justify-between items-center"
                 >
-                  <button className="text-sky-500 active:text-sky-600 text-sm mt-2">
+                  <button className="text-sky-500 active:text-sky-600 text-xs mt-2">
                     Forgot Password?
                   </button>
+                  {fireError && (
+                    <span className="text-red-600 text-sm">{fireError}</span>
+                  )}
                 </div>
               )}
             </div>
@@ -174,8 +191,8 @@ const Authentication = () => {
               >
                 {isLoading ? (
                   <Oval
-                    height={30}
-                    width={30}
+                    height={20}
+                    width={20}
                     strokeWidth={3}
                     color="rgba(255, 255, 255, 1)"
                     secondaryColor="rgba(255, 255, 255, 0.49)"

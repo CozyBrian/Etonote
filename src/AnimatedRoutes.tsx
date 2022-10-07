@@ -14,7 +14,7 @@ const AnimatedRoutes = () => {
 
   return (
     <div className={global.THEME === "Dark" ? "dark" : ""}>
-      <div className="w-screen h-screen bg-slate-300 dark:bg-zinc-800">
+      <div className="w-screen h-screen bg-slate-300 dark:bg-zinc-900">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<LoadingScreen />} />

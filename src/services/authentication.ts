@@ -28,3 +28,7 @@ export const logOutUser = () => {
   const auth = getAuth();
   return signOut(auth);
 };
+
+export const getError = (errorCode: string) => {
+  return errorCode.split("/")[1].replace("-", " ");
+};

@@ -37,6 +37,7 @@ const Personal = () => {
     if (user.user_id) {
       logOutUser()
         .then(() => {
+          dispatch(action.app.setShowSettingsPanel());
           dispatch(action.user.setUserLogout());
           navigate("/");
         })
@@ -59,6 +60,18 @@ const Personal = () => {
       transition={{ duration: 0.08 }}
       className="flex flex-col gap-4"
     >
+      <div>
+        User ID:
+        <span>{user.user_id}</span>
+      </div>
+      <div>
+        Username:
+        <span>{user.userName}</span>
+      </div>
+      <div>
+        Email:
+        <span>{user.userEmail}</span>
+      </div>
       <div>
         <button
           onClick={handleSignOut}
