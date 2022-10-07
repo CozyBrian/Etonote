@@ -25,11 +25,11 @@ const OnBoarding = () => {
   return (
     <motion.div
       exit={{ opacity: 1 }}
-      className="w-screen h-screen flex justify-center items-center bg-slate-300"
+      className="w-screen h-screen flex justify-center items-center bg-slate-300 dark:bg-zinc-900"
     >
       <motion.div
         exit={{ opacity: 0 }}
-        className="flex flex-col w-[500px] h-[600px] items-center bg-white shadow-xl rounded-2xl  font-['VarelaRound'] duration-100"
+        className="flex flex-col w-[500px] h-[600px] items-center bg-white dark:bg-zinc-800 shadow-xl rounded-2xl  font-['VarelaRound'] duration-100"
       >
         <div className="flex justify-center overflow-x-scroll items-center h-full w-full bg-sky-300 rounded-t-2xl">
           <AnimatePresence mode="wait">
@@ -46,7 +46,7 @@ const OnBoarding = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-        <div className="w-full h-[200px] p-4">
+        <div className="w-full h-[200px] p-4 dark:text-white">
           <div className="flex">
             Nulla quis reprehenderit labore pariatur ut irure eiusmod Lorem
             deserunt quis. Elit esse officia amet eiusmod voluptate elit
@@ -56,7 +56,7 @@ const OnBoarding = () => {
           <div className="flex flex-row h-auto items-center mt-4 justify-end">
             <button
               onClick={nextButton}
-              className="bg-sky-500 active:bg-sky-600 text-white px-6 py-2 rounded-lg duration-100"
+              className="bg-sky-500 dark:bg-sky-700 active:bg-sky-600 text-white px-6 py-2 rounded-lg duration-100"
             >
               {page === items.length - 1 ? "Done" : "Next"}
             </button>

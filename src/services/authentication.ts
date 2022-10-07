@@ -6,11 +6,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import firebaseConfig from "../firebase/firebase";
-
-import { initializeApp } from "@firebase/app";
-
-initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider();
 

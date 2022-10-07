@@ -96,7 +96,7 @@ const Authentication = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="w-screen h-screen flex justify-center items-center bg-slate-300"
+        className="w-screen h-screen flex justify-center items-center bg-slate-300 dark:bg-zinc-900"
       >
         <motion.div
           exit={{ opacity: 0 }}
