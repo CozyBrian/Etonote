@@ -1,6 +1,5 @@
 import App from "./App";
-
-import { Route, Routes, useLocation } from "react-router";
+import { Route, Routes, useLocation, Navigate, Outlet } from "react-router";
 import { AnimatePresence } from "framer-motion";
 import Authentication from "./components/authentication/Authentication";
 import OnBoarding from "./components/OnBoarding/on-boarding";
@@ -19,13 +18,40 @@ const AnimatedRoutes = () => {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<LoadingScreen />} />
             <Route path="/login" element={<Authentication />} />
-            <Route path="/newUser" element={<OnBoarding />} />
-            <Route path="/home" element={<App />} />
+
+            <Route
+              path="/newUser"
+              element={
+                <ProtectedRoute>
+                  <OnBoarding />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <App />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </AnimatePresence>
       </div>
     </div>
   );
+};
+
+interface props {
+  children?: JSX.Element;
+}
+
+const ProtectedRoute = ({ children }: props) => {
+  const user = useAppSelector((state) => state.user);
+  if (user.user_id === null && user.userName === null) {
+    return <Navigate to="/" replace />;
+  }
+  return children ? children : <Outlet />;
 };
 
 export default AnimatedRoutes;
