@@ -208,8 +208,13 @@ const Authentication = () => {
           <div className="w-72 m-4">
             <button
               onClick={handleWithGoogle}
-              className="w-full border-2 border-black/30 active:border-black p-2 font-bold rounded-3xl duration-100"
+              className="flex flex-row items-center justify-center w-full border-2 border-black/30 active:border-black p-2 font-bold rounded-3xl duration-100"
             >
+              <img
+                className="h-5 px-2"
+                src={require("../../assets/images/google-icon.png")}
+                alt="google"
+              />
               {isRegister ? "Sign Up" : "Login"} with Google
             </button>
           </div>
@@ -218,8 +223,12 @@ const Authentication = () => {
               onClick={() => setIsRegister(!isRegister)}
               className="text-xs mt-2 active:opacity-75"
             >
-              Don't have an account?{" "}
-              <span className="text-sky-500 underline">Sign Up</span>
+              {isRegister
+                ? "Already have an account? "
+                : "Don't have an account? "}
+              <span className="text-sky-500 underline">
+                {isRegister ? "Log In" : "Sign Up"}
+              </span>
             </button>
           </div>
         </motion.div>
