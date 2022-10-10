@@ -9,6 +9,7 @@ import ListIcon from "./listIcon";
 
 const Header = () => {
   const app = useAppSelector((state) => state.app);
+  const user = useAppSelector((state) => state.user);
   const todoLists = useAppSelector((state) => state.lists.value);
   const dispatch = useAppDispatch();
 
@@ -35,14 +36,13 @@ const Header = () => {
             <div>
               Good Morning,{" "}
               <span className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-sky-400 hover:to-blue-600 duration-300">
-                Brian
+                {user.userName?.split(" ")[0]}
               </span>
             </div>
           ) : (
             selectedList?.title
           )}
         </div>
-
         <div className="fixed">
           <LayoutGroup>
             <AnimatePresence>
