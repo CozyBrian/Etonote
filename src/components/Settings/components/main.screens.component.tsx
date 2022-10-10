@@ -19,10 +19,15 @@ const MainSettings = ({ tabs }: Props) => {
   return (
     <div className="flex w-full h-full flex-col p-2">
       <div className="text-2xl font-semibold pb-1">{selectedTab?.title}</div>
-      <AnimatePresence mode="wait">
-        {selectedTab?.id === tabs[0].id && <Personal key={tabs[0].id} />}
-        {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
-      </AnimatePresence>
+      <div className="relative flex h-full flex-col justify-between ">
+        <AnimatePresence mode="wait">
+          {selectedTab?.id === tabs[0].id && <Personal key={tabs[0].id} />}
+          {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
+        </AnimatePresence>
+        <div className="absolute text-center w-full mx-auto -bottom-8 text-slate-400">
+          Etonote v0.1.1p(web)
+        </div>
+      </div>
     </div>
   );
 };
