@@ -1,8 +1,6 @@
 {
   "extends": [
-    
     "react-app",
-   
     "plugin:prettier/recommended"
   ],
   "plugins": [
@@ -14,10 +12,6 @@
       {
         "endOfLine": "auto"
       }
-    
-  ],
-  "rules": {
-    "linebreak-style": 0 // <----------
-  }
+    ]
   }
 }

@@ -15,12 +15,9 @@ function App() {
       className="duration-100"
     >
       <BackIcon />
-      <div className="flex flex-col h-screen w-screen">
-        <TitleBar />
-        <div className="relative h-full w-screen flex flex-row bg-slate-200/90 dark:bg-zinc-900/95 overflow-hidden backdrop-blur-2xl z-30">
-          <SideBar />
-          <TasksView />
-        </div>
+      <div className="relative h-full w-screen flex flex-row bg-slate-200/90 dark:bg-zinc-900/95 overflow-hidden backdrop-blur-2xl z-30">
+        <SideBar />
+        <TasksView />
       </div>
     </motion.div>
   );
