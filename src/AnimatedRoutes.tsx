@@ -14,9 +14,9 @@ const AnimatedRoutes = () => {
 
   return (
     <div className={global.THEME === "Dark" ? "dark" : ""}>
-      <div className="flex flex-col h-screen w-screen bg-slate-300 dark:bg-zinc-900">
+      <div className="flex flex-col h-screen w-screen bg-slate-300 dark:bg-zinc-900 overflow-hidden">
         <TitleBar />
-        <div className="flex h-full">
+        <div className="flex h-full relative overflow-hidden">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<LoadingScreen />} />

@@ -20,7 +20,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-zinc-800 max-w-1/5 min-w-[300px] flex flex-col p-4 pt-12 select-none">
+    <div className="bg-white dark:bg-zinc-800 max-w-1/5 min-w-[300px] flex flex-col p-4 select-none">
       <AnimatePresence>
         {showAddModal && (
           <AddListModal onClick={() => setShowAddModal(false)} />

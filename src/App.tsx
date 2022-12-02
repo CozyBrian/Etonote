@@ -3,7 +3,6 @@ import TasksView from "./components/Main/tasks.component";
 import SideBar from "./components/Sidebar/sidebar.component";
 import { motion } from "framer-motion";
 import BackIcon from "./components/components/backgroundIcon";
-import TitleBar from "./components/components/title-bar";
 import "./App.css";
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
       className="duration-100"
     >
       <BackIcon />
-      <div className="relative h-full w-screen flex flex-row bg-slate-200/90 dark:bg-zinc-900/95 overflow-hidden backdrop-blur-2xl z-30">
+      <div className="h-full w-screen flex flex-row bg-slate-200/90 dark:bg-zinc-900/95 overflow-hidden backdrop-blur-2xl z-30">
         <SideBar />
         <TasksView />
       </div>

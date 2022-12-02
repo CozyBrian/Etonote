@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useAppSelector } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 
-// import image from "../../assets/images/splash.png";
+import image from "../../assets/images/splash.png";
 
 const LoadingScreen = () => {
   const user = useAppSelector((state) => state.user);
@@ -35,7 +35,7 @@ const LoadingScreen = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="h-48"
-          src={require("../../assets/images/splash.png")}
+          src={image}
           alt="logo"
         />
       </div>

@@ -13,6 +13,8 @@ import { action } from "../../redux";
 import { Oval } from "react-loader-spinner";
 import { getUsername, setUserData } from "../../services/database";
 
+import google from "../../assets/images/google-icon.png";
+
 type Inputs = {
   email: string;
   password: string;
@@ -107,7 +109,7 @@ const Authentication = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="w-screen h-screen flex justify-center items-center bg-slate-300 dark:bg-zinc-900"
+        className="w-screen h-full flex justify-center items-center bg-slate-300 dark:bg-zinc-900"
       >
         <motion.div
           exit={{ opacity: 0 }}
@@ -210,11 +212,7 @@ const Authentication = () => {
               onClick={handleWithGoogle}
               className="flex flex-row items-center justify-center w-full border-2 border-black/30 active:border-black p-2 font-bold rounded-3xl duration-100"
             >
-              <img
-                className="h-5 px-2"
-                src={require("../../assets/images/google-icon.png")}
-                alt="google"
-              />
+              <img className="h-5 px-2" src={google} alt="google" />
               {isRegister ? "Sign Up" : "Login"} with Google
             </button>
           </div>
