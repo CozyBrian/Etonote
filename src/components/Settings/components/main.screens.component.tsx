@@ -1,6 +1,9 @@
 import React from "react";
 import { action } from "../../../redux";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { AnimatePresence, motion } from "framer-motion";
+import { logOutUser } from "../../../services/authentication";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   tabs: { id: string; title: string }[];
@@ -16,14 +19,82 @@ const MainSettings = ({ tabs }: Props) => {
   return (
     <div className="flex w-full h-full flex-col p-2">
       <div className="text-2xl font-semibold pb-1">{selectedTab?.title}</div>
-      {selectedTab?.id === tabs[0].id && <Personal />}
-      {selectedTab?.id === tabs[1].id && <Appearance />}
+      <div className="relative flex h-full flex-col justify-between ">
+        <AnimatePresence mode="wait">
+          {selectedTab?.id === tabs[0].id && <Personal key={tabs[0].id} />}
+          {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
+        </AnimatePresence>
+        <div className="absolute text-center w-full mx-auto -bottom-8 text-slate-400">
+          Etonote v0.1.1p(web)
+        </div>
+      </div>
     </div>
   );
 };
 
 const Personal = () => {
-  return <div></div>;
+  const user = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  const handleSignOut = () => {
+    if (user.user_id) {
+      logOutUser()
+        .then(() => {
+          dispatch(action.app.setShowSettingsPanel());
+          dispatch(action.user.setUserLogout());
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const ClearStorage = () => {
+    window.localStorage.clear();
+    console.log("Cleared");
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.08 }}
+      className="flex flex-col gap-4"
+    >
+      <div>
+        User ID:
+        <span>{user.user_id}</span>
+      </div>
+      <div>
+        Username:
+        <span>{user.userName}</span>
+      </div>
+      <div>
+        Email:
+        <span>{user.userEmail}</span>
+      </div>
+      <div>
+        <button
+          onClick={handleSignOut}
+          className="bg-red-500 active:bg-red-600 text-white px-6 py-2 rounded-lg duration-200"
+        >
+          Logout
+        </button>
+      </div>
+      <div>
+        <button
+          onClick={ClearStorage}
+          className="border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-700 text-red-500 active:text-white px-6 py-2 rounded-lg duration-200"
+        >
+          Clear Storage
+        </button>
+      </div>
+    </motion.div>
+  );
 };
 
 const Appearance = () => {
@@ -37,7 +108,13 @@ const Appearance = () => {
   const themes = [{ title: "Light" }, { title: "Dark" }];
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.08 }}
+      className="flex flex-col h-full w-full"
+    >
       <div className="text-xl font-normal text-gray-700 dark:text-gray-300 pb-1">
         Theme
       </div>
@@ -53,7 +130,7 @@ const Appearance = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

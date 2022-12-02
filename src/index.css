@@ -35,6 +35,7 @@
 
 body {
   margin: 0;
+  background-color: rgb(226 232 240 / 0.9);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -55,10 +56,9 @@ body {
 
 .dark .emoji-picker-react {
   border: 0px solid rgb(63 63 70 / 0.5) !important;
-
 }
 
-.dark .emoji-picker-react input.emoji-search{
+.dark .emoji-picker-react input.emoji-search {
   border: 0px solid rgb(63 63 70 / 0.5) !important;
   color: white !important;
   border-radius: 0.5rem !important;
@@ -82,6 +82,20 @@ body {
 
 .dark .emoji-picker-react .emoji-group:before {
   background: rgb(24 24 27 / 0.9) !important;
+}
+
+.color-picker .react-colorful {
+  height: 100%;
+}
+
+.color-picker .react-colorful__saturation {
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.color-picker .react-colorful__hue {
+  height: 14px;
+  border-radius: 5px;
 }
 
 @tailwind base;

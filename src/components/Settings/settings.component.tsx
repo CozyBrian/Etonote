@@ -38,7 +38,7 @@ const Settings = () => {
           <div className="text-3xl font-semibold">Settings</div>
           <button
             onClick={close}
-            className="p-2 hover:bg-slate-300 dark:hover:bg-slate-600 active:bg-slate-400 dark:active:bg-slate-700 dark:text-white w-4 h-4 flex items-center justify-center duration-100 rounded-md"
+            className="p-4 hover:bg-slate-300 dark:hover:bg-slate-600 active:bg-slate-400 dark:active:bg-slate-700 dark:text-white w-4 h-4 flex items-center justify-center duration-100 rounded-md"
           >
             <FontAwesomeIcon icon={faClose} size="lg" />
           </button>

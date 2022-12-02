@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -89,12 +89,14 @@ export const AddListModal = ({ onClick }: PropsA) => {
             <ListIcon iconData={iconData} variant="fill" />
           </div>
           <div className="absolute top-16 left-0">
-            {showEmojiPicker && (
-              <EmojiSetPicker
-                onEmojiClick={setEmoji}
-                onColorSetClick={setColorSet}
-              />
-            )}
+            <AnimatePresence>
+              {showEmojiPicker && (
+                <EmojiSetPicker
+                  onEmojiClick={setEmoji}
+                  onColorSetClick={setColorSet}
+                />
+              )}
+            </AnimatePresence>
           </div>
           <input
             className="border-none w-full outline-none text-white bg-slate-300 dark:text-gray-300 dark:bg-zinc-800 dark:focus:bg-zinc-600 focus:bg-gray-400 focus:placeholder:text-gray-300 focus:text-2xl p-4 rounded-2xl duration-150"
@@ -110,7 +112,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
         <div className="flex flex-row justify-end pt-4">
           <div
             onClick={() => createList()}
-            className="cursor-pointer px-4 bg-sky-500 p-2 rounded-lg text-white duration-150 hover:bg-slate-400/30 active:bg-slate-400 font-semibold"
+            className="cursor-pointer px-4 hover:bg-sky-500 dark:text-white hover:text-white text-black p-2 rounded-lg duration-150 bg-slate-400/30 active:bg-slate-400 font-semibold"
           >
             Create
           </div>

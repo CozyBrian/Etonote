@@ -1,8 +1,11 @@
 import EmojiPicker, { IEmojiData } from "emoji-picker-react";
 import React, { useState } from "react";
 import { ListIconData } from "../../@types";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { AnimatePresence, motion } from "framer-motion";
+import { HexColorPicker } from "react-colorful";
+import pickTextColorBasedOnBgColor from "../../utils/textColor";
+import { action } from "../../redux";
 
 type Props = {
   onEmojiClick: (
@@ -15,25 +18,38 @@ type Props = {
 const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
   const global = useAppSelector((state) => state.system);
   const [selectedTab, setSelectedTab] = useState("COLOR");
-  const [selectedColor, setSelectedColor] = useState("");
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("#ffffff");
+  const dispatch = useAppDispatch();
+
+  const user_colors = global.userColors;
 
   const colors = [
-    "#003844",
     "#FFB100",
-    "#F194B4",
     "#56494C",
-    "#7CAE7A",
-    "#007CBE",
     "#00AF54",
     "#3CBBB1",
-    "#0A369D",
-    "#4472CA",
+    "#007CBE",
     "#5E7CE2",
-    "#92B4F4",
     "#CFDEE7",
+    ...user_colors,
   ];
+
+  const handleColorPicker = () => {
+    setIsColorPickerOpen(!isColorPickerOpen);
+    if (isColorPickerOpen) {
+      dispatch(action.system.setColor(selectedColor));
+    }
+  };
+
   return (
-    <motion.div className="border dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 shadow-sm backdrop-blur-md rounded-2xl duration-200">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.1 }}
+      className="border dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 shadow-sm backdrop-blur-md rounded-2xl duration-200"
+    >
       <div className="flex flex-row w-full p-2 gap-1">
         <div
           onClick={() => setSelectedTab("COLOR")}
@@ -80,12 +96,12 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className=" justify-center p-2 w-[286px]"
+            className="relative justify-center p-2 w-[286px]"
           >
             <div className="grid grid-cols-7">
-              {colors.map((item) => (
+              {colors.map((item, i) => (
                 <div
-                  key={item}
+                  key={i}
                   onClick={() => {
                     setSelectedColor(item);
                     onColorSetClick({ type: "COLOR", data: item });
@@ -100,10 +116,30 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
             </div>
             <div className="mt-8 p-2 text-sm flex flex-row justify-between items-center dark:text-slate-50">
               <div>Custom color:</div>
-              <div className="w-[70px] h-7 px-1 py-0.5 rounded-md bg-gray-300 dark:bg-zinc-700">
+              <div
+                onClick={handleColorPicker}
+                style={{
+                  backgroundColor: selectedColor,
+                  color: pickTextColorBasedOnBgColor(
+                    selectedColor,
+                    "#fff",
+                    "#000"
+                  ),
+                }}
+                className="flex items-center justify-center w-[70px] h-7 px-1 py-0.5 rounded-md border bg-gray-300 dark:bg-zinc-700"
+              >
                 {selectedColor}
               </div>
             </div>
+            {isColorPickerOpen && (
+              <div className=" flex color-picker absolute h-48 p-2 -right-[14rem] -top-10 border dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 shadow-sm backdrop-blur-md rounded-2xl duration-200">
+                <HexColorPicker
+                  className="flex-row"
+                  color={selectedColor}
+                  onChange={setSelectedColor}
+                />
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
