@@ -47,6 +47,9 @@ const todoLists = createSlice({
     deleteList(state, action: PayloadAction<string | undefined>) {
       state.value = state.value.filter((item) => item.id !== action.payload);
     },
+    setState(state, action: PayloadAction<todoList>) {
+      state = action.payload;
+    },
   },
 });
 

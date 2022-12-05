@@ -1,4 +1,4 @@
-import { child, get, getDatabase, ref, set } from "firebase/database";
+import { child, get, getDatabase, ref, set, update } from "firebase/database";
 import app from "../firebase/firebase";
 
 export const setUserData = (
@@ -12,6 +12,23 @@ export const setUserData = (
     username: name,
     email: email,
     todoLists: {},
+  });
+};
+export const getUserState = async (userId: string) => {
+  const db = getDatabase(app);
+  const userState = await get(child(ref(db), "users/" + userId + "/state"));
+  if (userState.exists()) {
+    return userState.val().system;
+  } else {
+    return null;
+  }
+};
+
+export const setUserState = (userId: string, state: any) => {
+  const db = getDatabase(app);
+
+  update(ref(db, "users/" + userId + "/state"), state).catch((error) => {
+    console.log(error);
   });
 };
 

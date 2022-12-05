@@ -21,6 +21,9 @@ const systemState = createSlice({
   name: "system",
   initialState,
   reducers: {
+    setState(state, action: PayloadAction<system_state>) {
+      state = action.payload;
+    },
     setTheme(state, action: PayloadAction<string>) {
       state.THEME = action.payload;
     },

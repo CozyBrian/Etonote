@@ -59,6 +59,9 @@ const todos = createSlice({
     deleteTodo(state, action: PayloadAction<string | undefined>) {
       state.value = state.value.filter((item) => item.id !== action.payload);
     },
+    setState(state, action: PayloadAction<todosList>) {
+      state = action.payload;
+    },
   },
 });
 
