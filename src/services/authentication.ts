@@ -7,6 +7,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
+export const user_auth = getAuth();
+
 const provider = new GoogleAuthProvider();
 
 export const registerUser = (email: string, password: string) => {
