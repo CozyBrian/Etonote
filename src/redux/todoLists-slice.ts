@@ -48,7 +48,7 @@ const todoLists = createSlice({
       state.value = state.value.filter((item) => item.id !== action.payload);
     },
     setState(state, action: PayloadAction<todoList>) {
-      state = action.payload;
+      state.value = action.payload.value;
     },
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { today } from "../../utils/date";
+import { timeOfDay, today } from "../../utils/date";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,7 +34,7 @@ const Header = () => {
         <div className="text-xl font-medium dark:text-slate-100">
           {app.selectedTab === app.homeId ? (
             <div>
-              Good Morning,{" "}
+              Good {timeOfDay},{" "}
               <span className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-sky-400 hover:to-blue-600 duration-300">
                 {user.userName?.split(" ")[0]}
               </span>

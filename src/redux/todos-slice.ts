@@ -60,7 +60,7 @@ const todos = createSlice({
       state.value = state.value.filter((item) => item.id !== action.payload);
     },
     setState(state, action: PayloadAction<todosList>) {
-      state = action.payload;
+      state.value = action.payload.value;
     },
   },
 });

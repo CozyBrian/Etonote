@@ -24,16 +24,7 @@ const EmojiSetPicker = ({ onEmojiClick, onColorSetClick }: Props) => {
 
   const user_colors = global.userColors;
 
-  const colors = [
-    "#FFB100",
-    "#56494C",
-    "#00AF54",
-    "#3CBBB1",
-    "#007CBE",
-    "#5E7CE2",
-    "#CFDEE7",
-    ...user_colors,
-  ];
+  const colors = [...user_colors];
 
   const handleColorPicker = () => {
     setIsColorPickerOpen(!isColorPickerOpen);

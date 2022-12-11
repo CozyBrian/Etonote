@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useNavigate } from "react-router-dom";
+import { getUserState } from "../../services/database";
+import { action } from "../../redux";
 
 // import image from "../../assets/images/splash.png";
 
 const LoadingScreen = () => {
   const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setTimeout(() => {
       console.log(user);
 
       if (user.user_id !== null) {
-        navigate("/home");
+        getUserState(user.user_id).then((res) => {
+          dispatch(action.system.setState(res.system));
+          dispatch(action.lists.setState(res.lists));
+          dispatch(action.todos.setState(res.todos));
+          navigate("/home");
+        });
       } else {
         navigate("/login");
       }

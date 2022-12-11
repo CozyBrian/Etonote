@@ -32,7 +32,7 @@ const Authentication = () => {
       if (isRegister) {
         navigate("/newUser");
       } else {
-        navigate("/home");
+        navigate("/");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

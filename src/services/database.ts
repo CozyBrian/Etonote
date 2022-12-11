@@ -18,7 +18,9 @@ export const getUserState = async (userId: string) => {
   const db = getDatabase(app);
   const userState = await get(child(ref(db), "users/" + userId + "/state"));
   if (userState.exists()) {
-    return userState.val().system;
+    console.log(userState.val());
+
+    return userState.val();
   } else {
     return null;
   }

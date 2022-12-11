@@ -54,6 +54,7 @@ const Personal = () => {
 
   const ClearStorage = () => {
     window.localStorage.clear();
+    localStorage.clear();
     console.log("Cleared");
   };
 
