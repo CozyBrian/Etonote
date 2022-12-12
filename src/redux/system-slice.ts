@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { loadFromLocalStorage } from ".";
-
-interface system_state {
-  THEME: string;
-  userColors: string[];
-}
+import { system_state } from "../@types";
 
 const initialState = (): system_state => {
   if (loadFromLocalStorage() !== undefined) {

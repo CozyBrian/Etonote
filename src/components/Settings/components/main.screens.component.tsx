@@ -39,6 +39,8 @@ const Personal = () => {
   const dispatch = useAppDispatch();
 
   const handleSignOut = () => {
+    window.localStorage.removeItem("persistantState");
+    localStorage.removeItem("persistantState");
     if (user.user_id) {
       logOutUser()
         .then(() => {
@@ -53,8 +55,8 @@ const Personal = () => {
   };
 
   const ClearStorage = () => {
-    window.localStorage.clear();
-    localStorage.clear();
+    window.localStorage.removeItem("persistantState");
+    localStorage.removeItem("persistantState");
     console.log("Cleared");
   };
 

@@ -28,6 +28,7 @@ const Authentication = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    localStorage.removeItem("persistantState");
     if (user.user_id !== null) {
       if (isRegister) {
         navigate("/newUser");

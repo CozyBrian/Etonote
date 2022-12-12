@@ -2,26 +2,28 @@ import TasksView from "./components/Main/tasks.component";
 import SideBar from "./components/Sidebar/sidebar.component";
 import { motion } from "framer-motion";
 import BackIcon from "./components/components/backgroundIcon";
-// import { getDatabase, ref, onValue } from "firebase/database";
-// import { useAppDispatch, useAppSelector } from "./hooks";
-// import { action } from "./redux";
-// import { useEffect } from "react";
+import store from "./redux";
+import { useEffect } from "react";
+import { setUserState } from "./services/database";
 
 function App() {
-  // const User = useAppSelector((state) => state.user);
-  // const dispatch = useAppDispatch();
+  useEffect(() => {
+    const storeCloud = store.subscribe(() => {
+      const state = store.getState();
 
-  // const db = getDatabase();
-  // const userStateRef = ref(db, "users/" + User.user_id + "/state");
+      if (state.user.user_id) {
+        setUserState(state.user.user_id, {
+          system: state.system,
+          lists: state.lists,
+          todos: state.todos,
+        });
+      }
+    });
 
-  // useEffect(() => {
-  //   onValue(userStateRef, (snapshot) => {
-  //     const data = snapshot.val();
-  //     dispatch(action.system.setState(data.system));
-  //     dispatch(action.lists.setState(data.lists));
-  //     dispatch(action.todos.setState(data.todos));
-  //   });
-  // }, []);
+    return () => {
+      storeCloud();
+    };
+  }, []);
 
   return (
     <motion.div
