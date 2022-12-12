@@ -56,22 +56,6 @@ const store = configureStore({
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
-let initActive = false;
-
-store.subscribe(() => {
-  const state = store.getState();
-
-  if (initActive) {
-    if (state.user.user_id) {
-      setUserState(state.user.user_id, {
-        system: state.system,
-        lists: state.lists,
-        todos: state.todos,
-      });
-    }
-  }
-
-  initActive = true;
-});
+setUserState("dumb", {});
 
 export default store;

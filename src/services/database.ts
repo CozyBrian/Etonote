@@ -27,6 +27,10 @@ export const getUserState = async (userId: string) => {
 };
 
 export const setUserState = (userId: string, state: any) => {
+  if (userId === "dumb") {
+    return;
+  }
+
   const db = getDatabase(app);
 
   update(ref(db, "users/" + userId + "/state"), state).catch((error) => {
