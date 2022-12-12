@@ -14,8 +14,6 @@ const LoadingScreen = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log(user);
-
       if (user.user_id !== null) {
         getUserState(user.user_id).then((res) => {
           dispatch(action.system.setState(res.system));
