@@ -25,7 +25,7 @@ const MainSettings = ({ tabs }: Props) => {
           {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
         </AnimatePresence>
         <div className="absolute text-center w-full mx-auto -bottom-8 text-slate-400">
-          Etonote v0.1.1p(web)
+          Etonote v0.1.5(web)
         </div>
       </div>
     </div>
@@ -39,6 +39,8 @@ const Personal = () => {
   const dispatch = useAppDispatch();
 
   const handleSignOut = () => {
+    window.localStorage.removeItem("persistantState");
+    localStorage.removeItem("persistantState");
     if (user.user_id) {
       logOutUser()
         .then(() => {
@@ -53,7 +55,8 @@ const Personal = () => {
   };
 
   const ClearStorage = () => {
-    window.localStorage.clear();
+    window.localStorage.removeItem("persistantState");
+    localStorage.removeItem("persistantState");
     console.log("Cleared");
   };
 
@@ -65,10 +68,6 @@ const Personal = () => {
       transition={{ duration: 0.08 }}
       className="flex flex-col gap-4"
     >
-      <div>
-        User ID:
-        <span>{user.user_id}</span>
-      </div>
       <div>
         Username:
         <span>{user.userName}</span>
@@ -100,8 +99,6 @@ const Personal = () => {
 const Appearance = () => {
   const dispatch = useAppDispatch();
   const setTheme = (theme: string) => {
-    console.log(theme);
-
     return dispatch(action.system.setTheme(theme));
   };
 

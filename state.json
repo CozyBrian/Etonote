@@ -1,0 +1,76 @@
+{
+  "app": {
+    "selectedTab": "IzeReY",
+    "homeId": "IzeReY",
+    "isSplash": true,
+    "showSettingsPanel": false,
+    "selectedSettingsTab": "AA"
+  },
+  "lists": {
+    "value": [
+      {
+        "id": "IzeReY",
+        "title": "Home",
+        "icon": { "type": "COLOR", "data": "#0ea5e9" }
+      },
+      {
+        "id": "rFZbxg",
+        "title": "Gaming",
+        "icon": { "type": "EMOJI", "data": "🎮" }
+      },
+      {
+        "id": "ZslvWl",
+        "title": "School",
+        "icon": { "type": "EMOJI", "data": "📚" }
+      },
+      {
+        "icon": { "type": "COLOR", "data": "#00AF54" },
+        "title": "Garden",
+        "id": "8j4GEb"
+      },
+      {
+        "icon": { "type": "COLOR", "data": "#ef59ff" },
+        "title": "Pink Party",
+        "id": "JIDgOv"
+      }
+    ]
+  },
+  "todos": {
+    "value": [
+      {
+        "listID": "IzeReY",
+        "title": "Plan a dance party",
+        "icon": { "type": "COLOR", "data": "#0ea5e9" },
+        "isDone": false,
+        "id": "22zoqNJF2J"
+      },
+      {
+        "listID": "8j4GEb",
+        "title": "Plant the carrots",
+        "icon": { "type": "COLOR", "data": "#00AF54" },
+        "isDone": false,
+        "id": "W3gKmcytKR"
+      },
+      {
+        "id": "Zc8CvQsq-X",
+        "listID": "rFZbxg",
+        "title": "Buy a PS5",
+        "icon": { "type": "EMOJI", "data": "🎮" },
+        "isDone": true
+      },
+      {
+        "id": "XKcRT9C3Eo",
+        "listID": "ZslvWl",
+        "title": "Study Numerical Algerbra",
+        "icon": { "type": "EMOJI", "data": "📚" },
+        "isDone": true
+      }
+    ]
+  },
+  "system": { "THEME": "Light", "userColors": ["#ef59ff"] },
+  "user": {
+    "user_id": "UvjgmtGrXdXZixaLFMPCwSoGYjv1",
+    "userName": "Brian Newton",
+    "userEmail": "dragonbrian33@gmail.com"
+  }
+}

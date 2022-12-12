@@ -10,7 +10,7 @@ const ListIcon = ({ iconData, variant }: Props) => {
   return (
     <div>
       {iconData.type === "EMOJI" ? (
-        <div className="mx-1">{iconData.data}</div>
+        <div className={`mx-1`}>{iconData.data}</div>
       ) : (
         <div style={{ color: iconData.data }} className={`eton-icon mx-1`}>
           {variant === "fill" && ""}

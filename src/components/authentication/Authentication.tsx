@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
 import {
+  afterRedirect,
   getError,
   loginUser,
   loginWithGoogle,
@@ -30,15 +31,31 @@ const Authentication = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    localStorage.removeItem("persistantState");
     if (user.user_id !== null) {
       if (isRegister) {
         navigate("/newUser");
       } else {
-        navigate("/home");
+        navigate("/");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
+  useEffect(() => {
+    afterRedirect().then((result) => {
+      if (result !== null) {
+        const user = result.user;
+        dispatch(
+          action.user.setActiveUser({
+            userName: user.displayName,
+            userEmail: user.email,
+            user_id: user.uid,
+          })
+        );
+      }
+    });
+  }, [dispatch]);
 
   const {
     register,
@@ -88,15 +105,7 @@ const Authentication = () => {
   };
 
   const handleWithGoogle = () => {
-    loginWithGoogle().then((result) => {
-      dispatch(
-        action.user.setActiveUser({
-          userName: result.user.displayName,
-          userEmail: result.user.email,
-          user_id: result.user.uid,
-        })
-      );
-    });
+    loginWithGoogle().then((result) => {});
   };
 
   const handleOnChange = () => {

@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { taskItem } from "../@types";
+import { taskItem, todosList } from "../@types";
 import { nanoid } from "nanoid";
 import { loadFromLocalStorage } from ".";
-
-interface todosList {
-  value: taskItem[];
-}
 
 const initialState = (): todosList => {
   if (loadFromLocalStorage() !== undefined) {
@@ -58,6 +54,9 @@ const todos = createSlice({
     },
     deleteTodo(state, action: PayloadAction<string | undefined>) {
       state.value = state.value.filter((item) => item.id !== action.payload);
+    },
+    setState(state, action: PayloadAction<todosList>) {
+      state.value = action.payload.value;
     },
   },
 });

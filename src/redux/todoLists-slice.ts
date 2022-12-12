@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ListIconData, SidebarItem } from "../@types";
+import { ListIconData, todoList } from "../@types";
 import { nanoid } from "nanoid";
 import { loadFromLocalStorage } from ".";
-
-interface todoList {
-  value: SidebarItem[];
-}
 
 const initialState = (): todoList => {
   if (loadFromLocalStorage() !== undefined) {
@@ -46,6 +42,9 @@ const todoLists = createSlice({
     },
     deleteList(state, action: PayloadAction<string | undefined>) {
       state.value = state.value.filter((item) => item.id !== action.payload);
+    },
+    setState(state, action: PayloadAction<todoList>) {
+      state.value = action.payload.value;
     },
   },
 });
