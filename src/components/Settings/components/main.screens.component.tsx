@@ -25,7 +25,7 @@ const MainSettings = ({ tabs }: Props) => {
           {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
         </AnimatePresence>
         <div className="absolute text-center w-full mx-auto -bottom-8 text-slate-400">
-          Etonote v0.1.5(web)
+          Etonote v0.1.5(macOS)
         </div>
       </div>
     </div>
