@@ -69,10 +69,6 @@ const Personal = () => {
       className="flex flex-col gap-4"
     >
       <div>
-        User ID:
-        <span>{user.user_id}</span>
-      </div>
-      <div>
         Username:
         <span>{user.userName}</span>
       </div>
@@ -103,8 +99,6 @@ const Personal = () => {
 const Appearance = () => {
   const dispatch = useAppDispatch();
   const setTheme = (theme: string) => {
-    console.log(theme);
-
     return dispatch(action.system.setTheme(theme));
   };
 
