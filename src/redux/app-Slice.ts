@@ -1,12 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface app_state {
-  selectedTab: string;
-  homeId: string;
-  isSplash: boolean;
-  showSettingsPanel: boolean;
-  selectedSettingsTab: string;
-}
+import { app_state } from "../@types";
 
 const initialState: app_state = {
   selectedTab: "IzeReY",

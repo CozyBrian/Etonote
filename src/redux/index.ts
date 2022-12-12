@@ -5,6 +5,7 @@ import appState from "./app-Slice";
 import systemState from "./system-slice";
 import userState from "./user-slice";
 import { setUserState } from "../services/database";
+import { cloud_state } from "../@types";
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
@@ -56,6 +57,6 @@ const store = configureStore({
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
-setUserState("dumb", {});
+setUserState("dumb", {} as cloud_state);
 
 export default store;

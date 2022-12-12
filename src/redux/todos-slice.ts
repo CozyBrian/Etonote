@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { taskItem } from "../@types";
+import { taskItem, todosList } from "../@types";
 import { nanoid } from "nanoid";
 import { loadFromLocalStorage } from ".";
-
-interface todosList {
-  value: taskItem[];
-}
 
 const initialState = (): todosList => {
   if (loadFromLocalStorage() !== undefined) {

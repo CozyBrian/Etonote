@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loadFromLocalStorage } from ".";
-
-interface user_state {
-  user_id: string | null;
-  userName: string | null;
-  userEmail: string | null;
-}
+import { user_state } from "../@types";
 
 const initialState = (): user_state => {
   if (loadFromLocalStorage() !== undefined) {

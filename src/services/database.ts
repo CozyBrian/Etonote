@@ -1,4 +1,5 @@
 import { child, get, getDatabase, ref, set, update } from "firebase/database";
+import { cloud_state } from "../@types";
 import app from "../firebase/firebase";
 
 export const setUserData = (
@@ -26,7 +27,7 @@ export const getUserState = async (userId: string) => {
   }
 };
 
-export const setUserState = (userId: string, state: any) => {
+export const setUserState = (userId: string, state: cloud_state) => {
   if (userId === "dumb") {
     return;
   }
