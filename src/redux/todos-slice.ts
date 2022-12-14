@@ -15,6 +15,7 @@ const initialState = (): todosList => {
           title: "Buy a PS5",
           icon: { type: "EMOJI", data: "🎮" },
           isDone: true,
+          note: "",
         },
         {
           id: "XKcRT9C3Eo",
@@ -22,6 +23,7 @@ const initialState = (): todosList => {
           title: "Study Numerical Algerbra",
           icon: { type: "EMOJI", data: "📚" },
           isDone: true,
+          note: "",
         },
         {
           id: "rnx0ul9z-e",
@@ -29,6 +31,7 @@ const initialState = (): todosList => {
           title: "Buy Playstation 4 and get some games",
           icon: { type: "EMOJI", data: "🎮" },
           isDone: false,
+          note: "",
         },
       ],
     };

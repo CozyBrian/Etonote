@@ -10,6 +10,7 @@ export declare type taskItem = {
   title: string;
   isDone: boolean;
   icon: ListIconData;
+  note: string;
 };
 
 export declare type ListIconData = {
@@ -26,6 +27,9 @@ export interface app_state {
   showAddEditPanel: boolean;
   addEditPanelMode: "ADD" | "EDIT";
   addEditPanelData: string | null;
+  showTaskDetails: boolean;
+  taskDetailsData: string | null;
+  taskDetailsMode: "READ" | "WRITE";
 }
 
 export interface system_state {

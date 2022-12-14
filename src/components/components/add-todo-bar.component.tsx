@@ -30,6 +30,7 @@ const AddTodoInput = () => {
           title: todoTitle,
           icon: todoIcon,
           isDone: false,
+          note: "",
         })
       );
     }

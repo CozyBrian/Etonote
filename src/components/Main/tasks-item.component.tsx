@@ -39,12 +39,14 @@ const TaskItem = ({ item, onClick }: Props) => {
       transition={{ duration: 0.3 }}
     >
       {showMenu && <TodoContextMenu id={item.id} x={x} y={y} />}
-      <div
+      <motion.div
+        layoutId={item.id}
         ref={itemRef}
         className="w-full flex flex-row bg-white dark:bg-zinc-800 h-14 rounded-2xl p-2 items-center justify-between my-2 select-none"
       >
         <div className="flex flex-row items-center w-full">
-          <div
+          <motion.div
+            layoutId={`${item.id}-isDone`}
             onClick={() => onClick()}
             className="h-5 w-5 flex justify-center items-center bg-zinc-200 dark:bg-zinc-700 rounded-md mx-2"
           >
@@ -53,17 +55,24 @@ const TaskItem = ({ item, onClick }: Props) => {
               animate={item.isDone ? "done" : "notDone"}
               variants={variants}
             ></motion.div>
-          </div>
+          </motion.div>
           <div className="w-[42rem]">
-            <div className="font-['Montserrat'] w-[42rem] truncate dark:text-slate-100">
+            <motion.p
+              layoutId={`${item.id}-title`}
+              className="font-['Montserrat'] w-[42rem] truncate dark:text-slate-100"
+            >
               {item.title}
-            </div>
+            </motion.p>
           </div>
         </div>
-        <div className="text-lg rounded-md mx-2">
+        <motion.div
+          layoutId={`${item.id}-icon`}
+          layout="preserve-aspect"
+          className="text-lg rounded-md mx-2"
+        >
           <ListIcon iconData={DefaultIcon} variant="outline-thick" />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };
