@@ -23,6 +23,9 @@ export interface app_state {
   isSplash: boolean;
   showSettingsPanel: boolean;
   selectedSettingsTab: string;
+  showAddEditPanel: boolean;
+  addEditPanelMode: "ADD" | "EDIT";
+  addEditPanelData: string | null;
 }
 
 export interface system_state {

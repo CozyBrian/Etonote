@@ -30,9 +30,9 @@ var date = (now.getDate() < 10 ? "" : "") + now.getDate();
 function formatAMPM(date: Date) {
   var hours = date.getHours();
   let ampm = "";
-  if (hours < 24) {
+  if (hours < 24 && hours >= 18) {
     ampm = "Evening";
-  } else if (hours < 15) {
+  } else if (hours < 18 && hours >= 12) {
     ampm = "Afternoon";
   } else {
     ampm = "Morning";

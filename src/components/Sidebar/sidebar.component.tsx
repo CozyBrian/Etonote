@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import SideBarItem from "./components/sidebar-item.component";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import AddListButton from "./components/addLists-button";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 import { AddListModal } from "../components/list-modal.component";
+import { action } from "../../redux";
 
 const SideBar = () => {
-  const [showAddModal, setShowAddModal] = useState(false);
   const app = useAppSelector((state) => state.app);
   const todoLists = useAppSelector((state) => state.lists.value);
   const list = useAppSelector((state) => state.todos.value);
+  const dispatch = useAppDispatch();
 
   const filteredTodo = (id: string) => {
     if (id === app.homeId) {
@@ -19,22 +20,27 @@ const SideBar = () => {
     }
   };
 
+  const setShowAddEditPanel = (value: boolean) => {
+    dispatch(action.app.setAddEditPanelMode("ADD"));
+    dispatch(action.app.setShowAddEditPanel(value));
+  };
+
   return (
     <div className="bg-white dark:bg-zinc-800 max-w-1/5 min-w-[350px] flex rounded-2xl m-2 flex-col p-8 pt-12 select-none">
       <AnimatePresence>
-        {showAddModal && (
-          <AddListModal onClick={() => setShowAddModal(false)} />
+        {app.showAddEditPanel && (
+          <AddListModal onClick={() => setShowAddEditPanel(false)} />
         )}
       </AnimatePresence>
       <LayoutGroup>
-        {todoLists.map((item, i) => (
+        {todoLists.map((item, _) => (
           <SideBarItem
             key={item.id}
             item={item}
             number={filteredTodo(item.id)}
           />
         ))}
-        <AddListButton onClick={() => setShowAddModal(true)} />
+        <AddListButton onClick={() => setShowAddEditPanel(true)} />
       </LayoutGroup>
     </div>
   );

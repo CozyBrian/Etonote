@@ -7,6 +7,9 @@ const initialState: app_state = {
   isSplash: true,
   showSettingsPanel: false,
   selectedSettingsTab: "AA",
+  showAddEditPanel: false,
+  addEditPanelMode: "ADD",
+  addEditPanelData: null,
 };
 
 const appState = createSlice({
@@ -24,6 +27,21 @@ const appState = createSlice({
     },
     setShowSettingsPanel(state) {
       state.showSettingsPanel = !state.showSettingsPanel;
+    },
+    setShowAddEditPanel(state, action: PayloadAction<boolean>) {
+      if (action.payload === false) {
+        state.addEditPanelData = null;
+      }
+      state.showAddEditPanel = action.payload;
+    },
+    setAddEditPanelMode(state, action: PayloadAction<"ADD" | "EDIT">) {
+      state.addEditPanelMode = action.payload;
+    },
+    setAddEditPanelData(
+      state,
+      action: PayloadAction<app_state["addEditPanelData"]>
+    ) {
+      state.addEditPanelData = action.payload;
     },
   },
 });
