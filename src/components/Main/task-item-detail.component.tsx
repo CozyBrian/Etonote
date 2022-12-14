@@ -33,7 +33,7 @@ const TaskItemDetail = () => {
       <motion.div
         layoutId={item.id}
         ref={CardRef}
-        className="bg-white/70 dark:bg-zinc-800/80 backdrop-blur-sm rounded-2xl w-[40rem] p-8"
+        className="bg-white/70 dark:bg-zinc-800/80 backdrop-blur-sm rounded-2xl w-[40rem] p-8 border border-slate-200 dark:border-none"
       >
         <motion.div
           layoutId={`${item.id}-icon`}
@@ -55,6 +55,14 @@ const TaskItemDetail = () => {
               readOnly
               className="w-full h-full bg-transparent text-lg dark:text-slate-100 focus:outline-none"
             />
+          </div>
+        </div>
+        <div className="flex mt-4 justify-end">
+          <div
+            onClick={() => {}}
+            className="cursor-pointer px-6 hover:bg-sky-500 dark:text-white hover:text-white text-black p-2 rounded-lg duration-150 bg-slate-400/30 active:bg-slate-400 font-semibold"
+          >
+            Save
           </div>
         </div>
       </motion.div>

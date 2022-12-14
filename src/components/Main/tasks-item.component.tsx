@@ -1,25 +1,17 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ListIconData, taskItem } from "../../@types";
+import { taskItem } from "../../@types";
 import useRightClickMenu from "../../hooks/useRightClickMenu";
 import { TodoContextMenu } from "../components/contextMenu";
 import ListIcon from "../components/listIcon";
-import { useAppSelector } from "../../hooks";
 
 interface Props {
   item: taskItem;
   onClick: any;
 }
 const TaskItem = ({ item, onClick }: Props) => {
-  const lists = useAppSelector((state) => state.lists.value);
   const itemRef = useRef(null);
   const { x, y, showMenu } = useRightClickMenu(itemRef);
-
-  const ItemIcon = lists.find((list) => list.id === item.listID)?.icon;
-
-  const DefaultIcon = ItemIcon
-    ? ItemIcon
-    : ({ type: "COLOR", data: "#e90e0e" } as ListIconData);
 
   const variants = {
     done: {
@@ -70,7 +62,7 @@ const TaskItem = ({ item, onClick }: Props) => {
           layout="preserve-aspect"
           className="text-lg rounded-md mx-2"
         >
-          <ListIcon iconData={DefaultIcon} variant="outline-thick" />
+          <ListIcon iconData={item.icon} variant="outline-thick" />
         </motion.div>
       </motion.div>
     </motion.div>

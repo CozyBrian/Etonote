@@ -58,6 +58,12 @@ const todos = createSlice({
     deleteTodo(state, action: PayloadAction<string | undefined>) {
       state.value = state.value.filter((item) => item.id !== action.payload);
     },
+    editTodo(state, action: PayloadAction<taskItem>) {
+      const index = state.value.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.value[index] = action.payload;
+    },
     setState(state, action: PayloadAction<todosList>) {
       state.value = action.payload.value;
     },
