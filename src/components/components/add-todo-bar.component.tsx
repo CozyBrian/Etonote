@@ -20,6 +20,7 @@ const AddTodoInput = () => {
   const dispatch = useAppDispatch();
 
   const addTodoItem = (e: React.ChangeEvent<any>) => {
+    const todoTitleDate = todoTitle.split("//");
     e.preventDefault();
     setShowIconFlag(false);
     setShowIconMenu(false);
@@ -27,10 +28,10 @@ const AddTodoInput = () => {
       dispatch(
         action.todos.addTodo({
           listID: todoListId,
-          title: todoTitle,
+          title: todoTitleDate[0].trim(),
           icon: todoIcon,
           isDone: false,
-          note: "",
+          note: todoTitleDate[1] ? todoTitleDate[1].trim() : "",
         })
       );
     }
