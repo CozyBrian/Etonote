@@ -20,6 +20,9 @@ interface PropsB {
 }
 
 export const AddListModal = ({ onClick }: PropsA) => {
+  const App = useAppSelector((state) => state.app);
+  const MODE = App.addEditPanelMode;
+
   const [iconData, setIconData] = useState<ListIconData>({
     type: "EMOJI",
     data: "",
@@ -27,6 +30,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [title, setTitle] = useState("");
   const lists = useAppSelector((state) => state.lists).value;
+  const todos = useAppSelector((state) => state.todos.value);
+
   const dispatch = useAppDispatch();
 
   const addListBox = document.getElementById("addListBox");
@@ -36,6 +41,25 @@ export const AddListModal = ({ onClick }: PropsA) => {
     if (iconData.data === "" || title === "") return;
     onClick!();
     dispatch(action.lists.addList({ icon: iconData, title: title }));
+  };
+
+  const EditList = (e?: React.ChangeEvent<any>) => {
+    e?.preventDefault();
+    if (iconData.data === "" || title === "") return;
+    onClick!();
+    dispatch(
+      action.lists.editList({
+        id: App.addEditPanelData!,
+        icon: iconData,
+        title: title,
+      })
+    );
+
+    todos.forEach((todo) => {
+      if (todo.listID === App.addEditPanelData) {
+        dispatch(action.todos.editTodo({ ...todo, icon: iconData }));
+      }
+    });
   };
 
   const setEmoji = (
@@ -60,6 +84,16 @@ export const AddListModal = ({ onClick }: PropsA) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lists]);
 
+  useEffect(() => {
+    const Item = lists.find((item) => item.id === App.addEditPanelData);
+
+    if (Item) {
+      setIconData(Item.icon);
+      setTitle(Item.title);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -70,7 +104,7 @@ export const AddListModal = ({ onClick }: PropsA) => {
     >
       <div className="w-[32rem]  flex flex-col bg-white/90 dark:bg-zinc-700/80 rounded-2xl backdrop-blur-sm p-8">
         <div className="flex flex-row font-['SFPro'] text-3xl dark:text-slate-50 justify-between items-center pb-8">
-          Create a list
+          {MODE === "ADD" ? "Create a list" : "Edit list"}
           <div
             onClick={onClick}
             className="p-1 w-8 h-8 hover:bg-slate-200/30 active:bg-slate-200/70 flex items-center justify-center duration-100 rounded-md"
@@ -111,10 +145,10 @@ export const AddListModal = ({ onClick }: PropsA) => {
         </form>
         <div className="flex flex-row justify-end pt-4">
           <div
-            onClick={() => createList()}
+            onClick={() => (MODE === "ADD" ? createList() : EditList())}
             className="cursor-pointer px-4 hover:bg-sky-500 dark:text-white hover:text-white text-black p-2 rounded-lg duration-150 bg-slate-400/30 active:bg-slate-400 font-semibold"
           >
-            Create
+            {MODE === "ADD" ? "Create" : "Update"}
           </div>
         </div>
       </div>

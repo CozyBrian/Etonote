@@ -16,6 +16,7 @@ type PropsB = {
 };
 
 export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
+  const dispatch = useAppDispatch();
   const homeId = useAppSelector((state) => state.app.homeId);
   const style = () => {
     return { top: y, left: x };
@@ -23,13 +24,19 @@ export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
 
   const globalTheme = useAppSelector((state) => state.system.THEME);
   const isDark = globalTheme === "Dark";
+
+  const handleListEdit = (id: string) => {
+    dispatch(action.app.setAddEditPanelMode("EDIT"));
+    dispatch(action.app.setAddEditPanelData(id));
+    dispatch(action.app.setShowAddEditPanel(true));
+  };
   return (
     <div
       style={style()}
       className={`absolute flex flex-col w-52 p-1 bg-white/80 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
     >
       <div
-        onClick={() => console.log(id)}
+        onClick={() => handleListEdit(id!)}
         className="flex flex-row h-8 w-full dark:text-slate-100 hover:bg-slate-200/70 dark:hover:bg-zinc-800/70 active:bg-slate-300 dark:active:bg-zinc-700 text-black pl-3 p-2 items-center rounded-lg"
       >
         <div className="w-8">
@@ -82,16 +89,21 @@ export const TodoContextMenu = ({ id, x, y }: PropsB) => {
     return dispatch(action.todos.deleteTodo(id));
   };
 
+  const handleEdit = (id: string) => {
+    dispatch(action.app.setTaskDetailsData(id));
+    dispatch(action.app.setShowTaskDetails(true));
+  };
+
   const style = () => {
     return { top: y, left: x };
   };
   return (
     <div
       style={style()}
-      className={`absolute flex flex-col w-52 p-1  bg-white/70 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
+      className={`fixed flex flex-col w-52 p-1  bg-white/70 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 shadow-md`}
     >
       <div
-        onClick={() => console.log(id)}
+        onClick={() => handleEdit(id!)}
         className="flex flex-row h-8 w-full dark:text-slate-100 hover:bg-slate-200/70 dark:hover:bg-zinc-800/70 active:bg-slate-300 dark:active:bg-zinc-700 text-black pl-3 p-2 items-center rounded-lg"
       >
         <div className="w-8">
