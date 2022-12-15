@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { action } from "../../redux";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppSelector } from "../../hooks";
 import TaskItem from "./tasks-item.component";
 import { taskItem } from "../../@types";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,13 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 const TaskList = () => {
   const app = useAppSelector((state) => state.app);
   const list = useAppSelector((state) => state.todos.value);
-  const dispatch = useAppDispatch();
 
   const [todos, setTodos] = useState<taskItem[]>([]);
-
-  const something = (id: string | undefined) => {
-    return dispatch(action.todos.toggleDone(id));
-  };
 
   useEffect(() => {
     if (app.selectedTab !== "IzeReY") {
@@ -32,13 +26,7 @@ const TaskList = () => {
       <div className="h-full pb-32 scrollbar-hide overflow-y-scroll">
         <AnimatePresence>
           {todos.length > 0 ? (
-            todos.map((item) => (
-              <TaskItem
-                key={`${item.id}`}
-                item={item}
-                onClick={() => something(item.id)}
-              />
-            ))
+            todos.map((item) => <TaskItem key={`${item.id}`} item={item} />)
           ) : (
             <motion.div
               layout

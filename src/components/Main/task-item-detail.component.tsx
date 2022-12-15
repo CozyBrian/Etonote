@@ -60,7 +60,7 @@ const TaskItemDetail = () => {
             onClick={() => setShowIconMenu(!showIconMenu)}
             layoutId={`${item.id}-icon`}
             layout="preserve-aspect"
-            className="text-5xl mb-4 p-1 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-600 rounded-lg duration-150"
+            className="text-5xl mb-4 p-1 cursor-pointer hover:bg-slate-100 dark:hover:bg-zinc-600 rounded-lg"
           >
             <ListIcon iconData={itemIcon} variant="outline-thick" />
           </motion.div>
@@ -70,6 +70,7 @@ const TaskItemDetail = () => {
                 initial={{ y: 15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 5, opacity: 0 }}
+                transition={{ duration: 0.15 }}
                 ref={IconMenuPopUp}
                 className="grid grid-cols-2 p-1 duration-75 select-none bg-slate-300 dark:bg-zinc-800 left-16 top-0 rounded-lg absolute z-20"
               >
@@ -95,7 +96,7 @@ const TaskItemDetail = () => {
             layoutId={`${item.id}-title`}
             value={itemTitle}
             onChange={(e) => setItemTitle(e.target.value)}
-            className="text-3xl font-['Montserrat'] w-[42rem] dark:text-slate-100 bg-transparent focus:outline-none"
+            className="text-3xl font-['Montserrat'] w-full truncate overflow-clip dark:text-slate-100 bg-transparent focus:outline-none"
           />
           <div className="w-full h-48 rounded-xl p-4 bg-yellow-300/20 mt-2 border border-yellow-300/30">
             <textarea
