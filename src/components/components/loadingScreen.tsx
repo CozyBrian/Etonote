@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { Oval } from "react-loader-spinner";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { getUserState } from "../../services/database";
@@ -33,9 +34,9 @@ const LoadingScreen = () => {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute top-0 left-0 w-screen h-screen bg-slate-300 dark:bg-zinc-900 opacity-0 z-50 flex justify-center items-center"
+      className="relative top-0 left-0 w-screen h-screen bg-slate-300 dark:bg-zinc-900 opacity-0 z-50 flex justify-center items-center"
     >
-      <div className="flex justify-center flex-col">
+      <div className="flex justify-center items-center flex-col">
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -43,6 +44,15 @@ const LoadingScreen = () => {
           className="h-48"
           src={require("../../assets/images/splash.png")}
           alt="logo"
+        />
+      </div>
+      <div className="absolute bottom-32">
+        <Oval
+          height={42}
+          width={42}
+          strokeWidth={6}
+          color="#0079DF"
+          secondaryColor="rgba(255, 255, 255, 0.49)"
         />
       </div>
     </motion.div>
