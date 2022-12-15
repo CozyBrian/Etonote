@@ -1,25 +1,20 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ListIconData, taskItem } from "../../@types";
+import { taskItem } from "../../@types";
 import useRightClickMenu from "../../hooks/useRightClickMenu";
 import { TodoContextMenu } from "../components/contextMenu";
 import ListIcon from "../components/listIcon";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
+import { action } from "../../redux";
 
 interface Props {
   item: taskItem;
-  onClick: any;
 }
-const TaskItem = ({ item, onClick }: Props) => {
-  const lists = useAppSelector((state) => state.lists.value);
+const TaskItem = ({ item }: Props) => {
   const itemRef = useRef(null);
   const { x, y, showMenu } = useRightClickMenu(itemRef);
 
-  const ItemIcon = lists.find((list) => list.id === item.listID)?.icon;
-
-  const DefaultIcon = ItemIcon
-    ? ItemIcon
-    : ({ type: "COLOR", data: "#e90e0e" } as ListIconData);
+  const dispatch = useAppDispatch();
 
   const variants = {
     done: {
@@ -30,6 +25,16 @@ const TaskItem = ({ item, onClick }: Props) => {
     notDone: { height: 0, width: 0, borderRadius: "1rem" },
   };
 
+  const toggleDone = (id: string | undefined) => {
+    return dispatch(action.todos.toggleDone(id));
+  };
+
+  // TODO: Implement primary click to edit task
+  // const handleEdit = (id: string) => {
+  //   dispatch(action.app.setTaskDetailsData(id));
+  //   dispatch(action.app.setShowTaskDetails(true));
+  // };
+
   return (
     <motion.div
       layout
@@ -39,13 +44,15 @@ const TaskItem = ({ item, onClick }: Props) => {
       transition={{ duration: 0.3 }}
     >
       {showMenu && <TodoContextMenu id={item.id} x={x} y={y} />}
-      <div
+      <motion.div
+        layoutId={item.id}
         ref={itemRef}
         className="w-full flex flex-row bg-white dark:bg-zinc-800 h-14 rounded-2xl p-2 items-center justify-between my-2 select-none"
       >
         <div className="flex flex-row items-center w-full">
-          <div
-            onClick={() => onClick()}
+          <motion.div
+            layoutId={`${item.id}-isDone`}
+            onClick={() => toggleDone(item.id)}
             className="h-5 w-5 flex justify-center items-center bg-zinc-200 dark:bg-zinc-700 rounded-md mx-2"
           >
             <motion.div
@@ -53,17 +60,24 @@ const TaskItem = ({ item, onClick }: Props) => {
               animate={item.isDone ? "done" : "notDone"}
               variants={variants}
             ></motion.div>
-          </div>
+          </motion.div>
           <div className="w-[42rem]">
-            <div className="font-['Montserrat'] w-[42rem] truncate dark:text-slate-100">
+            <motion.p
+              layoutId={`${item.id}-title`}
+              className="font-['Montserrat'] w-[42rem] truncate dark:text-slate-100"
+            >
               {item.title}
-            </div>
+            </motion.p>
           </div>
         </div>
-        <div className="text-lg rounded-md mx-2">
-          <ListIcon iconData={DefaultIcon} variant="outline-thick" />
-        </div>
-      </div>
+        <motion.div
+          layoutId={`${item.id}-icon`}
+          layout="preserve-aspect"
+          className="text-lg rounded-md mx-2"
+        >
+          <ListIcon iconData={item.icon} variant="outline-thick" />
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };

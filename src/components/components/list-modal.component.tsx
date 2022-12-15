@@ -30,6 +30,8 @@ export const AddListModal = ({ onClick }: PropsA) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [title, setTitle] = useState("");
   const lists = useAppSelector((state) => state.lists).value;
+  const todos = useAppSelector((state) => state.todos.value);
+
   const dispatch = useAppDispatch();
 
   const addListBox = document.getElementById("addListBox");
@@ -52,6 +54,12 @@ export const AddListModal = ({ onClick }: PropsA) => {
         title: title,
       })
     );
+
+    todos.forEach((todo) => {
+      if (todo.listID === App.addEditPanelData) {
+        dispatch(action.todos.editTodo({ ...todo, icon: iconData }));
+      }
+    });
   };
 
   const setEmoji = (

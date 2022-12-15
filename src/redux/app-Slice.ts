@@ -10,6 +10,9 @@ const initialState: app_state = {
   showAddEditPanel: false,
   addEditPanelMode: "ADD",
   addEditPanelData: null,
+  showTaskDetails: false,
+  taskDetailsData: null,
+  taskDetailsMode: "READ",
 };
 
 const appState = createSlice({
@@ -42,6 +45,15 @@ const appState = createSlice({
       action: PayloadAction<app_state["addEditPanelData"]>
     ) {
       state.addEditPanelData = action.payload;
+    },
+    setShowTaskDetails(state, action: PayloadAction<boolean>) {
+      state.showTaskDetails = action.payload;
+    },
+    setTaskDetailsData(state, action: PayloadAction<string | null>) {
+      state.taskDetailsData = action.payload;
+    },
+    setTaskDetailsMode(state, action: PayloadAction<"READ" | "WRITE">) {
+      state.taskDetailsMode = action.payload;
     },
   },
 });
