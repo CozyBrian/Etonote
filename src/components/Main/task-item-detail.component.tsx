@@ -36,7 +36,7 @@ const TaskItemDetail = () => {
         title: itemTitle,
         icon: itemIcon,
         listID: itemListID,
-        note: itemNote,
+        note: itemNote ? itemNote : "",
       })
     );
     dispatch(action.app.setShowTaskDetails(false));
