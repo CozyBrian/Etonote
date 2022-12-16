@@ -19,6 +19,8 @@ const TaskItemDetail = () => {
   const [itemIcon, setItemIcon] = useState(item.icon);
   const [itemListID, setItemListID] = useState(item.listID);
 
+  const itemTitleValidate = itemTitle === "";
+
   const CardRef = useRef(null);
   const IconMenuPopUp = useRef(null);
 
@@ -30,6 +32,10 @@ const TaskItemDetail = () => {
   });
 
   const handleSave = () => {
+    if (itemTitle === "") {
+      return;
+    }
+
     dispatch(
       action.todos.editTodo({
         ...item,
@@ -96,7 +102,9 @@ const TaskItemDetail = () => {
             layoutId={`${item.id}-title`}
             value={itemTitle}
             onChange={(e) => setItemTitle(e.target.value)}
-            className="text-3xl font-['Montserrat'] w-full truncate overflow-clip dark:text-slate-100 bg-transparent focus:outline-none"
+            className={`text-3xl font-['Montserrat'] w-full truncate overflow-clip dark:text-slate-100 bg-transparent ${
+              itemTitleValidate && "border border-red-500"
+            } rounded-xl focus:outline-none`}
           />
           <div className="w-full h-48 rounded-xl p-4 bg-yellow-300/20 mt-2 border border-yellow-300/30">
             <textarea
