@@ -98,6 +98,10 @@ body {
   border-radius: 5px;
 }
 
+.custom-shadow {
+  box-shadow: rgb(142 147 154 / 10%) 0px 0px 0px 1px, rgb(0 0 0 / 4%) 0px 2px 8px, rgb(0 0 0 / 5%) 0px 30px 70px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

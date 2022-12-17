@@ -47,13 +47,13 @@ const TaskItem = ({ item }: Props) => {
       <motion.div
         layoutId={item.id}
         ref={itemRef}
-        className="w-full flex flex-row bg-white dark:bg-zinc-800 h-14 rounded-2xl p-2 items-center justify-between my-2 select-none"
+        className="w-full flex flex-row bg-white dark:bg-zinc-800 h-12 rounded-xl p-2 items-center justify-between select-none"
       >
-        <div className="flex flex-row items-center w-full">
+        <div className="flex flex-row items-center">
           <motion.div
             layoutId={`${item.id}-isDone`}
             onClick={() => toggleDone(item.id)}
-            className="h-5 w-5 flex justify-center items-center bg-zinc-200 dark:bg-zinc-700 rounded-md mx-2"
+            className="h-5 min-w-[1.25rem] flex justify-center items-center bg-zinc-200 dark:bg-zinc-700 rounded-md mx-2"
           >
             <motion.div
               className="bg-slate-600 dark:bg-slate-500"
@@ -61,10 +61,10 @@ const TaskItem = ({ item }: Props) => {
               variants={variants}
             ></motion.div>
           </motion.div>
-          <div className="w-[42rem]">
+          <div className="w-full">
             <motion.p
               layoutId={`${item.id}-title`}
-              className="font-['Montserrat'] w-[42rem] truncate dark:text-slate-100"
+              className="font-['Montserrat'] text-sm truncate dark:text-slate-100"
             >
               {item.title}
             </motion.p>
@@ -73,7 +73,7 @@ const TaskItem = ({ item }: Props) => {
         <motion.div
           layoutId={`${item.id}-icon`}
           layout="preserve-aspect"
-          className="text-lg rounded-md mx-2"
+          className="text-lg rounded-md mx-1"
         >
           <ListIcon iconData={item.icon} variant="outline-thick" />
         </motion.div>

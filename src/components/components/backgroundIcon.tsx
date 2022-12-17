@@ -28,7 +28,7 @@ const BackIcon = () => {
                       ? `linear-gradient(to bottom, ${item.icon.data},rgba(255,0,0,0))`
                       : "",
                 }}
-                className="w-full fixed h-48 top-0 left-0"
+                className="w-full fixed h-32 top-0 left-0"
               ></motion.div>
             ) : (
               <motion.div

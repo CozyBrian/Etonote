@@ -26,20 +26,23 @@ const SideBar = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-zinc-800 max-w-1/5 min-w-[350px] flex rounded-2xl m-2 flex-col p-8 pt-12 select-none">
+    <div className="bg-white dark:bg-zinc-800 max-w-1/5 min-w-[350px] flex rounded-2xl m-2 flex-col p-10 select-none">
       <AnimatePresence>
         {app.showAddEditPanel && (
           <AddListModal onClick={() => setShowAddEditPanel(false)} />
         )}
       </AnimatePresence>
+
       <LayoutGroup>
-        {todoLists.map((item, _) => (
-          <SideBarItem
-            key={item.id}
-            item={item}
-            number={filteredTodo(item.id)}
-          />
-        ))}
+        <div className="flex flex-col gap-1">
+          {todoLists.map((item, _) => (
+            <SideBarItem
+              key={item.id}
+              item={item}
+              number={filteredTodo(item.id)}
+            />
+          ))}
+        </div>
         <AddListButton onClick={() => setShowAddEditPanel(true)} />
       </LayoutGroup>
     </div>

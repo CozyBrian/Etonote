@@ -26,7 +26,13 @@ const TaskList = () => {
       <div className="h-full pb-32 scrollbar-hide overflow-y-scroll">
         <AnimatePresence>
           {todos.length > 0 ? (
-            todos.map((item) => <TaskItem key={`${item.id}`} item={item} />)
+            <motion.div className="flex flex-col gap-1">
+              <AnimatePresence>
+                {todos.map((item) => (
+                  <TaskItem key={`${item.id}`} item={item} />
+                ))}
+              </AnimatePresence>
+            </motion.div>
           ) : (
             <motion.div
               layout
