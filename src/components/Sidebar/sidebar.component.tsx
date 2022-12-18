@@ -14,9 +14,11 @@ const SideBar = () => {
 
   const filteredTodo = (id: string) => {
     if (id === app.homeId) {
-      return list.length;
+      return list.filter((item) => !item.isDone).length;
+    } else if (id === "ldMI0P") {
+      return list.filter((item) => item.isDone).length;
     } else {
-      return list.filter((item) => item.listID === id).length;
+      return list.filter((item) => item.listID === id && !item.isDone).length;
     }
   };
 

@@ -1,26 +1,21 @@
 import React from "react";
 import { action } from "../../redux";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import { motion } from "framer-motion";
 
 type PropsA = {
   id?: string;
-  x: number;
-  y: number;
   handleDelete: (arg0: boolean) => void;
 };
 
 type PropsB = {
   id?: string;
-  x?: number;
-  y?: number;
+  onClick: () => void;
 };
 
-export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
+export const ListContextMenu = ({ id, handleDelete }: PropsA) => {
   const dispatch = useAppDispatch();
   const homeId = useAppSelector((state) => state.app.homeId);
-  const style = () => {
-    return { top: y, left: x };
-  };
 
   const globalTheme = useAppSelector((state) => state.system.THEME);
   const isDark = globalTheme === "Dark";
@@ -32,8 +27,7 @@ export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
   };
   return (
     <div
-      style={style()}
-      className={`absolute flex flex-col w-40 text-sm p-1 bg-white/80 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 custom-shadow`}
+      className={`absolute flex flex-col w-40 text-sm p-1 bg-white/80 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 right-0.5 top-[3.2rem] custom-shadow`}
     >
       <div
         onClick={() => handleListEdit(id!)}
@@ -77,30 +71,33 @@ export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
   );
 };
 
-export const TodoContextMenu = ({ id, x, y }: PropsB) => {
+export const TodoContextMenu = ({ id, onClick }: PropsB) => {
   const dispatch = useAppDispatch();
   const globalTheme = useAppSelector((state) => state.system.THEME);
   const isDark = globalTheme === "Dark";
 
   const toggleDone = (id: string | undefined) => {
-    return dispatch(action.todos.toggleDone(id));
+    dispatch(action.todos.toggleDone(id));
+    onClick();
   };
   const deleteTodo = (id: string | undefined) => {
-    return dispatch(action.todos.deleteTodo(id));
+    dispatch(action.todos.deleteTodo(id));
+    onClick();
   };
 
   const handleEdit = (id: string) => {
     dispatch(action.app.setTaskDetailsData(id));
     dispatch(action.app.setShowTaskDetails(true));
+    onClick();
   };
 
-  const style = () => {
-    return { top: y, left: x };
-  };
   return (
-    <div
-      style={style()}
-      className={`fixed flex flex-col w-40 p-1 text-sm bg-white/70 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 custom-shadow`}
+    <motion.div
+      initial={{ opacity: 0, y: -10, x: 10 }}
+      animate={{ opacity: 1, y: 0, x: 0 }}
+      exit={{ opacity: 0, y: -10, x: 10 }}
+      transition={{ duration: 0.1 }}
+      className={`absolute flex flex-col w-40 p-1 text-sm bg-white/70 dark:bg-zinc-900/90 backdrop-blur-sm z-50 rounded-xl gap-1 right-0.5 top-[3.2rem] custom-shadow`}
     >
       <div
         onClick={() => handleEdit(id!)}
@@ -158,6 +155,6 @@ export const TodoContextMenu = ({ id, x, y }: PropsB) => {
         </div>
         Delete
       </div>
-    </div>
+    </motion.div>
   );
 };

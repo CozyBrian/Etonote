@@ -121,19 +121,22 @@ const AddTodoInput = () => {
             exit={{ y: 5, opacity: 0 }}
             className="grid grid-cols-2 p-1 duration-75 select-none bg-slate-300 dark:bg-zinc-800 right-2 top-16 rounded-lg absolute z-20"
           >
-            {todoLists.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => {
-                  setTodoIcon(item.icon);
-                  setTodoListId(item.id);
-                  setShowIconMenu(false);
-                }}
-                className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-600 active:bg-slate-50 dark:active:bg-zinc-700 rounded-lg items-center"
-              >
-                <ListIcon iconData={item.icon} variant="outline-thick" />
-              </div>
-            ))}
+            {todoLists.map(
+              (item) =>
+                item.id !== "ldMI0P" && (
+                  <div
+                    key={item.id}
+                    onClick={() => {
+                      setTodoIcon(item.icon);
+                      setTodoListId(item.id);
+                      setShowIconMenu(false);
+                    }}
+                    className="h-11 w-11 flex m-1 justify-center duration-75 bg-slate-200 dark:bg-zinc-700 hover:bg-slate-100 dark:hover:bg-zinc-600 active:bg-slate-50 dark:active:bg-zinc-700 rounded-lg items-center"
+                  >
+                    <ListIcon iconData={item.icon} variant="outline-thick" />
+                  </div>
+                )
+            )}
           </motion.div>
         )}
       </AnimatePresence>

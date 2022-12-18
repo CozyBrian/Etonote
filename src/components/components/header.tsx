@@ -71,7 +71,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-gray-400 dark:text-gray-300 text-xl font-medium"
+            className="text-gray-400 dark:text-gray-500 text-xl font-medium"
           >
             It's {todayDate}
           </motion.h1>

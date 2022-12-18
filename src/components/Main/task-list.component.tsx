@@ -11,20 +11,24 @@ const TaskList = () => {
   const [todos, setTodos] = useState<taskItem[]>([]);
 
   useEffect(() => {
-    if (app.selectedTab !== "IzeReY") {
+    if (app.selectedTab !== "IzeReY" && app.selectedTab !== "ldMI0P") {
       const filteredTodo = list.filter(
-        (item) => item.listID === app.selectedTab
+        (item) => item.listID === app.selectedTab && !item.isDone
       );
       setTodos(filteredTodo);
+    } else if (app.selectedTab === "ldMI0P") {
+      const filteredTodo = list.filter((item) => item.isDone);
+      setTodos(filteredTodo);
     } else {
-      setTodos(list);
+      const filteredTodo = list.filter((item) => !item.isDone);
+      setTodos(filteredTodo);
     }
   }, [app.selectedTab, list]);
 
   return (
     <div className="h-full mt-4 pb-32">
       <div className="h-full pb-32 scrollbar-hide overflow-y-scroll">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {todos.length > 0 ? (
             <motion.div className="flex flex-col gap-1">
               <AnimatePresence>

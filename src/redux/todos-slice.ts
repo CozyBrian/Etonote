@@ -18,14 +18,6 @@ const initialState = (): todosList => {
           note: "",
         },
         {
-          id: "XKcRT9C3Eo",
-          listID: "ZslvWl",
-          title: "Study Numerical Algerbra",
-          icon: { type: "EMOJI", data: "📚" },
-          isDone: true,
-          note: "",
-        },
-        {
           id: "rnx0ul9z-e",
           listID: "rFZbxg",
           title: "Buy Playstation 4 and get some games",
