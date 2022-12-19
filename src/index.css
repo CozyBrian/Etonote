@@ -98,6 +98,37 @@ body {
   border-radius: 5px;
 }
 
+.custom-shadow {
+  box-shadow: rgb(142 147 154 / 10%) 0px 0px 0px 1px, rgb(0 0 0 / 4%) 0px 2px 8px, rgb(0 0 0 / 5%) 0px 30px 70px;
+}
+.custom-shadow-lg {
+  box-shadow: rgb(0 0 0 / 4%) 0px 4px 8px, rgb(0 0 0 / 8%) 0px 30px 130px;
+}
+
+@keyframes strike{
+  0%   { width : 0; }
+  100% { width: 100%; }
+}
+
+.strike {
+  position: relative;
+}
+.strike::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  z-index: 5;
+  background: black;
+  animation-name: strike;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards; 
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

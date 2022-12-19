@@ -10,7 +10,7 @@ const TasksView = () => {
   const App = useAppSelector((state) => state.app);
   return (
     <div className="relative flex container justify-center p-12 pb-0 select-none">
-      <div className="w-[48rem]">
+      <div className="w-[40rem]">
         <LayoutGroup>
           <Header />
           <motion.div layout>
