@@ -53,6 +53,18 @@ const initialState = (): todosList => {
           note: "This is the edit panel. You can change the text of the todo item, change its category and attach a note to it. Soon you'll be able to schedule todos over here too. keep an eye out 😉",
           id: "LCkEyf_PRI",
         },
+        {
+          listID: "sbuvgg",
+          title:
+            "Tasks that you complete will appear here in the Completed Tab",
+          icon: {
+            data: "#fa900c",
+            type: "COLOR",
+          },
+          isDone: true,
+          note: "",
+          id: "UIkCcC_PRI",
+        },
       ],
     };
   }

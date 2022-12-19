@@ -76,7 +76,7 @@ const TaskItem = ({ item }: Props) => {
       <div
         ref={WrapperRef}
         onClick={() => handleEdit(item.id!)}
-        className="absolute w-[85.5%] h-full top-0 right-12 cursor-pointer"
+        className="absolute w-[85.5%] h-full top-0 right-12 cursor-pointer z-10"
       />
       {showMenu && <TodoContextMenu id={item.id} x={x} y={y} />}
       <motion.div

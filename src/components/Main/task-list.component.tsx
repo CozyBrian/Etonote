@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import TaskItem from "./tasks-item.component";
 import { taskItem } from "../../@types";
-import { AnimatePresence, motion, Reorder } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion, Reorder } from "framer-motion";
 import { action } from "../../redux";
 
 const TaskList = () => {
@@ -58,12 +58,8 @@ const TaskList = () => {
               </Reorder.Group>
             </motion.div>
           ) : (
-            <motion.div
+            <div
               key={"empty-list"}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.1 }}
               className="flex flex-col h-[70vh] justify-center items-center text-gray-500 text-xl font-medium"
             >
               <div>
@@ -74,7 +70,7 @@ const TaskList = () => {
                 />
               </div>
               It's a little empty here 🥴
-            </motion.div>
+            </div>
           )}
         </AnimatePresence>
       </motion.div>
