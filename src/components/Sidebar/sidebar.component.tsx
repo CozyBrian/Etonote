@@ -2,7 +2,7 @@ import React from "react";
 import SideBarItem from "./components/sidebar-item.component";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import AddListButton from "./components/addLists-button";
-import { AnimatePresence, LayoutGroup } from "framer-motion";
+import { AnimatePresence, LayoutGroup, Reorder } from "framer-motion";
 import { AddListModal } from "../components/list-modal.component";
 import { action } from "../../redux";
 
@@ -14,9 +14,11 @@ const SideBar = () => {
 
   const filteredTodo = (id: string) => {
     if (id === app.homeId) {
-      return list.length;
+      return list.filter((item) => !item.isDone).length;
+    } else if (id === "ldMI0P") {
+      return list.filter((item) => item.isDone).length;
     } else {
-      return list.filter((item) => item.listID === id).length;
+      return list.filter((item) => item.listID === id && !item.isDone).length;
     }
   };
 
@@ -32,14 +34,27 @@ const SideBar = () => {
           <AddListModal onClick={() => setShowAddEditPanel(false)} />
         )}
       </AnimatePresence>
+
       <LayoutGroup>
-        {todoLists.map((item, _) => (
-          <SideBarItem
-            key={item.id}
-            item={item}
-            number={filteredTodo(item.id)}
-          />
-        ))}
+        <div className="flex flex-col gap-1">
+          <Reorder.Group
+            values={todoLists}
+            axis="y"
+            onReorder={(reOrderedList) =>
+              dispatch(action.lists.reOrder(reOrderedList))
+            }
+          >
+            {todoLists.map((item, _) => (
+              <Reorder.Item key={`${item.id}`} value={item}>
+                <SideBarItem
+                  key={item.id}
+                  item={item}
+                  number={filteredTodo(item.id)}
+                />
+              </Reorder.Item>
+            ))}
+          </Reorder.Group>
+        </div>
         <AddListButton onClick={() => setShowAddEditPanel(true)} />
       </LayoutGroup>
     </div>

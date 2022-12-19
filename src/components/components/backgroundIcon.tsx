@@ -28,7 +28,7 @@ const BackIcon = () => {
                       ? `linear-gradient(to bottom, ${item.icon.data},rgba(255,0,0,0))`
                       : "",
                 }}
-                className="w-full fixed h-48 top-0 left-0"
+                className="w-full fixed h-32 top-0 left-0"
               ></motion.div>
             ) : (
               <motion.div
@@ -37,6 +37,37 @@ const BackIcon = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="h-32 w-3/5 flex items-center justify-center text-[40vw] fixed left-0 -top-40 -z-10"
+              >
+                <ListIcon iconData={item.icon} variant="fill" />
+              </motion.div>
+            ))
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {todoLists.map(
+          (item) =>
+            item.id === selectedList?.id &&
+            (item.icon.type === "COLOR" ? (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                style={{
+                  backgroundImage:
+                    item.icon.type === "COLOR"
+                      ? `linear-gradient(to top, ${item.icon.data},rgba(255,0,0,0))`
+                      : "",
+                }}
+                className="w-full fixed h-32 -bottom-10 left-0"
+              ></motion.div>
+            ) : (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="h-32 w-3/5 flex items-center justify-center text-[40vw] fixed left-0 -bottom-40 -z-10"
               >
                 <ListIcon iconData={item.icon} variant="fill" />
               </motion.div>

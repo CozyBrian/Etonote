@@ -24,32 +24,34 @@ const Settings = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ ease: "easeInOut" }}
+      transition={{ ease: "easeInOut", duration: 0.15 }}
       className="flex items-center justify-center p-2 bg-slate-300/90 dark:bg-zinc-900/80 absolute top-0 left-0 w-full h-full z-40"
     >
       <motion.div
-        initial={{ x: 2000 }}
-        animate={{ x: 0 }}
-        exit={{ x: 2000 }}
+        // initial={{ x: 2000 }}
+        // animate={{ x: 0 }}
+        // exit={{ x: 2000 }}
         transition={{ ease: "easeInOut" }}
-        className="relative flex flex-col w-full h-full bg-white dark:bg-zinc-800 rounded-2xl p-12"
+        className="relative flex flex-col w-[880px] min-h-[600px] max-h-[699px] bg-white dark:bg-zinc-800 rounded-2xl p-12"
       >
-        <div className="flex w-full flex-row mb-4 items-center justify-between dark:text-slate-100">
-          <div className="text-3xl font-semibold">Settings</div>
-          <button
-            onClick={close}
-            className="p-4 hover:bg-slate-300 dark:hover:bg-slate-600 active:bg-slate-400 dark:active:bg-slate-700 dark:text-white w-4 h-4 flex items-center justify-center duration-100 rounded-md"
-          >
-            <FontAwesomeIcon icon={faClose} size="lg" />
-          </button>
-        </div>
-        <div className="h-full w-full flex flex-row dark:text-slate-100">
-          <div className="min-w-[240px] mr-7 ">
-            {tabs.map((tab) => (
-              <SideTab key={tab.id} item={tab} />
-            ))}
+        <div className="w-full">
+          <div className="flex w-full flex-row mb-4 items-center justify-between dark:text-slate-100">
+            <div className="text-3xl font-semibold">Settings</div>
+            <button
+              onClick={close}
+              className="p-4 hover:bg-slate-300 dark:hover:bg-slate-600 active:bg-slate-400 dark:active:bg-slate-700 dark:text-white w-4 h-4 flex items-center justify-center duration-100 rounded-md"
+            >
+              <FontAwesomeIcon icon={faClose} size="lg" />
+            </button>
           </div>
-          <MainSettings tabs={tabs} />
+          <div className="h-full w-full flex flex-row dark:text-slate-100">
+            <div className="min-w-[240px] mr-7 ">
+              {tabs.map((tab) => (
+                <SideTab key={tab.id} item={tab} />
+              ))}
+            </div>
+            <MainSettings tabs={tabs} />
+          </div>
         </div>
       </motion.div>
     </motion.div>
