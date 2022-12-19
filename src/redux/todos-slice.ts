@@ -10,20 +10,48 @@ const initialState = (): todosList => {
     return {
       value: [
         {
-          id: "Zc8CvQsq-X",
-          listID: "rFZbxg",
-          title: "Buy a PS5",
-          icon: { type: "EMOJI", data: "🎮" },
-          isDone: true,
-          note: "",
+          icon: {
+            data: "#fa900c",
+            type: "COLOR",
+          },
+          id: "Y6JVx4yj9X",
+          isDone: false,
+          listID: "sbuvgg",
+          note: "Etonote is a simple to-do list app with beautiful fluid animations that saves to the cloud, so your to-dos are available everywhere. It is available for web, MacOS, Windows, iOS, and Android.",
+          title: "Welcome To Etonote. Have a look around",
         },
         {
-          id: "rnx0ul9z-e",
-          listID: "rFZbxg",
-          title: "Buy Playstation 4 and get some games",
-          icon: { type: "EMOJI", data: "🎮" },
+          listID: "sbuvgg",
+          title: "Right Click a list or todo to open the context menu",
+          icon: {
+            data: "#fa900c",
+            type: "COLOR",
+          },
           isDone: false,
           note: "",
+          id: "znUmu-ilC3",
+        },
+        {
+          listID: "sbuvgg",
+          title: "Click and drag Items or Categories to rearrange",
+          icon: {
+            data: "#fa900c",
+            type: "COLOR",
+          },
+          isDone: false,
+          note: "",
+          id: "QsDysfFOv0",
+        },
+        {
+          listID: "sbuvgg",
+          title: "Click Me!",
+          icon: {
+            data: "#fa900c",
+            type: "COLOR",
+          },
+          isDone: false,
+          note: "This is the edit panel. You can change the text of the todo item, change its category and attach a note to it. Soon you'll be able to schedule todos over here too. keep an eye out 😉",
+          id: "LCkEyf_PRI",
         },
       ],
     };
@@ -58,6 +86,9 @@ const todos = createSlice({
     },
     setState(state, action: PayloadAction<todosList>) {
       state.value = action.payload.value;
+    },
+    reOrder(state, action: PayloadAction<taskItem[]>) {
+      state.value = action.payload;
     },
   },
 });

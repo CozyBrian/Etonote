@@ -51,7 +51,7 @@ export const ListContextMenu = ({ id, x, y, handleDelete }: PropsA) => {
         </div>
         Edit
       </div>
-      {id !== homeId && (
+      {id !== homeId && id !== "ldMI0P" && (
         <div
           onClick={() => handleDelete(true)}
           className="flex flex-row h-8 w-full dark:text-slate-100 hover:bg-slate-200/70 dark:hover:bg-zinc-800/70 active:bg-slate-300 dark:active:bg-zinc-700 text-black pl-3 p-2 items-center rounded-lg duration-150"

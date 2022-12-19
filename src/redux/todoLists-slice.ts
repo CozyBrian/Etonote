@@ -10,19 +10,28 @@ const initialState = (): todoList => {
     return {
       value: [
         {
+          icon: {
+            data: "#0ea5e9",
+            type: "COLOR",
+          },
           id: "IzeReY",
           title: "Home",
-          icon: { type: "COLOR", data: "#0ea5e9" },
         },
         {
+          icon: {
+            data: "✅",
+            type: "EMOJI",
+          },
           id: "ldMI0P",
           title: "Completed",
-          icon: { type: "EMOJI", data: "✅" },
         },
         {
-          id: "ZslvWl",
-          title: "School",
-          icon: { type: "EMOJI", data: "📚" },
+          icon: {
+            data: "#fa900c",
+            type: "COLOR",
+          },
+          id: "sbuvgg",
+          title: "Etonote",
         },
       ],
     };
@@ -51,6 +60,9 @@ const todoLists = createSlice({
     },
     setState(state, action: PayloadAction<todoList>) {
       state.value = action.payload.value;
+    },
+    reOrder(state, action: PayloadAction<SidebarItem[]>) {
+      state.value = action.payload;
     },
   },
 });

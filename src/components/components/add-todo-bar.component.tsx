@@ -27,7 +27,7 @@ const AddTodoInput = () => {
     if (todoTitle !== "") {
       dispatch(
         action.todos.addTodo({
-          listID: todoListId,
+          listID: todoListId === "ldMI0P" ? "IzeReY" : todoListId,
           title: todoTitleDate[0].trim(),
           icon: todoIcon,
           isDone: false,

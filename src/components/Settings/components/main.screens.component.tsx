@@ -19,12 +19,14 @@ const MainSettings = ({ tabs }: Props) => {
   return (
     <div className="flex w-full h-full flex-col p-2">
       <div className="text-2xl font-semibold pb-1">{selectedTab?.title}</div>
-      <div className="relative flex h-full flex-col justify-between ">
-        <AnimatePresence mode="wait">
-          {selectedTab?.id === tabs[0].id && <Personal key={tabs[0].id} />}
-          {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
-        </AnimatePresence>
-        <div className="absolute text-center w-full mx-auto -bottom-8 text-slate-400">
+      <div className="flex h-full flex-col justify-between ">
+        <div>
+          <AnimatePresence mode="wait">
+            {selectedTab?.id === tabs[0].id && <Personal key={tabs[0].id} />}
+            {selectedTab?.id === tabs[1].id && <Appearance key={tabs[1].id} />}
+          </AnimatePresence>
+        </div>
+        <div className="absolute text-center w-full bottom-4 left-0 text-slate-400">
           Etonote v0.1.5(web)
         </div>
       </div>
@@ -54,12 +56,6 @@ const Personal = () => {
     }
   };
 
-  const ClearStorage = () => {
-    window.localStorage.removeItem("persistantState");
-    localStorage.removeItem("persistantState");
-    console.log("Cleared");
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -68,28 +64,31 @@ const Personal = () => {
       transition={{ duration: 0.08 }}
       className="flex flex-col gap-4"
     >
-      <div>
+      <div className="flex flex-col gap-2">
         Username:
-        <span>{user.userName}</span>
+        <input
+          disabled
+          readOnly
+          value={user.userName!}
+          className="w-full p-2 rounded-lg bg-transparent border border-zinc-500"
+        />
       </div>
-      <div>
+      <div className="flex flex-col gap-2">
         Email:
-        <span>{user.userEmail}</span>
+        <input
+          disabled
+          readOnly
+          value={user.userEmail!}
+          className="w-full p-2 rounded-lg bg-transparent border border-zinc-500"
+        />
       </div>
+
       <div>
         <button
           onClick={handleSignOut}
           className="bg-red-500 active:bg-red-600 text-white px-6 py-2 rounded-lg duration-200"
         >
           Logout
-        </button>
-      </div>
-      <div>
-        <button
-          onClick={ClearStorage}
-          className="border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-700 text-red-500 active:text-white px-6 py-2 rounded-lg duration-200"
-        >
-          Clear Storage
         </button>
       </div>
     </motion.div>

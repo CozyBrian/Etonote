@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { taskItem } from "../../@types";
+import { ListIconData, taskItem } from "../../@types";
 import useRightClickMenu from "../../hooks/useRightClickMenu";
 import { TodoContextMenu } from "../components/contextMenu";
 import { TodoContextMenu as ContextMenu } from "../components/menus";
 import ListIcon from "../components/listIcon";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { action } from "../../redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +15,7 @@ interface Props {
   item: taskItem;
 }
 const TaskItem = ({ item }: Props) => {
+  const Lists = useAppSelector((state) => state.lists.value);
   const TaskRef = useRef(null);
   const itemRef = useRef(null);
   const menuRef = useRef(null);
@@ -23,6 +24,14 @@ const TaskItem = ({ item }: Props) => {
   const [isTaskHover, setIsTaskHover] = useState(false);
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [isDone, setisDone] = useState(item.isDone);
+
+  const listIcon = Lists.find((list) => list.id === item.listID)?.icon;
+  const ItemIcon = listIcon
+    ? listIcon
+    : ({
+        data: "#e90e0e",
+        type: "COLOR",
+      } as ListIconData);
 
   const dispatch = useAppDispatch();
 
@@ -131,7 +140,7 @@ const TaskItem = ({ item }: Props) => {
           layout="preserve-aspect"
           className="text-lg rounded-md mx-1"
         >
-          <ListIcon iconData={item.icon} variant="outline-thick" />
+          <ListIcon iconData={ItemIcon} variant="outline-thick" />
         </motion.div>
       </motion.div>
     </motion.div>

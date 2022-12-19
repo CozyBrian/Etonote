@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import TaskItem from "./tasks-item.component";
 import { taskItem } from "../../@types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
+import { action } from "../../redux";
 
 const TaskList = () => {
   const app = useAppSelector((state) => state.app);
   const list = useAppSelector((state) => state.todos.value);
+  const dispatch = useAppDispatch();
 
   const [todos, setTodos] = useState<taskItem[]>([]);
 
@@ -27,26 +29,55 @@ const TaskList = () => {
 
   return (
     <div className="h-full mt-4 pb-32">
-      <div className="h-full pb-32 scrollbar-hide overflow-y-scroll">
+      <motion.div className="h-full pb-32 scrollbar-hide overflow-y-scroll">
         <AnimatePresence mode="wait">
           {todos.length > 0 ? (
-            <motion.div className="flex flex-col gap-1">
-              <AnimatePresence>
-                {todos.map((item) => (
-                  <TaskItem key={`${item.id}`} item={item} />
-                ))}
-              </AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.1 }}
+              key={"non-empty-list"}
+              className="flex flex-col gap-1"
+            >
+              <Reorder.Group
+                values={todos}
+                axis="y"
+                onReorder={(reOrderedTodos) =>
+                  dispatch(action.todos.reOrder(reOrderedTodos))
+                }
+                className="flex flex-col gap-1"
+              >
+                <AnimatePresence>
+                  {todos.map((item) => (
+                    <Reorder.Item key={`${item.id}`} value={item}>
+                      <TaskItem item={item} />
+                    </Reorder.Item>
+                  ))}
+                </AnimatePresence>
+              </Reorder.Group>
             </motion.div>
           ) : (
             <motion.div
-              layout
-              className="flex h-32 justify-center items-center text-gray-500 text-xl font-medium"
+              key={"empty-list"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.1 }}
+              className="flex flex-col h-[70vh] justify-center items-center text-gray-500 text-xl font-medium"
             >
-              It's a little empty here🥴
+              <div>
+                <img
+                  className="w-48 h-48 grayscale-[80%] opacity-25 select-none"
+                  src={require("../../assets/images/tasklist.png")}
+                  alt="done"
+                />
+              </div>
+              It's a little empty here 🥴
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 };
