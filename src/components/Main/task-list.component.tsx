@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import TaskItem from "./tasks-item.component";
 import { taskItem } from "../../@types";
-import { AnimatePresence, LayoutGroup, motion, Reorder } from "framer-motion";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
 import { action } from "../../redux";
 
 const TaskList = () => {
