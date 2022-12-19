@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppSelector } from "../../hooks";
 import TaskItem from "./tasks-item.component";
 import { taskItem } from "../../@types";
 import { AnimatePresence, motion, Reorder } from "framer-motion";
-import { action } from "../../redux";
+// import { action } from "../../redux";
 
 const TaskList = () => {
   const app = useAppSelector((state) => state.app);
   const list = useAppSelector((state) => state.todos.value);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   const [todos, setTodos] = useState<taskItem[]>([]);
 
@@ -43,9 +43,7 @@ const TaskList = () => {
               <Reorder.Group
                 values={todos}
                 axis="y"
-                onReorder={(reOrderedTodos) =>
-                  dispatch(action.todos.reOrder(reOrderedTodos))
-                }
+                onReorder={setTodos}
                 className="flex flex-col gap-1"
               >
                 <AnimatePresence>
